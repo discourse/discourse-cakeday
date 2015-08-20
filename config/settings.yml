@@ -1,0 +1,7 @@
+plugins:
+  its_your_birthday_enabled:
+    default: true
+    client: true
+  its_your_birthday_emoji:
+    default: 'birthday'
+    client: true

@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    its_your_birthday_enabled: "Show a birthday cake beside the user's name on their birthday."
+    its_your_birthday_emoji: "The emoji that will be shown beside the user's name."
