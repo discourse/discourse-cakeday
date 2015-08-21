@@ -1,7 +1,7 @@
 plugins:
-  its_your_birthday_enabled:
+  cakeday_enabled:
     default: true
     client: true
-  its_your_birthday_emoji:
+  cakeday_emoji:
     default: 'birthday'
     client: true

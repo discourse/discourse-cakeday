@@ -1,3 +1,3 @@
-# Discourse It's Your Birthday
+# Discourse Cakeday!
 
 ![](example.png)
