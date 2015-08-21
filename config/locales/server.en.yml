@@ -1,4 +1,7 @@
 en:
   site_settings:
-    cakeday_enabled: "Show a birthday cake beside the user's name on their birthday."
-    cakeday_emoji: "The emoji that will be shown beside the user's name."
+    emoji_text: &emoji_text "The emoji that will be shown beside the user's name."
+    cakeday_enabled: "Show cakeday emoji beside the user's name on the date they joined Discourse."
+    cakeday_emoji: *emoji_text
+    its your birthday_enabled: "Show birthday emoji beside the user's name on their birthday."
+    its your birthday_emoji: *emoji_text

@@ -3,5 +3,11 @@ plugins:
     default: true
     client: true
   cakeday_emoji:
+    default: 'cake'
+    client: true
+  its your birthday_enabled:
+    default: true
+    client: true
+  its your birthday_emoji:
     default: 'birthday'
     client: true
