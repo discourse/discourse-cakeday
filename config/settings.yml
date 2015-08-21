@@ -5,9 +5,9 @@ plugins:
   cakeday_emoji:
     default: 'cake'
     client: true
-  its your birthday_enabled:
+  its_your_birthday_enabled:
     default: true
     client: true
-  its your birthday_emoji:
+  its_your_birthday_emoji:
     default: 'birthday'
     client: true

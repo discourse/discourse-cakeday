@@ -8,8 +8,17 @@ export default {
     Post.reopen({
       @computed('user_created_at')
       isCakeday(createdAt) {
+        return this.isSameDay(createdAt);
+      },
+
+      @computed('user_date_of_birth')
+      isUserBirthday(dateOfBirth) {
+        return this.isSameDay(dateOfBirth);
+      },
+
+      isSameDay: function(date) {
         const formatString = 'MMDD';
-        return moment().format(formatString) === moment(createdAt).format(formatString);
+        return moment().format(formatString) === moment(date).format(formatString);
       }
     });
   }
