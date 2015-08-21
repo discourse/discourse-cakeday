@@ -1,0 +1,6 @@
+en:
+  js:
+    user:
+      date_of_birth:
+        title: "Date of Birth"
+        instructions: Your date of birth in the mm/dd/yyyy format. (year is optional)

@@ -11,8 +11,9 @@ export default {
         return this.isSameDay(createdAt);
       },
 
-      @computed('user_date_of_birth')
+      @computed('user_custom_fields.date_of_birth')
       isUserBirthday(dateOfBirth) {
+        if (Ember.isEmpty(dateOfBirth)) return false;
         return this.isSameDay(dateOfBirth);
       },
 
