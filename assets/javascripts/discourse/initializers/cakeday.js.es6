@@ -8,6 +8,7 @@ export default {
     Post.reopen({
       @computed('user_created_at')
       isCakeday(createdAt) {
+        if (Ember.isEmpty(createdAt)) return false;
         return this.isSameDay(createdAt);
       },
 
