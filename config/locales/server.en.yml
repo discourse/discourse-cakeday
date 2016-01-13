@@ -1,7 +1,7 @@
 en:
   site_settings:
-    emoji_text: &emoji_text "The emoji that will be shown beside the user's name."
-    cakeday_enabled: "Show cakeday emoji beside the user's name on the date they joined Discourse."
+    emoji_text: &emoji_text "The emoji[s] that will be shown beside the user's name. Multiple emojis can be specified by: smile|cake|smile"
+    cakeday_enabled: "Show cakeday emoji[s] beside the user's name on the date they joined Discourse."
     cakeday_emoji: *emoji_text
-    cakeday_birthday_enabled: "Show birthday emoji beside the user's name on their birthday."
+    cakeday_birthday_enabled: "Show birthday emoji[s] beside the user's name on their birthday."
     cakeday_birthday_emoji: *emoji_text

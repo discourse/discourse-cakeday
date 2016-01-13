@@ -1,11 +1,11 @@
 {{#if siteSettings.cakeday_birthday_enabled}}
   {{#if isUserBirthday}}
-    {{emoji-image emoji=siteSettings.cakeday_birthday_emoji}}
+    {{emoji-images list=siteSettings.cakeday_birthday_emoji}}
   {{/if}}
 {{/if}}
 
 {{#if siteSettings.cakeday_enabled}}
   {{#if isCakeday}}
-    {{emoji-image emoji=siteSettings.cakeday_emoji}}
+    {{emoji-images list=siteSettings.cakeday_emoji}}
   {{/if}}
 {{/if}}
