@@ -4,6 +4,8 @@
 # authors: Alan Tan
 # url: https://github.com/tgxworld/discourse-cakeday
 
+enabled_site_setting :cakeday_enabled
+
 after_initialize do
   require_dependency 'post_serializer'
   require_dependency 'user_serializer'
