@@ -1,7 +1,7 @@
 {{#if siteSettings.cakeday_birthday_enabled}}
   <label class="control-label">{{i18n 'user.date_of_birth.title'}}</label>
   <div class="controls">
-    {{input value=model.custom_fields.date_of_birth classNames="input-xxlarge"}}
+    {{cakeday-date-picker value=model.custom_fields.date_of_birth classNames="input-xxlarge"}}
   </div>
   <div class='instructions'>
     {{i18n 'user.date_of_birth.instructions'}}
