@@ -9,7 +9,7 @@ export default {
       @computed('user_created_at')
       isCakeday(createdAt) {
         if (Ember.isEmpty(createdAt)) return false;
-        return this.isSameDay(createdAt);
+        return this.isSameDay(createdAt, { anniversary: true });
       },
 
       @computed('user_custom_fields.date_of_birth')
@@ -18,8 +18,17 @@ export default {
         return this.isSameDay(dateOfBirth);
       },
 
-      isSameDay: function(date) {
-        const formatString = 'MMDD';
+      isSameDay: function(date, opts) {
+        var formatString = 'YYYY';
+        const current = moment();
+        const currentDate = moment(date);
+
+        if (opts.anniversary) {
+          if (current.format(formatString) <= currentDate.format(formatString)) return false;
+        }
+
+        formatString = 'MMDD';
+
         return moment().format(formatString) === moment(date).format(formatString);
       }
     });
