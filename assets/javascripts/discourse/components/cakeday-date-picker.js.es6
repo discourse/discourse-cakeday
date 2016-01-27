@@ -5,7 +5,8 @@ export default DatePicker.extend({
     return {
       minDate: null,
       yearRange: 50, // Set 50 as a sane default now
-      setDefaultDate: this.get('value')
+      defaultDate: moment(this.get('value')).toDate(),
+      setDefaultDate: true
     }
   }
 });
