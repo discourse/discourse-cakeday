@@ -23,7 +23,7 @@ export default {
         const current = moment();
         const currentDate = moment(date);
 
-        if (opts.anniversary) {
+        if (opts && opts.anniversary) {
           if (current.format(formatString) <= currentDate.format(formatString)) return false;
         }
 
