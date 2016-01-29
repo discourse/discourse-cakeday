@@ -36,7 +36,7 @@ after_initialize do
     attributes :user_created_at
 
     def user_created_at
-      object.user.created_at
+      object.user.try(:created_at)
     end
   end
 end
