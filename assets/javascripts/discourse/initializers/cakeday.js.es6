@@ -13,7 +13,7 @@ function isSameDay(date, opts) {
 
   formatString = 'MMDD';
 
-  return moment().format(formatString) === moment(date).format(formatString);
+  return current.format(formatString) === currentDate.format(formatString);
 }
 
 function oldPluginCode() {
