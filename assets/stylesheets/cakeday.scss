@@ -1,5 +1,39 @@
+.user-info.small {
+  min-height: 60px;
+}
+
 .cakeday-date-picker {
   .pika-label:nth-child(2) {
     display: none;
+  }
+}
+
+.cakeday {
+  .cakeday-months {
+    .cakeday-header {
+      display: inline-block;
+    }
+  }
+
+  .cakeday-header {
+    margin-bottom: 30px;
+  }
+
+  .cakeday-title {
+    margin: 20px 0;
+  }
+}
+
+.user-info-list {
+  list-style-type: none;
+  margin: 0px;
+
+  li {
+    display: inline;
+  }
+
+  .user-info-empty-message {
+    color: scale-color($primary, $lightness: 30%);
+    padding-bottom: 30px;
   }
 }

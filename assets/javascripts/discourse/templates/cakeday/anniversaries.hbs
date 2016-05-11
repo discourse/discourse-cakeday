@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="cakeday">
+    <h2 class="cakeday-header">{{i18n "anniversaries.today.title"}}</h2>
+    {{#user-info-list users=model.extras.today}}
+      {{i18n "anniversaries.today.empty"}}
+    {{/user-info-list}}
+
+    <h2 class="cakeday-header">{{i18n "anniversaries.upcoming.title"}}</h2>
+    {{#user-info-list users=model.extras.upcoming}}
+      {{i18n "anniversaries.upcoming.empty"}}
+    {{/user-info-list}}
+
+    {{#load-more selector=".user-info" action="loadMore"}}
+      <div class="cakeday-months">
+        <h2 class="cakeday-header">{{i18n "anniversaries.month.title"}}</h2>
+        {{view "select" content=months value=month}}
+      </div>
+
+      {{#conditional-loading-spinner condition=model.loading}}
+        {{#user-info-list users=model}}
+          {{i18n "anniversaries.month.empty"}}
+        {{/user-info-list}}
+      {{/conditional-loading-spinner}}
+
+      {{conditional-loading-spinner condition=model.loadingMore}}
+    {{/load-more}}
+  </div>
+</div>

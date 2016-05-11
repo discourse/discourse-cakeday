@@ -2,4 +2,26 @@ en:
   js:
     user:
       date_of_birth:
-        title: "Date of Birth"
+        title: "Birthday"
+    birthdays:
+      title: "Birthdays"
+      month:
+        title: "Birthdays in the Month of"
+        empty: "There are no users celebrating their brithdays this month."
+      upcoming:
+        title: "Upcoming Birthdays"
+        empty: "There are no users celebrating their birthdays in the next 7 days."
+      today:
+        title: "Today's Birthdays"
+        empty: "There are no users celebrating their birthdays today."
+    anniversaries:
+      title: "Anniversaries"
+      month:
+        title: "Anniversaries in the Month of"
+        empty: "There are no users celebrating their anniversaries this month."
+      upcoming:
+        title: "Upcoming Anniversaries"
+        empty: "There are no users celebrating their anniversaries in the next 7 days."
+      today:
+        title: "Today's Anniversaries"
+        empty: "There are no users celebrating their anniversaries today."
