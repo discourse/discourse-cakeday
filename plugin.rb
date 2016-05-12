@@ -6,6 +6,8 @@
 
 enabled_site_setting :cakeday_enabled
 
+register_asset 'stylesheets/cakeday.scss'
+
 after_initialize do
   require_dependency 'post_serializer'
   require_dependency 'user_serializer'

@@ -4,9 +4,11 @@ export default DatePicker.extend({
   _opts() {
     return {
       minDate: null,
-      yearRange: 50, // Set 50 as a sane default now
+      yearRange: 1, // Set to one since year doesn't matter
       defaultDate: moment(this.get('value')).toDate(),
-      setDefaultDate: true
+      setDefaultDate: true,
+      format: 'MM/DD',
+      theme: 'cakeday-date-picker'
     }
   }
 });

@@ -3,4 +3,3 @@ en:
     user:
       date_of_birth:
         title: "Date of Birth"
-        instructions: Year is optional.
