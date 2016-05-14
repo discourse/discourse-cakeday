@@ -1,0 +1,5 @@
+pt:
+  js:
+    user:
+      date_of_birth:
+        title: "Data de Nascimento"
