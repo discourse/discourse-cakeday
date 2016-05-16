@@ -1,6 +1,7 @@
 # Discourse Cakeday!
 
 ![](example.png)
+![](example2.png)
 
 # Installing
 
