@@ -1,11 +1,12 @@
 {{#if siteSettings.cakeday_birthday_enabled}}
   <label class="control-label">{{i18n 'user.date_of_birth.title'}}</label>
   <div class="controls">
-    {{view "select" content=months
-        optionValuePath="content.value"
-        value=userBirthdayMonth
-        optionLabelPath="content.label"}}
+    {{combo-box content=months
+                value=userBirthdayMonth
+                valueAttribute="value"}}
 
-    {{view "select" content=days value=userBirthdayDay}}
+    {{combo-box content=days
+                value=userBirthdayDay
+                valueAttribute="value"}}
   </div>
 {{/if}}

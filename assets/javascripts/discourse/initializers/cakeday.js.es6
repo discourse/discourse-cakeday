@@ -83,7 +83,7 @@ export default {
       @computed
       months() {
         return moment.months().map((month, index) => {
-          return { label: month, value: index + 1 };
+          return { name: month, value: index + 1 };
         });
       },
 
