@@ -3,8 +3,9 @@ en:
     user:
       date_of_birth:
         title: "Birthday"
-    birthdays:
+    cakeday:
       none: " "
+    birthdays:
       title: "Birthdays"
       month:
         title: "Birthdays in the Month of"

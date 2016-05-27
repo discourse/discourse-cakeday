@@ -133,7 +133,7 @@ after_initialize do
 
       def setup_params
         @page = params[:page].to_i
-        @month = Date::MONTHNAMES.index(params[:month])
+        @month = params[:month].to_i
         @current_month = Date.today.month
         @today = Date.today
         @tomorrow = Date.tomorrow

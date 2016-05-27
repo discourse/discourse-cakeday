@@ -13,7 +13,10 @@
     {{#load-more selector=".user-info" action="loadMore"}}
       <div class="cakeday-months">
         <h2 class="cakeday-header">{{i18n "birthdays.month.title"}}</h2>
-        {{view "select" content=months value=month}}
+        {{combo-box content=months
+            value=month
+            valueAttribute="value"
+            none="cakeday.none"}}
       </div>
 
       {{#conditional-loading-spinner condition=model.loading}}
