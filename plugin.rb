@@ -58,14 +58,29 @@ after_initialize do
         total_rows_count = users.count
         anniversary_month_users = User.anniversary_month(@current_month)
         anniversary_users = anniversary_month_users.where(created_at: @today)
-        upcoming_anniversay_users = anniversary_month_users.where("users.created_at BETWEEN ? AND ?", @tomorrow, @week_from_now)
+
+        next_month_anniversary_users = []
+
+        if @days_to_end_of_month < 7
+          next_month_anniversary_users =
+            User.anniversary_month(@current_month + 1).where(
+              "EXTRACT(DAY FROM users.created_at::date) IN (?)",
+              (1..(7 - @days_to_end_of_month))
+            )
+        end
+
+        upcoming_anniversary_users = anniversary_month_users.where(
+          "EXTRACT(DAY FROM users.created_at::date) IN (?)",
+          ((@tomorrow.day)..(@tomorrow.end_of_month.day))
+        ).concat(next_month_anniversary_users)
+
         users = users.limit(PAGE_SIZE).offset(PAGE_SIZE * @page)
 
         render_json_dump(
           anniversaries: serialize_data(users, AnniversaryUserSerializer),
           extras: {
             today: serialize_data(anniversary_users, AnniversaryUserSerializer),
-            upcoming: serialize_data(upcoming_anniversay_users, AnniversaryUserSerializer)
+            upcoming: serialize_data(upcoming_anniversary_users, AnniversaryUserSerializer)
           },
           total_rows_anniversaries: total_rows_count,
           load_more_anniversaries: anniversaries_path({ page: @page + 1, month: params[:month] })
@@ -83,11 +98,23 @@ after_initialize do
             .where("EXTRACT(DAY FROM user_custom_fields.value::date) = ?", @today.day)
         )
 
+        next_month_birthday_users = []
+
+        if @days_to_end_of_month < 7
+          next_month_birthday_users = select_fields(
+            User.birthday_month(@current_month + 1).where(
+              "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
+              (1..(7 - @days_to_end_of_month))
+            )
+          )
+        end
+
         upcoming_birthday_users = select_fields(
-          birthday_month_users
-            .where("EXTRACT(MONTH FROM user_custom_fields.value::date) IN (?)", [@tomorrow.month.to_s, @week_from_now.month.to_s])
-            .where("EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)", (@tomorrow..@week_from_now).map(&:day))
-        )
+          birthday_month_users.where(
+            "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
+            ((@tomorrow.day)..(@tomorrow.end_of_month.day))
+          )
+        ).concat(next_month_birthday_users)
 
         users = select_fields(users.limit(PAGE_SIZE).offset(PAGE_SIZE * @page))
 
@@ -111,6 +138,7 @@ after_initialize do
         @today = Date.today
         @tomorrow = Date.tomorrow
         @week_from_now = 1.week.from_now
+        @days_to_end_of_month = @tomorrow.end_of_month.day - @tomorrow.day
       end
 
       def select_fields(users)
