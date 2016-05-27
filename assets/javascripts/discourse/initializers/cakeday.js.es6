@@ -89,8 +89,15 @@ export default {
 
       @observes("userBirthdayMonth", "userBirthdayDay")
       _setUserDateOfBirth() {
+        const userBirthdayMonth = this.get("userBirthdayMonth");
+        const userBirthdayDay = this.get("userBirthdayDay");
         const user = this.get("model");
-        const date = `1904-${this.get('userBirthdayMonth')}-${this.get('userBirthdayDay')}`;
+        var date = '';
+
+        if (userBirthdayMonth !== '' && userBirthdayDay !== '') {
+          date = `1904-${this.get('userBirthdayMonth')}-${this.get('userBirthdayDay')}`;
+        }
+
         user.custom_fields.date_of_birth = date;
       },
 

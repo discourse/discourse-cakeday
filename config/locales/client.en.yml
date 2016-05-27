@@ -4,6 +4,7 @@ en:
       date_of_birth:
         title: "Birthday"
     birthdays:
+      none: " "
       title: "Birthdays"
       month:
         title: "Birthdays in the Month of"

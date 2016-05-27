@@ -3,10 +3,12 @@
   <div class="controls">
     {{combo-box content=months
                 value=userBirthdayMonth
-                valueAttribute="value"}}
+                valueAttribute="value"
+                none="birthdays.none"}}
 
     {{combo-box content=days
                 value=userBirthdayDay
-                valueAttribute="value"}}
+                valueAttribute="value"
+                none="birthdays.none"}}
   </div>
 {{/if}}
