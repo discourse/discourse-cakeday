@@ -1,0 +1,7 @@
+es:
+  site_settings:
+    emoji_text: &emoji_text "El emoji[s] que se mostrará al lado del nombre del usuario. Puede seleccionarse más de un emoji así: smile|cake|smile"
+    cakeday_enabled: "Mostrar emoji[s] al lado del nombre de usuario en la fecha en la que se unió al foro Discourse."
+    cakeday_emoji: *emoji_text
+    cakeday_birthday_enabled: "Mostrar emoji[s] al lado del nombre de usuario en su cumpleaños."
+    cakeday_birthday_emoji: *emoji_text
