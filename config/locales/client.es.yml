@@ -1,0 +1,29 @@
+es:
+  js:
+    user:
+      date_of_birth:
+        title: "Cumpleaños"
+    cakeday:
+      none: " "
+    birthdays:
+      title: "Cumpleaños"
+      month:
+        title: "Cumpleaños del mes de"
+        empty: "No hay usuarios que celebren su cumpleaños este mes."
+      upcoming:
+        title: "Próximos cumpleaños"
+        empty: "No hay usuarios que celebren su cumpleaños en los próximos 7 días."
+      today:
+        title: "Hoy celebra su cumpleaños"
+        empty: "No hay usuarios que celebren su cumpleaños hoy."
+    anniversaries:
+      title: "Aniversarios"
+      month:
+        title: "Aniversarios del mes de"
+        empty: "No hay usuarios que celebren su aniversario este mes."
+      upcoming:
+        title: "Próximos aniversarios"
+        empty: "No hay usuarios que celebren su aniversario en los próximos 7 días."
+      today:
+        title: "Hoy celebra su aniversario"
+        empty: "No hay usuarios que celebren su aniversario hoy."
