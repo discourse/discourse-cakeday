@@ -3,6 +3,8 @@ en:
     user:
       date_of_birth:
         title: "Birthday"
+      anniversary:
+        title: "Anniversary"
     cakeday:
       none: " "
     birthdays:
