@@ -10,7 +10,7 @@ function isSameDay(date, opts) {
   const currentDate = moment(date, 'YYYY-MM-DD');
 
   if (opts && opts.anniversary) {
-    if (current.format(formatString) <= currentDate.format(formatString)) return false;
+    if (current.format(formatString) < currentDate.format(formatString)) return false;
   }
 
   formatString = 'MMDD';
