@@ -12,7 +12,7 @@ export default Ember.Controller.extend({
 
   @computed("months")
   month(months) {
-    return months[moment().month()];
+    return months[moment().month()].value;
   },
 
   actions: {
