@@ -11,6 +11,8 @@ PLUGIN_NAME = "discourse-cakeday"
 register_asset 'stylesheets/cakeday.scss'
 
 after_initialize do
+  load File.expand_path("../app/jobs/onceoff/fix_invalid_date_of_birth.rb", __FILE__)
+
   module ::DiscourseCakeday
     class Engine < ::Rails::Engine
       engine_name PLUGIN_NAME
