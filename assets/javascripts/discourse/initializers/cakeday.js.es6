@@ -38,7 +38,7 @@ function initializeCakeday(api, siteSettings) {
   const emojiEnabled = siteSettings.enable_emoji;
 
   if (siteSettings.cakeday_enabled) {
-    api.decorateWidget("hamburger-menu:generalLinks", _ => {
+    api.decorateWidget("hamburger-menu:generalLinks", () => {
       return { route: 'cakeday.anniversaries', label: 'anniversaries.title' };
     });
 
@@ -57,7 +57,7 @@ function initializeCakeday(api, siteSettings) {
   }
 
   if (siteSettings.cakeday_birthday_enabled) {
-    api.decorateWidget("hamburger-menu:generalLinks", _ => {
+    api.decorateWidget("hamburger-menu:generalLinks", () => {
       return { route: 'cakeday.birthdays', label: 'birthdays.title' };
     });
 
