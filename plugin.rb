@@ -49,6 +49,24 @@ after_initialize do
       .where("EXTRACT(MONTH FROM users.created_at::date) = ?", month)
       .order("EXTRACT(MONTH FROM users.created_at::date) ASC, users.created_at ASC")
     }
+
+    validate :is_birthday_valid
+
+    private
+
+    def is_birthday_valid
+      return true if !SiteSetting.cakeday_birthday_enabled
+
+      date_of_birth = self.custom_fields["date_of_birth"]
+
+      if !date_of_birth.blank?
+        begin
+          Date.parse(self.custom_fields["date_of_birth"])
+        rescue ArgumentError
+          self.errors[:base] << I18n.t("active_record.errors.user_custom_field.attributes.date_of_birth.invalid")
+        end
+      end
+    end
   end
 
   module ::DiscourseCakeday

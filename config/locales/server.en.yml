@@ -5,3 +5,9 @@ en:
     cakeday_emoji: *emoji_text
     cakeday_birthday_enabled: "Show birthday emoji[s] beside the user's name on their birthday."
     cakeday_birthday_emoji: *emoji_text
+  active_record:
+    errors:
+      user_custom_field:
+        attributes:
+          date_of_birth:
+            invalid: "Birthday is not a valid date. "
