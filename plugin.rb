@@ -34,6 +34,8 @@ after_initialize do
   class ::User
     scope :birthday_month, ->(month) {
       joins(:_custom_fields)
+      .real
+      .activated
       .where("user_custom_fields.name = 'date_of_birth'")
       .where("(user_custom_fields.value = '') IS NOT TRUE")
       .where("EXTRACT(MONTH FROM user_custom_fields.value::date) = ?", month)
@@ -42,7 +44,9 @@ after_initialize do
     }
 
     scope :anniversary_month, ->(month) {
-      where("EXTRACT(MONTH FROM users.created_at::date) = ?", month)
+      real
+      .activated
+      .where("EXTRACT(MONTH FROM users.created_at::date) = ?", month)
       .order("EXTRACT(MONTH FROM users.created_at::date) ASC, users.created_at ASC")
     }
   end
@@ -50,6 +54,7 @@ after_initialize do
   module ::DiscourseCakeday
     class UsersController < ::ApplicationController
       PAGE_SIZE = 48
+      USERS_LIMIT = 25
 
       before_action :setup_params
 
@@ -57,22 +62,21 @@ after_initialize do
         users = User.anniversary_month(@month)
         total_rows_count = users.count
         anniversary_month_users = User.anniversary_month(@current_month)
-        anniversary_users = anniversary_month_users.where(created_at: @today)
+        anniversary_users = anniversary_month_users.where(created_at: @today).limit(USERS_LIMIT)
 
         next_month_anniversary_users = []
-
-        if @days_to_end_of_month < 7
-          next_month_anniversary_users =
-            User.anniversary_month(@current_month + 1).where(
-              "EXTRACT(DAY FROM users.created_at::date) IN (?)",
-              (1..(7 - @days_to_end_of_month))
-            )
-        end
 
         upcoming_anniversary_users = anniversary_month_users.where(
           "EXTRACT(DAY FROM users.created_at::date) IN (?)",
           ((@tomorrow.day)..(@tomorrow.end_of_month.day))
-        ).concat(next_month_anniversary_users)
+        ).limit(USERS_LIMIT)
+
+        if (upcoming_count = upcoming_anniversary_users.length) < USERS_LIMIT && @days_to_end_of_month < 7
+            upcoming_anniversary_users.concat(User.anniversary_month(@current_month + 1).where(
+              "EXTRACT(DAY FROM users.created_at::date) IN (?)",
+              (1..(7 - @days_to_end_of_month))
+            ).limit(USERS_LIMIT - upcoming_count))
+        end
 
         users = users.limit(PAGE_SIZE).offset(PAGE_SIZE * @page)
 
@@ -100,21 +104,21 @@ after_initialize do
 
         next_month_birthday_users = []
 
-        if @days_to_end_of_month < 7
-          next_month_birthday_users = select_fields(
-            User.birthday_month(@current_month + 1).where(
-              "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
-              (1..(7 - @days_to_end_of_month))
-            )
-          )
-        end
-
         upcoming_birthday_users = select_fields(
           birthday_month_users.where(
             "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
             ((@tomorrow.day)..(@tomorrow.end_of_month.day))
-          )
-        ).concat(next_month_birthday_users)
+          ).limit(USERS_LIMIT)
+        )
+
+        if (count = upcoming_birthday_users.length) < USERS_LIMIT && @days_to_end_of_month < 7
+          upcoming_birthday_users.concat(select_fields(
+            User.birthday_month(@current_month + 1).where(
+              "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
+              (1..(7 - @days_to_end_of_month))
+            ).limit(USERS_LIMIT - count)
+          ))
+        end
 
         users = select_fields(users.limit(PAGE_SIZE).offset(PAGE_SIZE * @page))
 
