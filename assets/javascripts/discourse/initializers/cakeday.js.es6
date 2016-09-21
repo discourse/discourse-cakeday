@@ -2,6 +2,7 @@ import { observes } from 'ember-addons/ember-computed-decorators';
 import computed from 'ember-addons/ember-computed-decorators';
 import Post from 'discourse/models/post';
 import PreferencesController from 'discourse/controllers/preferences';
+import UserCardController from 'discourse/controllers/user-card';
 import { withPluginApi } from 'discourse/lib/plugin-api';
 
 function isSameDay(date, opts) {
@@ -18,18 +19,26 @@ function isSameDay(date, opts) {
   return current.format(formatString) === currentDate.format(formatString);
 }
 
+function cakeday(createdAt) {
+  if (Ember.isEmpty(createdAt)) return false;
+  return isSameDay(createdAt, { anniversary: true });
+}
+
+function cakedayBirthday(dateOfBirth) {
+  if (Ember.isEmpty(dateOfBirth)) return false;
+  return isSameDay(dateOfBirth);
+}
+
 function oldPluginCode() {
   Post.reopen({
     @computed('user_created_at')
     isCakeday(createdAt) {
-      if (Ember.isEmpty(createdAt)) return false;
-      return isSameDay(createdAt, { anniversary: true });
+      return cakeday(createdAt);
     },
 
     @computed('user_custom_fields.date_of_birth')
     isUserBirthday(dateOfBirth) {
-      if (Ember.isEmpty(dateOfBirth)) return false;
-      return isSameDay(dateOfBirth);
+      return cakedayBirthday(dateOfBirth);
     },
   });
 }
@@ -124,6 +133,18 @@ export default {
       userBirthdayDay(dateOfBirth) {
         return moment(dateOfBirth, 'YYYY-MM-DD').date();
       }
+    });
+
+    UserCardController.reopen({
+      @computed('user.created_at')
+      isCakeday(createdAt) {
+        return cakeday(createdAt);
+      },
+
+      @computed('user.custom_fields.date_of_birth')
+      isUserBirthday(dateOfBirth) {
+        return cakedayBirthday(dateOfBirth);
+      },
     });
 
     withPluginApi('0.1', api => initializeCakeday(api, siteSettings), { noApi: oldPluginCode });
