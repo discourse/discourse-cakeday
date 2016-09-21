@@ -14,7 +14,7 @@ export default Em.Component.extend({
         buffer.push(emojiUnescape(`:${emojiTitle}:`));
       });
     } else {
-      buffer.push(iconHTML('birthday-cake', { title: this.get('title') }))
+      buffer.push(iconHTML('birthday-cake', { title: this.get('title') }));
     }
   }
 });

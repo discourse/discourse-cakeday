@@ -3,6 +3,7 @@ import computed from 'ember-addons/ember-computed-decorators';
 import Post from 'discourse/models/post';
 import PreferencesController from 'discourse/controllers/preferences';
 import UserCardController from 'discourse/controllers/user-card';
+import UserController from 'discourse/controllers/user';
 import { withPluginApi } from 'discourse/lib/plugin-api';
 
 function isSameDay(date, opts) {
@@ -96,7 +97,7 @@ export default {
 
   initialize(container) {
     const siteSettings = container.lookup('site-settings:main');
-    const store = container.lookup('store:main')
+    const store = container.lookup('store:main');
 
     store.addPluralization('anniversary', 'anniversaries');
 
@@ -142,6 +143,18 @@ export default {
       },
 
       @computed('user.custom_fields.date_of_birth')
+      isUserBirthday(dateOfBirth) {
+        return cakedayBirthday(dateOfBirth);
+      },
+    });
+
+    UserController.reopen({
+      @computed('model.created_at')
+      isCakeday(createdAt) {
+        return cakeday(createdAt);
+      },
+
+      @computed('model.custom_fields.date_of_birth')
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
       },
