@@ -36,12 +36,10 @@ function oldPluginCode() {
 
 function initializeCakeday(api, siteSettings) {
   const emojiEnabled = siteSettings.enable_emoji;
+  const cakedayEnabled = siteSettings.cakeday_enabled;
+  const cakedayBirthdayEnabled = siteSettings.cakeday_birthday_enabled;
 
-  if (siteSettings.cakeday_enabled) {
-    api.decorateWidget("hamburger-menu:generalLinks", () => {
-      return { route: 'cakeday.anniversaries', label: 'anniversaries.title' };
-    });
-
+  if (cakedayEnabled) {
     api.includePostAttributes('user_created_at');
 
     api.addPosterIcon((cfs, attrs) => {
@@ -56,11 +54,7 @@ function initializeCakeday(api, siteSettings) {
     });
   }
 
-  if (siteSettings.cakeday_birthday_enabled) {
-    api.decorateWidget("hamburger-menu:generalLinks", () => {
-      return { route: 'cakeday.birthdays', label: 'birthdays.title' };
-    });
-
+  if (cakedayBirthdayEnabled) {
     api.addPosterIcon(cfs => {
       const dob = cfs.date_of_birth;
       if (!Ember.isEmpty(dob) && isSameDay(dob)) {
@@ -70,6 +64,20 @@ function initializeCakeday(api, siteSettings) {
           return { icon: 'birthday-cake', title: I18n.t("user.date_of_birth.title") };
         }
       }
+    });
+  }
+
+  if (cakedayEnabled || cakedayBirthdayEnabled) {
+    api.decorateWidget("hamburger-menu:generalLinks", () => {
+      let route;
+
+      if (cakedayEnabled) {
+        route = 'cakeday.anniversaries';
+      } else if (cakedayBirthdayEnabled) {
+        route = 'cakeday.birthdays';
+      }
+
+      return { route: route, label: 'cakeday.title' };
     });
   }
 }

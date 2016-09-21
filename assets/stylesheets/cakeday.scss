@@ -1,8 +1,8 @@
-.user-info.small {
-  min-height: 60px;
-}
-
 .cakeday {
+  .nav-pills {
+    margin-bottom: 25px;
+  }
+
   .cakeday-months {
     .cakeday-header {
       display: inline-block;
@@ -16,18 +16,22 @@
   .cakeday-title {
     margin: 20px 0;
   }
-}
 
-.user-info-list {
-  list-style-type: none;
-  margin: 0px;
-
-  li {
-    display: inline;
+  .user-info.small {
+    min-height: 60px;
   }
 
-  .user-info-empty-message {
-    color: scale-color($primary, $lightness: 30%);
-    padding-bottom: 30px;
+  ul.user-info-list {
+    list-style-type: none;
+    margin: 0px;
+
+    li {
+      display: inline;
+    }
+
+    .user-info-empty-message {
+      color: scale-color($primary, $lightness: 30%);
+      padding-bottom: 30px;
+    }
   }
 }

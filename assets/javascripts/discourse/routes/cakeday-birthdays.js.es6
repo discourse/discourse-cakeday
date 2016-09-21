@@ -5,6 +5,12 @@ export default Discourse.Route.extend({
 
   refreshQueryWithoutTransition: true,
 
+  beforeModel() {
+    if (!this.siteSettings.cakeday_birthday_enabled) {
+      this.transitionTo("unknown", window.location.pathname.replace(/^\//, ''));
+    }
+  },
+
   model(params) {
     return this.store.find("birthday", params);
   },
