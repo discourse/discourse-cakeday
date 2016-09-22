@@ -12,7 +12,7 @@ en:
       title: "Birthdays"
       month:
         title: "Birthdays in the Month of"
-        empty: "There are no users celebrating their brithdays this month."
+        empty: "There are no users celebrating their birthdays this month."
       upcoming:
         title: "Upcoming Birthdays"
         empty: "There are no users celebrating their birthdays in the next 7 days."
