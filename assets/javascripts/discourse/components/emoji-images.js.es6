@@ -1,6 +1,6 @@
 import computed from 'ember-addons/ember-computed-decorators';
 import { emojiUnescape } from 'discourse/lib/text';
-import { iconHTML } from 'discourse/helpers/fa-icon';
+import { iconHTML } from 'discourse-common/helpers/fa-icon';
 
 export default Em.Component.extend({
   @computed('list')
