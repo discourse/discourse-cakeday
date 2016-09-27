@@ -122,7 +122,7 @@ export default {
           date = `1904-${this.get('userBirthdayMonth')}-${this.get('userBirthdayDay')}`;
         }
 
-        user.custom_fields.date_of_birth = date;
+        user.set("custom_fields.date_of_birth", date);
       },
 
       @computed("model.custom_fields.date_of_birth")
