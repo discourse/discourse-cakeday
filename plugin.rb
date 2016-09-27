@@ -1,6 +1,6 @@
 # name: discourse-cakeday
 # about: Show a birthday cake beside the user's name on their birthday or on the date they joined Discourse.
-# version: 0.0.11
+# version: 0.0.12
 # authors: Alan Tan
 # url: https://github.com/tgxworld/discourse-cakeday
 
