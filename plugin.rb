@@ -9,6 +9,7 @@ enabled_site_setting :cakeday_enabled
 PLUGIN_NAME = "discourse-cakeday"
 
 register_asset 'stylesheets/cakeday.scss'
+register_asset 'stylesheets/mobile/user-date-of-birth-input.scss'
 
 after_initialize do
   load File.expand_path("../app/jobs/onceoff/fix_invalid_date_of_birth.rb", __FILE__)
