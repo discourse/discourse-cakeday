@@ -86,11 +86,14 @@ after_initialize do
         anniversary_users = anniversary_month_users.where(created_at: @today).limit(USERS_LIMIT)
 
         next_month_anniversary_users = []
+        upcoming_anniversary_users = []
 
-        upcoming_anniversary_users = anniversary_month_users.where(
-          "EXTRACT(DAY FROM users.created_at::date) IN (?)",
-          ((@tomorrow.day)..(@tomorrow.end_of_month.day))
-        ).limit(USERS_LIMIT)
+        if @same_month
+          upcoming_anniversary_users.concat(anniversary_month_users.where(
+            "EXTRACT(DAY FROM users.created_at::date) IN (?)",
+            ((@tomorrow.day)..(@tomorrow.end_of_month.day))
+          ).limit(USERS_LIMIT))
+        end
 
         if (upcoming_count = upcoming_anniversary_users.length) < USERS_LIMIT && @days_to_end_of_month < 7
             upcoming_anniversary_users.concat(User.anniversary_month(@current_month + 1).where(
@@ -124,13 +127,16 @@ after_initialize do
         )
 
         next_month_birthday_users = []
+        upcoming_birthday_users = []
 
-        upcoming_birthday_users = select_fields(
-          birthday_month_users.where(
-            "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
-            ((@tomorrow.day)..(@tomorrow.end_of_month.day))
-          ).limit(USERS_LIMIT)
-        )
+        if @same_month
+          upcoming_birthday_users.concat(select_fields(
+            birthday_month_users.where(
+              "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
+              ((@tomorrow.day)..(@tomorrow.end_of_month.day))
+            ).limit(USERS_LIMIT)
+          ))
+        end
 
         if (count = upcoming_birthday_users.length) < USERS_LIMIT && @days_to_end_of_month < 7
           upcoming_birthday_users.concat(select_fields(
@@ -163,7 +169,14 @@ after_initialize do
         @today = Date.today
         @tomorrow = Date.tomorrow
         @week_from_now = 1.week.from_now
-        @days_to_end_of_month = @tomorrow.end_of_month.day - @tomorrow.day
+        @same_month = @current_month == @tomorrow.month
+
+        @days_to_end_of_month =
+          if @same_month
+            @tomorrow.end_of_month.day - @tomorrow.day
+          else
+            0
+          end
       end
 
       def select_fields(users)
