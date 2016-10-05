@@ -53,20 +53,24 @@ after_initialize do
       .order("EXTRACT(MONTH FROM users.created_at::date) ASC, users.created_at ASC")
     }
 
-    validate :is_birthday_valid
+    before_save :fix_birthday
 
     private
 
-    def is_birthday_valid
-      return true if !SiteSetting.cakeday_birthday_enabled
+    def fix_birthday
+      return if !SiteSetting.cakeday_birthday_enabled
+      return if custom_fields_clean?
 
-      date_of_birth = self.custom_fields["date_of_birth"]
+      date_of_birth = custom_fields["date_of_birth"]
+      if Array === date_of_birth
+        date_of_birth = custom_fields["date_of_birth"] = date_of_birth[0]
+      end
 
       if !date_of_birth.blank?
         begin
-          Date.parse(self.custom_fields["date_of_birth"])
-        rescue ArgumentError
-          self.errors[:base] << I18n.t("active_record.errors.user_custom_field.attributes.date_of_birth.invalid")
+          Date.parse(date_of_birth)
+        rescue
+          custom_fields["date_of_birth"] = ""
         end
       end
     end
