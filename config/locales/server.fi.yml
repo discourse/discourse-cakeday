@@ -1,0 +1,13 @@
+fi:
+  site_settings:
+    emoji_text: &emoji_text "Emoji[t] joka näytetään nimen vieressä. Useampia näin: smile|cake|smile"
+    cakeday_enabled: "Näytä cakeday emoja nimen vieressä liittymispäivän vuosipäivänä."
+    cakeday_emoji: *emoji_text
+    cakeday_birthday_enabled: "Näytä syntymäpäivä emoji[t] nimen vieressä syntymäpäivänä."
+    cakeday_birthday_emoji: *emoji_text
+  active_record:
+    errors:
+      user_custom_field:
+        attributes:
+          date_of_birth:
+            invalid: "Syntymäpäivä on kirjattu väärin. "
