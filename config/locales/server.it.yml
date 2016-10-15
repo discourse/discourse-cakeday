@@ -1,0 +1,13 @@
+it:
+  site_settings:
+    emoji_text: &emoji_text "L'/gli emoji che verranno mostrati accanto al nome dell'utente. Emoji multipli possono essere specificati da: smile|cake|smile"
+    cakeday_enabled: "Mostra l'/gli emoji cakeday accanto al nome dell'utente alla data in cui si sono iscritti su Discourse."
+    cakeday_emoji: *emoji_text
+    cakeday_birthday_enabled: "Mostra l'/gli emoji del compleanno accanto al nome dell'utente quando compie gli anni."
+    cakeday_birthday_emoji: *emoji_text
+  active_record:
+    errors:
+      user_custom_field:
+        attributes:
+          date_of_birth:
+            invalid: "Compleanno non è una data valida. "
