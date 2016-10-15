@@ -1,0 +1,32 @@
+fi:
+  js:
+    user:
+      date_of_birth:
+        title: "Syntymäpäivä"
+      anniversary:
+        title: "Vuosipäivä"
+    cakeday:
+      none: " "
+      title: Cakeday
+    birthdays:
+      title: "Syntymäpäivät"
+      month:
+        title: "Syntymäpäivät,"
+        empty: "Kukaan ei vietä syntymäpäiväänsä tässä kuussa."
+      upcoming:
+        title: "Tulevat syntymäpäivät"
+        empty: "Kukaan ei vietä syntymäpäiväänsä seuraavan 7 päivän aikana."
+      today:
+        title: "Syntymäpäivät tänään"
+        empty: "Kukaan ei vietä syntymäpäiväänsä tänään."
+    anniversaries:
+      title: "Vuosipäivät"
+      month:
+        title: "Vuosipäivät,"
+        empty: "Kukaan ei vietä vuosipäiväänsä tässä kuussa."
+      upcoming:
+        title: "Tulevat vuosipäivät"
+        empty: "Kukaan ei vietä vuosipäiväänsä seuraavan 7 päivän aikana."
+      today:
+        title: "Vuosipäivät tänään"
+        empty: "Kukaan ei vietä vuosipäiväänsä tänään."
