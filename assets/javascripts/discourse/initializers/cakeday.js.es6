@@ -37,7 +37,7 @@ function oldPluginCode() {
       return cakeday(createdAt);
     },
 
-    @computed('user_custom_fields.date_of_birth')
+    @computed('user_date_of_birth')
     isUserBirthday(dateOfBirth) {
       return cakedayBirthday(dateOfBirth);
     },
@@ -51,6 +51,7 @@ function initializeCakeday(api, siteSettings) {
 
   if (cakedayEnabled) {
     api.includePostAttributes('user_created_at');
+    api.includePostAttributes('user_date_of_birth');
 
     api.addPosterIcon((cfs, attrs) => {
       const createdAt = attrs.user_created_at;
@@ -63,12 +64,15 @@ function initializeCakeday(api, siteSettings) {
           result.icon = 'birthday-cake';
         }
 
+        const currentUser = api.getCurrentUser();
 
-        if (attrs.user_id === api.getCurrentUser().get('id')) {
+        if (currentUser && attrs.user_id === currentUser.get('id')) {
           result.title = I18n.t("user.anniversary.user_title");
         } else {
           result.title = I18n.t("user.anniversary.title");
         }
+
+        result.emojiTitle = false;
 
         return result;
       }
@@ -77,7 +81,7 @@ function initializeCakeday(api, siteSettings) {
 
   if (cakedayBirthdayEnabled) {
     api.addPosterIcon((cfs, attrs) => {
-      const dob = cfs.date_of_birth;
+      const dob = attrs.user_date_of_birth;
       if (!Ember.isEmpty(dob) && isSameDay(dob)) {
         let result = {};
 
@@ -87,11 +91,15 @@ function initializeCakeday(api, siteSettings) {
           result.icon = 'birthday-cake';
         }
 
-        if (attrs.user_id === api.getCurrentUser().get('id')) {
+        const currentUser = api.getCurrentUser();
+
+        if (currentUser && attrs.user_id === currentUser.get('id')) {
           result.title = I18n.t("user.date_of_birth.user_title");
         } else {
           result.title = I18n.t("user.date_of_birth.title");
         }
+
+        result.emojiTitle = false;
 
         return result;
       }
@@ -143,27 +151,27 @@ export default {
           date = `1904-${this.get('userBirthdayMonth')}-${this.get('userBirthdayDay')}`;
         }
 
-        user.set("custom_fields.date_of_birth", date);
+        user.set("date_of_birth", date);
       },
 
-      @computed("model.custom_fields.date_of_birth")
+      @computed("model.date_of_birth")
       userBirthdayMonth(dateOfBirth) {
         return moment(dateOfBirth, 'YYYY-MM-DD').month() + 1;
       },
 
-      @computed("model.custom_fields.date_of_birth")
+      @computed("model.date_of_birth")
       userBirthdayDay(dateOfBirth) {
         return moment(dateOfBirth, 'YYYY-MM-DD').date();
       }
     });
 
     UserCardController.reopen({
-      @computed('user.created_at')
+      @computed('model.created_at')
       isCakeday(createdAt) {
         return cakeday(createdAt);
       },
 
-      @computed('user.custom_fields.date_of_birth')
+      @computed('model.date_of_birth')
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
       },
@@ -175,7 +183,7 @@ export default {
         return cakeday(createdAt);
       },
 
-      @computed('model.custom_fields.date_of_birth')
+      @computed('model.date_of_birth')
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
       },

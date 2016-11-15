@@ -13,6 +13,7 @@ register_asset 'stylesheets/mobile/user-date-of-birth-input.scss'
 
 after_initialize do
   load File.expand_path("../app/jobs/onceoff/fix_invalid_date_of_birth.rb", __FILE__)
+  load File.expand_path("../app/jobs/onceoff/migrate_date_of_birth_to_users_table.rb", __FILE__)
 
   module ::DiscourseCakeday
     class Engine < ::Rails::Engine
@@ -36,14 +37,11 @@ after_initialize do
 
   class ::User
     scope :birthday_month, ->(month) {
-      joins(:_custom_fields)
-      .real
+      real
       .activated
-      .where("user_custom_fields.name = 'date_of_birth'")
-      .where("(user_custom_fields.value = '') IS NOT TRUE")
-      .where("EXTRACT(MONTH FROM user_custom_fields.value::date) = ?", month)
-      .order("EXTRACT(MONTH FROM user_custom_fields.value::date) ASC")
-      .order("EXTRACT(DAY FROM user_custom_fields.value::date) ASC")
+      .where("EXTRACT(MONTH FROM users.date_of_birth::date) = ?", month)
+      .order("EXTRACT(MONTH FROM users.date_of_birth::date) ASC")
+      .order("EXTRACT(DAY FROM users.date_of_birth::date) ASC")
     }
 
     scope :anniversary_month, ->(month) {
@@ -52,28 +50,6 @@ after_initialize do
       .where("EXTRACT(MONTH FROM users.created_at::date) = ?", month)
       .order("EXTRACT(MONTH FROM users.created_at::date) ASC, users.created_at ASC")
     }
-
-    before_save :fix_birthday
-
-    private
-
-    def fix_birthday
-      return if !SiteSetting.cakeday_birthday_enabled
-      return if custom_fields_clean?
-
-      date_of_birth = custom_fields["date_of_birth"]
-      if Array === date_of_birth
-        date_of_birth = custom_fields["date_of_birth"] = date_of_birth[0]
-      end
-
-      if !date_of_birth.blank?
-        begin
-          Date.parse(date_of_birth)
-        rescue
-          custom_fields["date_of_birth"] = ""
-        end
-      end
-    end
   end
 
   module ::DiscourseCakeday
@@ -129,8 +105,8 @@ after_initialize do
 
         birthday_users = select_fields(
           birthday_month_users
-            .where("EXTRACT(MONTH FROM user_custom_fields.value::date) = ?", @today.month)
-            .where("EXTRACT(DAY FROM user_custom_fields.value::date) = ?", @today.day)
+            .where("EXTRACT(MONTH FROM users.date_of_birth::date) = ?", @today.month)
+            .where("EXTRACT(DAY FROM users.date_of_birth::date) = ?", @today.day)
         )
 
         next_month_birthday_users = []
@@ -139,7 +115,7 @@ after_initialize do
         if @same_month
           upcoming_birthday_users.concat(select_fields(
             birthday_month_users.where(
-              "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
+              "EXTRACT(DAY FROM users.date_of_birth::date) IN (?)",
               ((@tomorrow.day)..(@tomorrow.end_of_month.day))
             ).limit(USERS_LIMIT)
           ))
@@ -148,7 +124,7 @@ after_initialize do
         if (count = upcoming_birthday_users.length) < USERS_LIMIT && @days_to_end_of_month < 7
           upcoming_birthday_users.concat(select_fields(
             User.birthday_month(@current_month + 1).where(
-              "EXTRACT(DAY FROM user_custom_fields.value::date) IN (?)",
+              "EXTRACT(DAY FROM users.date_of_birth::date) IN (?)",
               (1..(7 - @days_to_end_of_month))
             ).limit(USERS_LIMIT - count)
           ))
@@ -187,8 +163,7 @@ after_initialize do
       end
 
       def select_fields(users)
-        users.select(:id, :username, :name, :title, :uploaded_avatar_id)
-          .select("user_custom_fields.value AS date_of_birth")
+        users.select(:id, :username, :name, :title, :uploaded_avatar_id, :date_of_birth)
       end
     end
   end
@@ -213,33 +188,19 @@ after_initialize do
   require_dependency 'post_serializer'
   require_dependency 'user_serializer'
 
-  public_user_custom_fields_setting = SiteSetting.public_user_custom_fields
-
-  if public_user_custom_fields_setting.empty?
-    SiteSetting.set("public_user_custom_fields", "date_of_birth")
-  elsif public_user_custom_fields_setting !~ /date_of_birth/
-    SiteSetting.set(
-      "public_user_custom_fields",
-      [SiteSetting.public_user_custom_fields, "date_of_birth"].join("|")
-    )
-  end
-
   class ::UserSerializer
-    alias_method :_custom_fields, :custom_fields
-    def custom_fields
-      if !object.custom_fields["date_of_birth"]
-        object.custom_fields["date_of_birth"] = ""
-        object.save
-      end
-      _custom_fields
-    end
+    attributes :date_of_birth
   end
 
   class ::PostSerializer
-    attributes :user_created_at
+    attributes :user_created_at, :user_date_of_birth
 
     def user_created_at
-      object.user.try(:created_at)
+      object.user&.created_at
+    end
+
+    def user_date_of_birth
+      object.user&.date_of_birth
     end
   end
 end

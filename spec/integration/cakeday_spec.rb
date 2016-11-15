@@ -38,21 +38,10 @@ describe "Cakeyday" do
       time = Time.zone.local(2016, 9, 30)
 
       Timecop.freeze(time) do
-        user = Fabricate(:user)
-        user.custom_fields["date_of_birth"] = "1904-9-28"
-        user.save!
-
-        user2 = Fabricate(:user)
-        user2.custom_fields["date_of_birth"] = "1904-9-29"
-        user2.save!
-
-        user3 = Fabricate(:user)
-        user3.custom_fields["date_of_birth"] = "1904-9-30"
-        user3.save!
-
-        user4 = Fabricate(:user)
-        user4.custom_fields["date_of_birth"] = "1904-10-1"
-        user4.save!
+        user = Fabricate(:user, date_of_birth: "1904-9-28")
+        user2 = Fabricate(:user, date_of_birth: "1904-9-29")
+        user3 = Fabricate(:user, date_of_birth: "1904-9-30")
+        user4 = Fabricate(:user, date_of_birth: "1904-10-1")
 
         get "/cakeday/birthdays.json", page: 0, month: time.month
 
