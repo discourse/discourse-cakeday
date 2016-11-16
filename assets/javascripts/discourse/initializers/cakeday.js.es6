@@ -55,11 +55,16 @@ function initializeCakeday(api, siteSettings) {
     api.addPosterIcon((cfs, attrs) => {
       const createdAt = attrs.user_created_at;
       if (!Ember.isEmpty(createdAt) && isSameDay(createdAt, { anniversary: true })) {
+        let result = {};
+
         if (emojiEnabled) {
-          return { emoji: siteSettings.cakeday_emoji };
+          result.emoji = siteSettings.cakeday_emoji;
         } else {
-          return { icon: 'birthday-cake', title: I18n.t("user.anniversary.title") };
+          result.icon = 'birthday-cake';
         }
+
+        result.title = I18n.t("user.anniversary.title");
+        return result;
       }
     });
   }
@@ -68,11 +73,16 @@ function initializeCakeday(api, siteSettings) {
     api.addPosterIcon(cfs => {
       const dob = cfs.date_of_birth;
       if (!Ember.isEmpty(dob) && isSameDay(dob)) {
+        let result = {};
+
         if (emojiEnabled) {
-          return { emoji: siteSettings.cakeday_birthday_emoji };
+          result.emoji = siteSettings.cakeday_birthday_emoji;
         } else {
-          return { icon: 'birthday-cake', title: I18n.t("user.date_of_birth.title") };
+          result.icon = 'birthday-cake';
         }
+
+        result.title = I18n.t("user.date_of_birth.title");
+        return result;
       }
     });
   }
