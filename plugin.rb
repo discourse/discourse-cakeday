@@ -87,7 +87,10 @@ after_initialize do
         users = User.anniversary_month(@month)
         total_rows_count = users.count
         anniversary_month_users = User.anniversary_month(@current_month)
-        anniversary_users = anniversary_month_users.where(created_at: @today).limit(USERS_LIMIT)
+
+        anniversary_users = anniversary_month_users
+          .where("EXTRACT(DAY FROM users.created_at::date) = ?", Date.current.day)
+          .limit(USERS_LIMIT)
 
         next_month_anniversary_users = []
         upcoming_anniversary_users = []

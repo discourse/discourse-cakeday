@@ -10,6 +10,7 @@ describe "Cakeyday" do
         user2 = Fabricate(:user, created_at: time)
         user3 = Fabricate(:user, created_at: time + 1.day)
         user4 = Fabricate(:user, created_at: time + 2.day)
+        user5 = Fabricate(:user, created_at: time - 1.year)
 
         get "/cakeday/anniversaries.json", page: 0, month: time.month
 
@@ -18,11 +19,11 @@ describe "Cakeyday" do
         body = JSON.parse(response.body)
 
         expect(body["anniversaries"].map { |user| user["id"] }).to eq(
-          [user.id, user2.id]
+          [user5.id, user.id, user2.id]
         )
 
         expect(body["extras"]["today"].map { |u| u["id"] }).to eq(
-          [user2.id]
+          [user5.id, user2.id]
         )
 
         expect(body["extras"]["upcoming"].map { |u| u["id"] }).to eq(
