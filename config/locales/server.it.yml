@@ -5,9 +5,3 @@ it:
     cakeday_emoji: *emoji_text
     cakeday_birthday_enabled: "Mostra l'/gli emoji del compleanno accanto al nome dell'utente quando compie gli anni."
     cakeday_birthday_emoji: *emoji_text
-  active_record:
-    errors:
-      user_custom_field:
-        attributes:
-          date_of_birth:
-            invalid: "Compleanno non è una data valida. "

@@ -7,14 +7,9 @@ describe User do
     describe "when date_of_birth is not valid" do
       it "should not be valid" do
         user.custom_fields['date_of_birth'] = '1904-2-31'
-
-        expect(user).to_not be_valid
-
         user.save
 
-        expect(user.errors[:base]).to include(
-          I18n.t("active_record.errors.user_custom_field.attributes.date_of_birth.invalid")
-        )
+        expect(user.custom_fields['date_of_birth']).to eq('')
       end
     end
 
