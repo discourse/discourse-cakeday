@@ -2,9 +2,11 @@ en:
   js:
     user:
       date_of_birth:
-        title: "Birthday"
+        user_title: "Today is your birthday!"
+        title: "Today is the user's birthday!"
       anniversary:
-        title: "Anniversary"
+        user_title: "Today is the anniversary of your signup!"
+        title: "Today is the anniversary of the user's signup!"
     cakeday:
       none: " "
       title: Cakeday

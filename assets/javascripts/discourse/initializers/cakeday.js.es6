@@ -63,14 +63,20 @@ function initializeCakeday(api, siteSettings) {
           result.icon = 'birthday-cake';
         }
 
-        result.title = I18n.t("user.anniversary.title");
+
+        if (attrs.user_id === api.getCurrentUser().get('id')) {
+          result.title = I18n.t("user.anniversary.user_title");
+        } else {
+          result.title = I18n.t("user.anniversary.title");
+        }
+
         return result;
       }
     });
   }
 
   if (cakedayBirthdayEnabled) {
-    api.addPosterIcon(cfs => {
+    api.addPosterIcon((cfs, attrs) => {
       const dob = cfs.date_of_birth;
       if (!Ember.isEmpty(dob) && isSameDay(dob)) {
         let result = {};
@@ -81,7 +87,12 @@ function initializeCakeday(api, siteSettings) {
           result.icon = 'birthday-cake';
         }
 
-        result.title = I18n.t("user.date_of_birth.title");
+        if (attrs.user_id === api.getCurrentUser().get('id')) {
+          result.title = I18n.t("user.date_of_birth.user_title");
+        } else {
+          result.title = I18n.t("user.date_of_birth.title");
+        }
+
         return result;
       }
     });
