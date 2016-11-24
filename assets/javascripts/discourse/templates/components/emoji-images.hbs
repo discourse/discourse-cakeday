@@ -1,0 +1,7 @@
+{{#if siteSettings.enable_emoji}}
+  {{#each emojiHTML as |html|}}
+    {{{html}}}
+  {{/each}}
+{{else}}
+  {{fa-icon "birthday-cake" title=title}}
+{{/if}}
