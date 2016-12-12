@@ -1,48 +1,10 @@
 import { observes } from 'ember-addons/ember-computed-decorators';
 import computed from 'ember-addons/ember-computed-decorators';
-import Post from 'discourse/models/post';
 import PreferencesController from 'discourse/controllers/preferences';
 import UserCardController from 'discourse/controllers/user-card';
 import UserController from 'discourse/controllers/user';
 import { withPluginApi } from 'discourse/lib/plugin-api';
-
-function isSameDay(date, opts) {
-  let formatString = 'YYYY';
-  const current = moment();
-  const currentDate = moment(date, 'YYYY-MM-DD');
-
-  if (opts && opts.anniversary) {
-    if (current.format(formatString) <= currentDate.format(formatString)) return false;
-  }
-
-  formatString = 'MMDD';
-
-  return current.format(formatString) === currentDate.format(formatString);
-}
-
-function cakeday(createdAt) {
-  if (Ember.isEmpty(createdAt)) return false;
-  return isSameDay(createdAt, { anniversary: true });
-}
-
-function cakedayBirthday(dateOfBirth) {
-  if (Ember.isEmpty(dateOfBirth)) return false;
-  return isSameDay(dateOfBirth);
-}
-
-function oldPluginCode() {
-  Post.reopen({
-    @computed('user_created_at')
-    isCakeday(createdAt) {
-      return cakeday(createdAt);
-    },
-
-    @computed('user_date_of_birth')
-    isUserBirthday(dateOfBirth) {
-      return cakedayBirthday(dateOfBirth);
-    },
-  });
-}
+import { isSameDay, cakeday, cakedayBirthday} from 'discourse/plugins/discourse-cakeday/discourse/lib/cakeday';
 
 function initializeCakeday(api, siteSettings) {
   const emojiEnabled = siteSettings.enable_emoji;
@@ -189,6 +151,6 @@ export default {
       },
     });
 
-    withPluginApi('0.1', api => initializeCakeday(api, siteSettings), { noApi: oldPluginCode });
+    withPluginApi('0.1', api => initializeCakeday(api, siteSettings));
   }
 };
