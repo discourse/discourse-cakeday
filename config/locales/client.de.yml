@@ -1,0 +1,35 @@
+de:
+  js:
+    user:
+      date_of_birth:
+        user_title: "Heute ist dein Geburtstag!"
+        title: "Der Benutzer feiert heute Geburtstag"
+        label: "Geburtstag"
+      anniversary:
+        user_title: "Heute ist der Jahrestag deiner Anmeldung!"
+        title: "Der Benutzer feiert heute den Jahrestag seiner Anmeldung!"
+    cakeday:
+      none: " "
+      title: Cakeday
+    birthdays:
+      title: "Geburtstage"
+      month:
+        title: "Geburtstage im Monat"
+        empty: "Kein Benutzer feiert in diesen Monat seinen Geburtstag."
+      upcoming:
+        title: "Bevorstehende Geburtstage"
+        empty: "Kein Benutzer feiert in den nächsten 7 Tagen seinen Geburtstag."
+      today:
+        title: "Heutige Geburtstage"
+        empty: "Kein Benutzer feiert heute seinen Geburtstag."
+    anniversaries:
+      title: "Jahrestage"
+      month:
+        title: "Jahrestage des Monats"
+        empty: "Kein Benutzer feiert in diesem Monat seinen Jahrestag."
+      upcoming:
+        title: "Bevorstehende Jahrestage"
+        empty: "Kein Benutzer feiert in den nächsten 7 Tagen seinen Jahrestag."
+      today:
+        title: "Heutige Jahrestage"
+        empty: "Kein Benutzer feiert heute seinen Jahrestag."
