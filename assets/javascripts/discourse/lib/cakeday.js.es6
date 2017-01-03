@@ -21,3 +21,23 @@ export function cakedayBirthday(dateOfBirth) {
   if (Ember.isEmpty(dateOfBirth)) return false;
   return isSameDay(dateOfBirth);
 }
+
+export function cakedayTitle(user, currentUser) {
+  if (isSameUser(user, currentUser)) {
+    return I18n.t("user.anniversary.user_title");
+  } else {
+    return I18n.t("user.anniversary.title");
+  }
+}
+
+export function cakedayBirthdayTitle(user, currentUser) {
+  if (isSameUser(user, currentUser)) {
+    return I18n.t("user.date_of_birth.user_title");
+  } else {
+    return I18n.t("user.date_of_birth.title");
+  }
+}
+
+function isSameUser(user, currentUser) {
+  return user.get('id') === currentUser.get('id');
+}

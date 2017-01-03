@@ -6,6 +6,6 @@ export default Ember.Component.extend({
 
   @computed('list')
   emojiHTML(list) {
-    return list.split("|").map(et => emojiUnescape(`:${et}:`));
+    return list.split("|").map(et => emojiUnescape(`:${et}:`, { skipTitle: true }));
   }
 });
