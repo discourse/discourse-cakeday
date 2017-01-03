@@ -23,7 +23,7 @@ acceptance('Cakeday', {
   }
 });
 
-test('Anniversay emoji', assert => {
+test('Anniversary emoji', assert => {
   visit("/t/some-really-interesting-topic/11");
 
   andThen(() => {
