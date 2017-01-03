@@ -9,6 +9,7 @@ enabled_site_setting :cakeday_enabled
 PLUGIN_NAME = "discourse-cakeday"
 
 register_asset 'stylesheets/cakeday.scss'
+register_asset 'stylesheets/emoji-images.scss'
 register_asset 'stylesheets/mobile/user-date-of-birth-input.scss'
 
 after_initialize do
