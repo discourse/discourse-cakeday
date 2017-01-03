@@ -3,7 +3,7 @@ import { cakeday, cakedayBirthday} from 'discourse/plugins/discourse-cakeday/dis
 export default {
   setupComponent(args, component) {
     component.set('isCakeday', cakeday(args.model.get('created_at')));
-    component.set('isUserBirthday', cakedayBirthday(args.model.get('date_of_birthday')));
+    component.set('isUserBirthday', cakedayBirthday(args.model.get('date_of_birth')));
   }
 };
 
