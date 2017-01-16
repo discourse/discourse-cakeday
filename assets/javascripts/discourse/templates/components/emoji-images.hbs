@@ -1,9 +1,9 @@
 {{#if siteSettings.enable_emoji}}
-  <div title={{title}}>
+  <div title={{titleText}}>
     {{#each emojiHTML as |html|}}
       {{{html}}}
     {{/each}}
   </div>
 {{else}}
-  {{fa-icon "birthday-cake" title=title}}
+  {{fa-icon "birthday-cake" title=titleText}}
 {{/if}}
