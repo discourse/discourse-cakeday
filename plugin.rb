@@ -4,8 +4,6 @@
 # authors: Alan Tan
 # url: https://github.com/tgxworld/discourse-cakeday
 
-enabled_site_setting :cakeday_enabled
-
 PLUGIN_NAME = "discourse-cakeday"
 
 register_asset 'stylesheets/cakeday.scss'
