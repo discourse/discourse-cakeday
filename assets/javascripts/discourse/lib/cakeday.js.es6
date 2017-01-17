@@ -39,5 +39,6 @@ export function cakedayBirthdayTitle(user, currentUser) {
 }
 
 function isSameUser(user, currentUser) {
+  if (!currentUser) return false;
   return user.get('id') === currentUser.get('id');
 }
