@@ -2,12 +2,15 @@ fi:
   js:
     user:
       date_of_birth:
-        title: "Syntymäpäivä"
+        user_title: "Tänään on syntymäpäiväsi!"
+        title: "Tänään on hänen syntymäpäivänsä!"
+        label: "Syntymäpäivä"
       anniversary:
-        title: "Vuosipäivä"
+        user_title: "Tänään on liittymisesi vuosipäivä!"
+        title: "Tänään on hänen liittymisensä vuosipäivä!"
     cakeday:
       none: " "
-      title: Cakeday
+      title: Merkkipäivät
     birthdays:
       title: "Syntymäpäivät"
       month:
@@ -15,7 +18,7 @@ fi:
         empty: "Kukaan ei vietä syntymäpäiväänsä tässä kuussa."
       upcoming:
         title: "Tulevat syntymäpäivät"
-        empty: "Kukaan ei vietä syntymäpäiväänsä seuraavan 7 päivän aikana."
+        empty: "Kukaan ei vietä syntymäpäiväänsä seuraavien 7 päivän aikana."
       today:
         title: "Syntymäpäivät tänään"
         empty: "Kukaan ei vietä syntymäpäiväänsä tänään."
@@ -26,7 +29,7 @@ fi:
         empty: "Kukaan ei vietä vuosipäiväänsä tässä kuussa."
       upcoming:
         title: "Tulevat vuosipäivät"
-        empty: "Kukaan ei vietä vuosipäiväänsä seuraavan 7 päivän aikana."
+        empty: "Kukaan ei vietä vuosipäiväänsä seuraavien 7 päivän aikana."
       today:
         title: "Vuosipäivät tänään"
         empty: "Kukaan ei vietä vuosipäiväänsä tänään."
