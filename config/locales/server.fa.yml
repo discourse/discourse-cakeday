@@ -1,0 +1,7 @@
+fa_IR:
++  site_settings:
++    emoji_text: &emoji_text "اسمایلی که در کنار نام کاربری نمایش داده شود. چندین اسمایلی را میتوان به صورت زیر مشخص کرد: smile|cake|smile"
++    cakeday_enabled: "در روزی که کاربر به فروم پیوسته اسمایلی کیک تولد را کنار نام کاربری او نمایش بده."
++    cakeday_emoji: *emoji_text
++    cakeday_birthday_enabled: "اسمایلی روز تولد را در روز تولد کاربر کنار نام کاربری او نمایش بده."
++    cakeday_birthday_emoji: *emoji_text
