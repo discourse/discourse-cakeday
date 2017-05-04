@@ -3,11 +3,11 @@ en:
     user:
       date_of_birth:
         user_title: "Today is your birthday!"
-        title: "Today is the user's birthday!"
+        title: "Today is my birthday!"
         label: "Date of Birth"
       anniversary:
-        user_title: "Today is the anniversary of your signup!"
-        title: "Today is the anniversary of the user's signup!"
+        user_title: "Today is the anniversary of the day you joined our community!"
+        title: "Today is the anniversary of the day I joined this community!"
     cakeday:
       none: " "
       title: Cakeday
