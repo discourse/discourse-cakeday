@@ -14,6 +14,10 @@ after_initialize do
   load File.expand_path("../app/jobs/onceoff/fix_invalid_date_of_birth.rb", __FILE__)
   load File.expand_path("../app/jobs/onceoff/migrate_date_of_birth_to_users_table.rb", __FILE__)
 
+  if OnceoffLog.where(job_name: 'MigrateDateOfBirthToUsersTable').exists?
+    UserCustomField.where(name: 'date_of_birth').delete_all
+  end
+
   module ::DiscourseCakeday
     class Engine < ::Rails::Engine
       engine_name PLUGIN_NAME
