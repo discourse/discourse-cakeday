@@ -1,8 +1,8 @@
 # name: discourse-cakeday
 # about: Show a birthday cake beside the user's name on their birthday or on the date they joined Discourse.
-# version: 0.1.1
+# version: 0.2
 # authors: Alan Tan
-# url: https://github.com/tgxworld/discourse-cakeday
+# url: https://github.com/discourse/discourse-cakeday
 
 PLUGIN_NAME = "discourse-cakeday"
 
