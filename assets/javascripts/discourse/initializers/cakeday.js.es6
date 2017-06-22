@@ -78,7 +78,7 @@ function initializeCakeday(api, siteSettings) {
         route = 'cakeday.birthdays';
       }
 
-      return { route: route, label: 'cakeday.title' };
+      return { route: route, label: 'cakeday.title', className: 'cakeday-link' };
     });
   }
 }
@@ -87,6 +87,9 @@ export default {
   name: 'cakeday',
 
   initialize(container) {
+    const currentUser = container.lookup('current-user:main');
+    if (!currentUser) return;
+
     const siteSettings = container.lookup('site-settings:main');
     const store = container.lookup('store:main');
 

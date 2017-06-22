@@ -55,3 +55,15 @@ test('Anniversary emoji', assert => {
     assert.equal(1, $emojiImages[1].children.length);
   });
 });
+
+test("User is not logged in", assert => {
+  Discourse.User.resetCurrent();
+  Discourse.reset();
+
+  visit("/");
+  click('#toggle-hamburger-menu');
+
+  andThen(() => {
+    assert.equal(find('.cakeday-link').length, 0);
+  });
+});

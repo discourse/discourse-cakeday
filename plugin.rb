@@ -56,6 +56,7 @@ after_initialize do
       PAGE_SIZE = 48
       USERS_LIMIT = 25
 
+      before_filter :ensure_logged_in
       before_action :setup_params
 
       def anniversaries
@@ -189,13 +190,25 @@ after_initialize do
 
   class ::UserSerializer
     attributes :date_of_birth
+
+    def include_date_of_birth?
+      scope.user.present?
+    end
   end
 
   class ::PostSerializer
     attributes :user_created_at, :user_date_of_birth
 
+    def include_user_created_at?
+      scope.user.present?
+    end
+
     def user_created_at
       object.user&.created_at
+    end
+
+    def include_user_date_of_birth?
+      scope.user.present?
     end
 
     def user_date_of_birth
