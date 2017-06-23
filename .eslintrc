@@ -7,11 +7,11 @@
     "builtin": true
   },
   "parserOptions": {
-    "ecmaVersion": 7
+    "ecmaVersion": 7,
     "sourceType": "module"
   },
-  "globals":
-    {"Ember":true,
+  "globals": {
+    "Ember":true,
     "jQuery":true,
     "$":true,
     "RSVP":true,
