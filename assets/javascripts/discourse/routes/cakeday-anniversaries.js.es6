@@ -10,7 +10,7 @@ export default Discourse.Route.extend({
       this.transitionTo("unknown", window.location.pathname.replace(/^\//, ''));
     }
   },
-
+  
   model(params) {
     params.timezone_offset = (new Date().getTimezoneOffset());
     return this.store.find("anniversary", params);

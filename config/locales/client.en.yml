@@ -20,7 +20,7 @@ en:
         title: "Upcoming Birthdays"
         empty: "There are no users celebrating their birthdays in the next 7 days."
       today:
-        title: "Today's Birthdays"
+        title: "Birthdays for %{date}"
         empty: "There are no users celebrating their birthdays today."
     anniversaries:
       title: "Anniversaries"
@@ -31,5 +31,5 @@ en:
         title: "Upcoming Anniversaries"
         empty: "There are no users celebrating their anniversaries in the next 7 days."
       today:
-        title: "Today's Anniversaries"
+        title: "Anniversaries for %{date}"
         empty: "There are no users celebrating their anniversaries today."
