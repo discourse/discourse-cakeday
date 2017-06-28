@@ -10,12 +10,7 @@ export default Ember.Controller.extend({
       return { name: month, value: index + 1 };
     });
   },
-
-  @computed
-  todayBirthdaysTitle() {
-    return I18n.t("birthdays.today.title", { date: moment().format("MMMM Do") });
-  },
-
+  
   actions: {
     loadMore() {
       this.get("model").loadMore();

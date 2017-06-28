@@ -1,0 +1,11 @@
+<h2 class="cakeday-header">{{title}}</h2>
+
+{{#load-more selector=".user-info" action="loadMore"}}
+  {{#conditional-loading-spinner condition=model.loading}}
+    {{#user-info-list users=model}}
+      {{i18n "birthdays.upcoming.empty"}}
+    {{/user-info-list}}
+  {{/conditional-loading-spinner}}
+
+  {{conditional-loading-spinner condition=model.loadingMore}}
+{{/load-more}}

@@ -1,0 +1,17 @@
+{{#load-more selector=".user-info" action="loadMore"}}
+  <div class="cakeday-months">
+    <h2 class="cakeday-header">{{i18n "birthdays.month.title"}}</h2>
+    {{combo-box content=months
+        value=month
+        valueAttribute="value"
+        none="cakeday.none"}}
+  </div>
+
+  {{#conditional-loading-spinner condition=model.loading}}
+    {{#user-info-list users=model}}
+      {{i18n "birthdays.month.empty"}}
+    {{/user-info-list}}
+  {{/conditional-loading-spinner}}
+
+  {{conditional-loading-spinner condition=model.loadingMore}}
+{{/load-more}}

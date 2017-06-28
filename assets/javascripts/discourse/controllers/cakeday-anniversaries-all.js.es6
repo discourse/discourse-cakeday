@@ -11,11 +11,6 @@ export default Ember.Controller.extend({
     });
   },
 
-  @computed
-  todayAnniversariesTitle() {
-    return I18n.t("anniversaries.today.title", { date: moment().format("MMMM Do") });
-  },
-
   actions: {
     loadMore() {
       this.get("model").loadMore();

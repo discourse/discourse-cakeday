@@ -11,13 +11,16 @@ en:
     cakeday:
       none: " "
       title: Cakeday
+      today: "Today"
+      upcoming: "Upcoming"
+      all: "All"
     birthdays:
       title: "Birthdays"
       month:
         title: "Birthdays in the Month of"
         empty: "There are no users celebrating their birthdays this month."
       upcoming:
-        title: "Upcoming Birthdays"
+        title: "Birthdays for %{start_date} - %{end_date}"
         empty: "There are no users celebrating their birthdays in the next 7 days."
       today:
         title: "Birthdays for %{date}"
@@ -28,7 +31,7 @@ en:
         title: "Anniversaries in the Month of"
         empty: "There are no users celebrating their anniversaries this month."
       upcoming:
-        title: "Upcoming Anniversaries"
+        title: "Anniversaries for %{start_date} - %{end_date}"
         empty: "There are no users celebrating their anniversaries in the next 7 days."
       today:
         title: "Anniversaries for %{date}"
