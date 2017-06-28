@@ -1,7 +1,7 @@
 export function isSameDay(date, opts) {
   let formatString = 'YYYY';
   const current = moment();
-  const currentDate = moment(date, 'YYYY-MM-DD');
+  const currentDate = moment(date);
 
   if (opts && opts.anniversary) {
     if (current.format(formatString) <= currentDate.format(formatString)) return false;
