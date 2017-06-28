@@ -69,7 +69,7 @@ after_initialize do
         anniversary_month_users = User.anniversary_month(@current_month)
 
         anniversary_users = anniversary_month_users
-          .where("EXTRACT(DAY FROM users.created_at::date) = ?", Date.current.day)
+          .where("EXTRACT(DAY FROM users.created_at::date) = ?", @today.day)
           .limit(USERS_LIMIT)
 
         next_month_anniversary_users = []
@@ -152,10 +152,11 @@ after_initialize do
       def setup_params
         @page = params[:page].to_i
         @month = params[:month].to_i
-        @current_month = Date.today.month
-        @today = Date.today
-        @tomorrow = Date.tomorrow
-        @week_from_now = 1.week.from_now
+
+        @today = (Time.zone.now - ((params[:timezone_offset].to_i || 0) / 60).hours).to_date
+        @current_month = @today.month
+        @tomorrow = @today + 1.day
+        @week_from_now = @today + 1.week
         @same_month = @current_month == @tomorrow.month
 
         @days_to_end_of_month =
