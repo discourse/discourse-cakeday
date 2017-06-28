@@ -8,7 +8,7 @@
   </div>
 
   {{#conditional-loading-spinner condition=model.loading}}
-    {{#user-info-list users=model}}
+    {{#user-info-list users=model isBirthday=true}}
       {{i18n "birthdays.month.empty"}}
     {{/user-info-list}}
   {{/conditional-loading-spinner}}

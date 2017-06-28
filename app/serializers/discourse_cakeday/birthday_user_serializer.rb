@@ -3,7 +3,7 @@ module DiscourseCakeday
     attributes :cakeday_date
 
     def cakeday_date
-      object.date_of_birth.strftime("%m/%d")
+      object.date_of_birth
     end
   end
 end

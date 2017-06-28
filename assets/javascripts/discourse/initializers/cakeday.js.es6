@@ -5,6 +5,7 @@ import UserCardController from 'discourse/controllers/user-card';
 import UserController from 'discourse/controllers/user';
 import { withPluginApi } from 'discourse/lib/plugin-api';
 import { isSameDay, cakeday, cakedayBirthday} from 'discourse/plugins/discourse-cakeday/discourse/lib/cakeday';
+import { registerUnbound } from 'discourse-common/lib/helpers';
 
 function initializeCakeday(api, siteSettings) {
   const emojiEnabled = siteSettings.enable_emoji;
@@ -69,6 +70,16 @@ function initializeCakeday(api, siteSettings) {
   }
 
   if (cakedayEnabled || cakedayBirthdayEnabled) {
+    registerUnbound('cakeday-date', function(val, params) {
+      const date = moment(val);
+
+      if (params.isBirthday) {
+        return date.format("MM/DD");
+      } else {
+        return date.format("YYYY/MM/DD");
+      }
+    });
+
     api.decorateWidget("hamburger-menu:generalLinks", () => {
       let route;
 

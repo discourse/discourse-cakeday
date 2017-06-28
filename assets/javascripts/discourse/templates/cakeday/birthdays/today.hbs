@@ -2,7 +2,7 @@
 
 {{#load-more selector=".user-info" action="loadMore"}}
   {{#conditional-loading-spinner condition=model.loading}}
-    {{#user-info-list users=model}}
+    {{#user-info-list users=model isBirthday=true}}
       {{i18n "birthdays.today.empty"}}
     {{/user-info-list}}
   {{/conditional-loading-spinner}}

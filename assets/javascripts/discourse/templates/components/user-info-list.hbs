@@ -2,7 +2,7 @@
   {{#each users as |user|}}
     <li class="user-info-item">
       {{#user-info user=user}}
-        <div>{{user.cakeday_date}}</div>
+        <div>{{cakeday-date user.cakeday_date isBirthday=isBirthday}}</div>
       {{/user-info}}
     </li>
   {{else}}
