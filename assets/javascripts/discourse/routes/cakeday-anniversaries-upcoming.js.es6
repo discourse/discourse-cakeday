@@ -1,7 +1,3 @@
-export default Discourse.Route.extend({
-  model(params) {
-    params.timezone_offset = (new Date().getTimezoneOffset());
-    params.filter = 'upcoming';
-    return this.store.find("anniversary", params);
-  }
-});
+import buildCakedayRoute from 'discourse/plugins/discourse-cakeday/discourse/routes/build-cakeday-route';
+
+export default buildCakedayRoute('anniversary', 'upcoming');

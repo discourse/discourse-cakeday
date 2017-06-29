@@ -52,12 +52,24 @@ describe "Cakeyday" do
           get "/cakeday/anniversaries.json",
             page: 0,
             month: time.month,
+            filter: 'tomorrow'
+
+          body = JSON.parse(response.body)
+
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
+            [user3.id]
+          )
+
+
+          get "/cakeday/anniversaries.json",
+            page: 0,
+            month: time.month,
             filter: 'upcoming'
 
           body = JSON.parse(response.body)
 
           expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-            [user3.id, user4.id]
+            [user4.id]
           )
         end
       end
@@ -104,13 +116,25 @@ describe "Cakeyday" do
             get "/cakeday/anniversaries.json",
               page: 0,
               month: 10,
-              filter: 'upcoming',
+              filter: 'tomorrow',
               timezone_offset: "120"
 
             body = JSON.parse(response.body)
 
             expect(body["anniversaries"].map { |u| u["id"] }).to eq(
               [user4.id]
+            )
+
+            get "/cakeday/anniversaries.json",
+              page: 0,
+              month: 10,
+              filter: 'upcoming',
+              timezone_offset: "120"
+
+            body = JSON.parse(response.body)
+
+            expect(body["anniversaries"].map { |u| u["id"] }).to eq(
+              [user5.id]
             )
           end
         end
@@ -126,6 +150,7 @@ describe "Cakeyday" do
           user2 = Fabricate(:user, date_of_birth: "1904-9-29")
           user3 = Fabricate(:user, date_of_birth: "1904-9-30")
           user4 = Fabricate(:user, date_of_birth: "1904-10-1")
+          user5 = Fabricate(:user, date_of_birth: "1904-10-2")
 
           get "/cakeday/birthdays.json", page: 0, month: time.month
 
@@ -149,12 +174,23 @@ describe "Cakeyday" do
           get "/cakeday/birthdays.json",
             page: 0,
             month: time.month,
-            filter: 'upcoming'
+            filter: 'tomorrow'
 
           body = JSON.parse(response.body)
 
           expect(body["birthdays"].map { |u| u["id"] }).to eq(
             [user4.id]
+          )
+
+          get "/cakeday/birthdays.json",
+            page: 0,
+            month: time.month,
+            filter: 'upcoming'
+
+          body = JSON.parse(response.body)
+
+          expect(body["birthdays"].map { |u| u["id"] }).to eq(
+            [user5.id]
           )
         end
       end
@@ -196,12 +232,24 @@ describe "Cakeyday" do
               page: 0,
               month: time.month,
               timezone_offset: "540",
+              filter: 'tomorrow'
+
+            body = JSON.parse(response.body)
+
+            expect(body["birthdays"].map { |u| u["id"] }).to eq(
+              [user3.id]
+            )
+
+            get "/cakeday/birthdays.json",
+              page: 0,
+              month: time.month,
+              timezone_offset: "540",
               filter: 'upcoming'
 
             body = JSON.parse(response.body)
 
             expect(body["birthdays"].map { |u| u["id"] }).to eq(
-              [user3.id, user4.id]
+              [user4.id]
             )
           end
         end

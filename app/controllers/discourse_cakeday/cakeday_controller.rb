@@ -13,7 +13,6 @@ module DiscourseCakeday
       @today = Time.zone.now - @offset.hours
       @current_month = @today.month
       @tomorrow = @today + 1.day
-      @week_from_now = @today + 1.week
     end
 
     def select_fields(users)

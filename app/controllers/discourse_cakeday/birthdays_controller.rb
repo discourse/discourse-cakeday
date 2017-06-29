@@ -7,16 +7,23 @@ module DiscourseCakeday
 
       users =
         case params[:filter]
-        when 'today'
+        when 'today', 'tomorrow'
+          date = params[:filter] == 'today' ? @today : @tomorrow
+
           users
-            .where("EXTRACT(MONTH FROM users.date_of_birth::date) = ?", @current_month)
-            .where("EXTRACT(DAY FROM users.date_of_birth::date) = ?", @today.day)
+            .where(
+              "to_char(users.date_of_birth::date, 'MM-DD') = :date",
+              date: date.strftime('%m-%d')
+            )
             .order_by_likes_received
         when 'upcoming'
+          from = @tomorrow + 1.day
+          to = from + 1.week
+
           users
             .where(
               "to_char(users.date_of_birth::date, 'MM-DD') IN (?)",
-              (@tomorrow.to_date..@week_from_now.to_date).map { |date| date.strftime('%m-%d') }
+              (from.to_date..to.to_date).map { |date| date.strftime('%m-%d') }
             )
             .order("EXTRACT(MONTH FROM users.date_of_birth::date) ASC")
             .order("EXTRACT(DAY FROM users.date_of_birth::date) ASC")

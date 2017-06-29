@@ -1,12 +1,9 @@
-export default Discourse.Route.extend({
+import buildCakedayRoute from 'discourse/plugins/discourse-cakeday/discourse/routes/build-cakeday-route';
+
+export default buildCakedayRoute('anniversary').extend({
   queryParams: {
     month: { refreshModel: true }
   },
 
-  refreshQueryWithoutTransition: true,
-
-  model(params) {
-    params.timezone_offset = (new Date().getTimezoneOffset());
-    return this.store.find("anniversary", params);
-  }
+  refreshQueryWithoutTransition: true
 });

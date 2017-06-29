@@ -11,25 +11,25 @@ module DiscourseCakeday
 
       users =
         case params[:filter]
-        when 'today'
+        when 'today', 'tomorrow'
+          date = params[:filter] == 'today' ? @today : @tomorrow
+
           users
             .where(
-              "EXTRACT(MONTH FROM (users.created_at - interval ':offset hour')) = :month",
+              "to_char(users.created_at - interval ':offset hour', 'MM-DD') = :date",
               offset: @offset,
-              month: @current_month
-            )
-            .where(
-              "EXTRACT(DAY FROM (users.created_at - interval ':offset hour')) = :day",
-              offset: @offset,
-              day: @today.day
+              date: date.strftime('%m-%d')
             )
             .order_by_likes_received
         when 'upcoming'
+          from = @tomorrow + 1.day
+          to = from + 1.week
+
           users
             .where(
               "to_char(users.created_at - interval ':offset hour', 'MM-DD') IN (:dates)",
               offset: @offset,
-              dates: (@tomorrow.to_date..@week_from_now.to_date).map { |date| date.strftime('%m-%d') }
+              dates: (from.to_date..to.to_date).map { |date| date.strftime('%m-%d') }
             )
             .order("EXTRACT(MONTH FROM users.created_at - interval '#{@offset.to_i} hour') ASC")
             .order("EXTRACT(DAY FROM users.created_at - interval '#{@offset.to_i} hour') ASC")

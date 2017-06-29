@@ -6,8 +6,8 @@ export default Ember.Controller.extend({
     const date = moment();
 
     return I18n.t("anniversaries.upcoming.title", {
-      start_date: date.add(1, 'days').format('MMMM Do'),
-      end_date: date.add(6, 'days').format('MMMM Do'),
+      start_date: date.add(2, 'days').format('MMMM Do'),
+      end_date: date.add(7, 'days').format('MMMM Do'),
     });
   },
 
