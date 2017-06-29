@@ -18,21 +18,24 @@ describe "Cakeyday" do
         time = Time.zone.local(2016, 9, 30)
 
         Timecop.freeze(time) do
-          user = Fabricate(:user, created_at: time - 1.day)
+          created_at = time - 1.year
 
-          user2 = Fabricate(:user, created_at: time)
+          user = Fabricate(:user, created_at: created_at - 1.day)
+
+          user2 = Fabricate(:user, created_at: created_at)
           user2.user_stat.update!(likes_received: 1)
 
-          user3 = Fabricate(:user, created_at: time + 1.day)
-          user4 = Fabricate(:user, created_at: time + 2.day)
-          user5 = Fabricate(:user, created_at: time - 1.year)
+          user3 = Fabricate(:user, created_at: created_at + 1.day)
+          user4 = Fabricate(:user, created_at: created_at + 2.day)
+          user5 = Fabricate(:user, created_at: created_at + 1.year)
+          user6 = Fabricate(:user, created_at: created_at - 2.year)
 
           get "/cakeday/anniversaries.json", page: 0, month: time.month
 
           body = JSON.parse(response.body)
 
           expect(body["anniversaries"].map { |user| user["id"] }).to eq(
-            [user5.id, user.id, user2.id]
+            [user6.id, user.id, user2.id]
           )
 
           get "/cakeday/anniversaries.json",
@@ -43,7 +46,7 @@ describe "Cakeyday" do
           body = JSON.parse(response.body)
 
           expect(body["anniversaries"].map { |user| user["id"] }).to eq(
-            [user2.id, user5.id]
+            [user2.id, user6.id]
           )
 
           get "/cakeday/anniversaries.json",
@@ -64,13 +67,16 @@ describe "Cakeyday" do
           time = Time.zone.local(2016, 10, 1)
 
           Timecop.freeze(time) do
-            user = Fabricate(:user, created_at: time - 1.day + 2.hours)
+            created_at = time - 1.year
+
+            user = Fabricate(:user, created_at: created_at - 1.day + 2.hours)
             user.user_stat.update!(likes_received: 1)
 
-            user2 = Fabricate(:user, created_at: time - 1.year)
-            user3 = Fabricate(:user, created_at: time + 1.hours)
-            user4 = Fabricate(:user, created_at: time + 2.hours)
-            user5 = Fabricate(:user, created_at: time + 2.hours + 8.days)
+            user2 = Fabricate(:user, created_at: created_at - 1.year)
+            user3 = Fabricate(:user, created_at: created_at + 1.hours)
+            user4 = Fabricate(:user, created_at: created_at + 2.hours)
+            user5 = Fabricate(:user, created_at: created_at + 2.hours + 8.days)
+            user6 = Fabricate(:user, created_at: created_at + 1.year)
 
             get "/cakeday/anniversaries.json",
               page: 0,

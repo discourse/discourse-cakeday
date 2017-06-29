@@ -4,6 +4,10 @@ module DiscourseCakeday
 
     def index
       users = User.valid
+        .where("EXTRACT(YEAR FROM (users.created_at - interval ':offset hour')) != :year",
+          offset: @offset,
+          year: @today.year
+        )
 
       users =
         case params[:filter]
