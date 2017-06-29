@@ -9,7 +9,8 @@ module DiscourseCakeday
       @page = params[:page].to_i
       @month = params[:month].to_i
 
-      @today = (Time.zone.now - ((params[:timezone_offset].to_i || 0) / 60).hours).to_date
+      @offset = (params[:timezone_offset].to_i || 0) / 60
+      @today = Time.zone.now - @offset.hours
       @current_month = @today.month
       @tomorrow = @today + 1.day
       @week_from_now = @today + 1.week

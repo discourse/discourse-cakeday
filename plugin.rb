@@ -43,16 +43,8 @@ after_initialize do
 
   require_dependency 'user'
   class ::User
-    scope :birthday_month, ->(month) {
-      real
-      .activated
-      .where("EXTRACT(MONTH FROM users.date_of_birth::date) = ?", month)
-    }
-
-    scope :anniversary_month, ->(month) {
-      real
-      .activated
-      .where("EXTRACT(MONTH FROM users.created_at::date) = ?", month)
+    scope :valid, ->() {
+      activated.not_blocked.not_suspended.real
     }
 
     scope :order_by_likes_received, ->() {

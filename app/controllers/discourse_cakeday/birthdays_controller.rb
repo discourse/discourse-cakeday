@@ -3,25 +3,27 @@ module DiscourseCakeday
     PAGE_SIZE = 48
 
     def index
+      users = User.valid
+
       users =
         case params[:filter]
         when 'today'
-          User.birthday_month(@current_month)
-            .order_by_likes_received
-            .where("EXTRACT(MONTH FROM users.date_of_birth::date) = ?", @today.month)
+          users
+            .where("EXTRACT(MONTH FROM users.date_of_birth::date) = ?", @current_month)
             .where("EXTRACT(DAY FROM users.date_of_birth::date) = ?", @today.day)
+            .order_by_likes_received
         when 'upcoming'
-          User.real
-            .activated
+          users
             .where(
               "to_char(users.date_of_birth::date, 'MM-DD') IN (?)",
-              (@tomorrow..@week_from_now).map { |date| date.strftime('%m-%d') }
+              (@tomorrow.to_date..@week_from_now.to_date).map { |date| date.strftime('%m-%d') }
             )
             .order("EXTRACT(MONTH FROM users.date_of_birth::date) ASC")
             .order("EXTRACT(DAY FROM users.date_of_birth::date) ASC")
             .order_by_likes_received
         else
-          User.birthday_month(@month)
+          users
+            .where("EXTRACT(MONTH FROM users.date_of_birth::date) = ?", @month)
             .order("EXTRACT(MONTH FROM users.date_of_birth::date) ASC")
             .order("EXTRACT(DAY FROM users.date_of_birth::date) ASC")
             .order_by_likes_received
