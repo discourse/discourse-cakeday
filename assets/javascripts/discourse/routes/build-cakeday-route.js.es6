@@ -6,4 +6,4 @@ export default (storeName, filter) => {
       return this.store.find(storeName, params);
     }
   });
-}
+};
