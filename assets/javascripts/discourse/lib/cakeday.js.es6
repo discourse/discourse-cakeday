@@ -24,17 +24,17 @@ export function cakedayBirthday(dateOfBirth) {
 
 export function cakedayTitle(user, currentUser) {
   if (isSameUser(user, currentUser)) {
-    return I18n.t("user.anniversary.user_title");
+    return "user.anniversary.user_title";
   } else {
-    return I18n.t("user.anniversary.title");
+    return "user.anniversary.title";
   }
 }
 
 export function cakedayBirthdayTitle(user, currentUser) {
   if (isSameUser(user, currentUser)) {
-    return I18n.t("user.date_of_birth.user_title");
+    return "user.date_of_birth.user_title";
   } else {
-    return I18n.t("user.date_of_birth.title");
+    return "user.date_of_birth.title";
   }
 }
 
