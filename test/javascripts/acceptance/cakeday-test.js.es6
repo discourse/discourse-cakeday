@@ -1,4 +1,5 @@
 import { acceptance } from "helpers/qunit-helpers";
+import { resetPluginApi } from 'discourse/lib/plugin-api';
 
 acceptance('Cakeday', {
   loggedIn: true,
@@ -32,6 +33,20 @@ acceptance('Cakeday', {
   }
 });
 
+test("User is not logged in", assert => {
+  Discourse.User.resetCurrent();
+  Discourse.Session.resetCurrent();
+  resetPluginApi();
+  Discourse.reset();
+
+  visit("/");
+  click('#toggle-hamburger-menu');
+
+  andThen(() => {
+    assert.equal(find('.cakeday-link').length, 0, 'Cakeday is not shown to anonymous users');
+  });
+});
+
 test('Anniversary emoji', assert => {
   visit("/t/some-really-interesting-topic/11");
 
@@ -53,17 +68,5 @@ test('Anniversary emoji', assert => {
     assert.equal($emojiImages[0].title, I18n.t('user.date_of_birth.title'));
     assert.equal(1, $emojiImages[0].children.length);
     assert.equal(1, $emojiImages[1].children.length);
-  });
-});
-
-test("User is not logged in", assert => {
-  Discourse.User.resetCurrent();
-  Discourse.reset();
-
-  visit("/");
-  click('#toggle-hamburger-menu');
-
-  andThen(() => {
-    assert.equal(find('.cakeday-link').length, 0);
   });
 });
