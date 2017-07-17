@@ -11,6 +11,10 @@ es:
     cakeday:
       none: " "
       title: Cakeday
+      today: "Hoy"
+      tomorrow: "Mañana"
+      upcoming: "Próximos"
+      all: "Todos"
     birthdays:
       title: "Cumpleaños"
       month:
@@ -22,6 +26,8 @@ es:
       today:
         title: "Hoy celebra su cumpleaños"
         empty: "No hay usuarios que celebren su cumpleaños hoy."
+      tomorrow:
+        empty: "No habrá usuarios celebrando su cumpleaños mañana."
     anniversaries:
       title: "Aniversarios"
       month:
@@ -33,3 +39,5 @@ es:
       today:
         title: "Hoy celebra su aniversario"
         empty: "No hay usuarios que celebren su aniversario hoy."
+      tomorrow:
+        empty: "No habrá usuarios celebrando sus aniversarios mañana."
