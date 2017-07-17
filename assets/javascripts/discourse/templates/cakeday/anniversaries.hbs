@@ -1,29 +1,29 @@
 <div class="anniversaries">
-  <h3 class="cakeday-header">{{i18n "anniversaries.today.title"}}</h3>
-  {{#user-info-list users=model.extras.today}}
-    {{i18n "anniversaries.today.empty"}}
-  {{/user-info-list}}
+  <ul class="nav-pills">
+    <li>
+      {{#link-to 'cakeday.anniversaries.today'}}
+        {{i18n 'cakeday.today'}}
+      {{/link-to}}
+    </li>
 
-  <h3 class="cakeday-header">{{i18n "anniversaries.upcoming.title"}}</h3>
-  {{#user-info-list users=model.extras.upcoming}}
-    {{i18n "anniversaries.upcoming.empty"}}
-  {{/user-info-list}}
+    <li>
+      {{#link-to 'cakeday.anniversaries.tomorrow'}}
+        {{i18n 'cakeday.tomorrow'}}
+      {{/link-to}}
+    </li>
 
-  {{#load-more selector=".user-info" action="loadMore"}}
-    <div class="cakeday-months">
-      <h3 class="cakeday-header">{{i18n "anniversaries.month.title"}}</h3>
-      {{combo-box content=months
-          value=month
-          valueAttribute="value"
-          none="cakeday.none"}}
-    </div>
+    <li>
+      {{#link-to 'cakeday.anniversaries.upcoming'}}
+        {{i18n 'cakeday.upcoming'}}
+      {{/link-to}}
+    </li>
 
-    {{#conditional-loading-spinner condition=model.loading}}
-      {{#user-info-list users=model}}
-        {{i18n "anniversaries.month.empty"}}
-      {{/user-info-list}}
-    {{/conditional-loading-spinner}}
+    <li>
+      {{#link-to 'cakeday.anniversaries.all'}}
+        {{i18n 'cakeday.all'}}
+      {{/link-to}}
+    </li>
+  </ul>
 
-    {{conditional-loading-spinner condition=model.loadingMore}}
-  {{/load-more}}
+  {{outlet}}
 </div>

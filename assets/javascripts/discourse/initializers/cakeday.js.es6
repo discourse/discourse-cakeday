@@ -5,6 +5,7 @@ import UserCardController from 'discourse/controllers/user-card';
 import UserController from 'discourse/controllers/user';
 import { withPluginApi } from 'discourse/lib/plugin-api';
 import { isSameDay, cakeday, cakedayBirthday} from 'discourse/plugins/discourse-cakeday/discourse/lib/cakeday';
+import { registerUnbound } from 'discourse-common/lib/helpers';
 
 function initializeCakeday(api, siteSettings) {
   const emojiEnabled = siteSettings.enable_emoji;
@@ -69,6 +70,16 @@ function initializeCakeday(api, siteSettings) {
   }
 
   if (cakedayEnabled || cakedayBirthdayEnabled) {
+    registerUnbound('cakeday-date', function(val, params) {
+      const date = moment(val);
+
+      if (params.isBirthday) {
+        return date.format("MM/DD");
+      } else {
+        return date.format("YYYY/MM/DD");
+      }
+    });
+
     api.decorateWidget("hamburger-menu:generalLinks", () => {
       let route;
 
@@ -78,7 +89,7 @@ function initializeCakeday(api, siteSettings) {
         route = 'cakeday.birthdays';
       }
 
-      return { route: route, label: 'cakeday.title' };
+      return { route: route, label: 'cakeday.title', className: 'cakeday-link' };
     });
   }
 }
@@ -87,6 +98,9 @@ export default {
   name: 'cakeday',
 
   initialize(container) {
+    const currentUser = container.lookup('current-user:main');
+    if (!currentUser) return;
+
     const siteSettings = container.lookup('site-settings:main');
     const store = container.lookup('store:main');
 

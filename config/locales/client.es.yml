@@ -2,11 +2,15 @@ es:
   js:
     user:
       date_of_birth:
-        title: "Cumpleaños"
+        user_title: "Hoy es tu cumpleaños!"
+        title: "Hoy es mi cumpleaños!"
+        label: "Fecha de cumpleaños"
       anniversary:
-        title: "Aniversario"
+        user_title: "Hoy es el aniversario del día que ingresaste a nuestra comunidad!"
+        title: "Hoy es el aniversario del día que ingresé a esta comunidad!"
     cakeday:
       none: " "
+      title: Cakeday
     birthdays:
       title: "Cumpleaños"
       month:

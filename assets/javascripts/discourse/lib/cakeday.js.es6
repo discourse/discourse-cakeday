@@ -1,7 +1,7 @@
 export function isSameDay(date, opts) {
   let formatString = 'YYYY';
   const current = moment();
-  const currentDate = moment(date, 'YYYY-MM-DD');
+  const currentDate = moment(date);
 
   if (opts && opts.anniversary) {
     if (current.format(formatString) <= currentDate.format(formatString)) return false;
@@ -24,17 +24,17 @@ export function cakedayBirthday(dateOfBirth) {
 
 export function cakedayTitle(user, currentUser) {
   if (isSameUser(user, currentUser)) {
-    return I18n.t("user.anniversary.user_title");
+    return "user.anniversary.user_title";
   } else {
-    return I18n.t("user.anniversary.title");
+    return "user.anniversary.title";
   }
 }
 
 export function cakedayBirthdayTitle(user, currentUser) {
   if (isSameUser(user, currentUser)) {
-    return I18n.t("user.date_of_birth.user_title");
+    return "user.date_of_birth.user_title";
   } else {
-    return I18n.t("user.date_of_birth.title");
+    return "user.date_of_birth.title";
   }
 }
 
