@@ -17,7 +17,7 @@ describe "Cakeyday" do
       it "should return the right payload" do
         time = Time.zone.local(2016, 9, 30)
 
-        Timecop.freeze(time) do
+        freeze_time(time) do
           created_at = time - 1.year
 
           user = Fabricate(:user, created_at: created_at - 1.day)
@@ -27,14 +27,14 @@ describe "Cakeyday" do
 
           user3 = Fabricate(:user, created_at: created_at + 1.day)
           user4 = Fabricate(:user, created_at: created_at + 2.day)
-          user5 = Fabricate(:user, created_at: created_at + 1.year)
+          _user5 = Fabricate(:user, created_at: created_at + 1.year)
           user6 = Fabricate(:user, created_at: created_at - 2.year)
 
           get "/cakeday/anniversaries.json", page: 0, month: time.month
 
           body = JSON.parse(response.body)
 
-          expect(body["anniversaries"].map { |user| user["id"] }).to eq(
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
             [user6.id, user.id, user2.id]
           )
 
@@ -45,7 +45,7 @@ describe "Cakeyday" do
 
           body = JSON.parse(response.body)
 
-          expect(body["anniversaries"].map { |user| user["id"] }).to eq(
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
             [user2.id, user6.id]
           )
 
@@ -78,7 +78,7 @@ describe "Cakeyday" do
         it 'should return the right payload' do
           time = Time.zone.local(2016, 10, 1)
 
-          Timecop.freeze(time) do
+          freeze_time(time) do
             created_at = time - 1.year
 
             user = Fabricate(:user, created_at: created_at - 1.day + 2.hours)
@@ -88,7 +88,7 @@ describe "Cakeyday" do
             user3 = Fabricate(:user, created_at: created_at + 1.hours)
             user4 = Fabricate(:user, created_at: created_at + 2.hours)
             user5 = Fabricate(:user, created_at: created_at + 2.hours + 8.days)
-            user6 = Fabricate(:user, created_at: created_at + 1.year)
+            _user6 = Fabricate(:user, created_at: created_at + 1.year)
 
             get "/cakeday/anniversaries.json",
               page: 0,
@@ -97,7 +97,7 @@ describe "Cakeyday" do
 
             body = JSON.parse(response.body)
 
-            expect(body["anniversaries"].map { |user| user["id"] }).to eq(
+            expect(body["anniversaries"].map { |u| u["id"] }).to eq(
               [user2.id, user.id, user3.id]
             )
 
@@ -109,7 +109,7 @@ describe "Cakeyday" do
 
             body = JSON.parse(response.body)
 
-            expect(body["anniversaries"].map { |user| user["id"] }).to eq(
+            expect(body["anniversaries"].map { |u| u["id"] }).to eq(
               [user.id, user2.id, user3.id]
             )
 
@@ -145,7 +145,7 @@ describe "Cakeyday" do
       it "should return the right payload" do
         time = Time.zone.local(2016, 9, 30)
 
-        Timecop.freeze(time) do
+        freeze_time(time) do
           user = Fabricate(:user, date_of_birth: "1904-9-28")
           user2 = Fabricate(:user, date_of_birth: "1904-9-29")
           user3 = Fabricate(:user, date_of_birth: "1904-9-30")
@@ -156,7 +156,7 @@ describe "Cakeyday" do
 
           body = JSON.parse(response.body)
 
-          expect(body["birthdays"].map { |user| user["id"] }).to eq(
+          expect(body["birthdays"].map { |u| u["id"] }).to eq(
             [user.id, user2.id, user3.id]
           )
 
@@ -199,7 +199,7 @@ describe "Cakeyday" do
         it 'should return the right payload' do
           time = Time.zone.local(2016, 9, 30, 5, 30)
 
-          Timecop.freeze(time) do
+          freeze_time(time) do
             user = Fabricate(:user, date_of_birth: "1904-9-28")
             user2 = Fabricate(:user, date_of_birth: "1904-9-29")
             user3 = Fabricate(:user, date_of_birth: "1904-9-30")
@@ -212,7 +212,7 @@ describe "Cakeyday" do
 
             body = JSON.parse(response.body)
 
-            expect(body["birthdays"].map { |user| user["id"] }).to eq(
+            expect(body["birthdays"].map { |u| u["id"] }).to eq(
               [user.id, user2.id, user3.id]
             )
 
