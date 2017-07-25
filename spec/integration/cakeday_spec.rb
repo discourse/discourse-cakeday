@@ -60,7 +60,6 @@ describe "Cakeyday" do
             [user3.id]
           )
 
-
           get "/cakeday/anniversaries.json",
             page: 0,
             month: time.month,
@@ -82,9 +81,11 @@ describe "Cakeyday" do
             created_at = time - 1.year
 
             user = Fabricate(:user, created_at: created_at - 1.day + 2.hours)
-            user.user_stat.update!(likes_received: 1)
+            user.user_stat.update!(likes_received: 2)
 
             user2 = Fabricate(:user, created_at: created_at - 1.year)
+            user2.user_stat.update!(likes_received: 1)
+
             user3 = Fabricate(:user, created_at: created_at + 1.hours)
             user4 = Fabricate(:user, created_at: created_at + 2.hours)
             user5 = Fabricate(:user, created_at: created_at + 2.hours + 8.days)
