@@ -49,7 +49,7 @@ after_initialize do
 
     scope :order_by_likes_received, ->() {
       joins(:user_stat)
-      .order("user_stats.likes_received DESC")
+        .order("user_stats.likes_received DESC")
     }
   end
 
