@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
       return { name: month, value: index + 1 };
     });
   },
-  
+
   actions: {
     loadMore() {
       this.get("model").loadMore();
