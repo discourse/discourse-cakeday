@@ -1,6 +1,6 @@
 module DiscourseCakeday
   class CakedayController < ::ApplicationController
-    before_filter :ensure_logged_in
+    before_action :ensure_logged_in
     before_action :setup_params
 
     private
