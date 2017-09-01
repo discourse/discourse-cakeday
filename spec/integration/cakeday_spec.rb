@@ -3,7 +3,7 @@ require 'rails_helper'
 describe "Cakeyday" do
   describe 'when not logged in' do
     it 'should return the right response' do
-      expect { get "/cakeday/anniversaries.json", page: 0, month: 5 }
+      expect { get "/cakeday/anniversaries.json", params: { page: 0, month: 5 } }
         .to raise_error(Discourse::NotLoggedIn)
     end
   end
@@ -30,7 +30,7 @@ describe "Cakeyday" do
           _user5 = Fabricate(:user, created_at: created_at + 1.year)
           user6 = Fabricate(:user, created_at: created_at - 2.year)
 
-          get "/cakeday/anniversaries.json", page: 0, month: time.month
+          get "/cakeday/anniversaries.json", params: { page: 0, month: time.month }
 
           body = JSON.parse(response.body)
 
@@ -38,10 +38,11 @@ describe "Cakeyday" do
             [user6.id, user.id, user2.id]
           )
 
-          get "/cakeday/anniversaries.json",
+          get "/cakeday/anniversaries.json", params: {
             page: 0,
             month: time.month,
             filter: 'today'
+          }
 
           body = JSON.parse(response.body)
 
@@ -49,10 +50,11 @@ describe "Cakeyday" do
             [user2.id, user6.id]
           )
 
-          get "/cakeday/anniversaries.json",
+          get "/cakeday/anniversaries.json", params: {
             page: 0,
             month: time.month,
             filter: 'tomorrow'
+          }
 
           body = JSON.parse(response.body)
 
@@ -60,10 +62,11 @@ describe "Cakeyday" do
             [user3.id]
           )
 
-          get "/cakeday/anniversaries.json",
+          get "/cakeday/anniversaries.json", params: {
             page: 0,
             month: time.month,
             filter: 'upcoming'
+          }
 
           body = JSON.parse(response.body)
 
@@ -91,10 +94,11 @@ describe "Cakeyday" do
             user5 = Fabricate(:user, created_at: created_at + 2.hours + 8.days)
             _user6 = Fabricate(:user, created_at: created_at + 1.year)
 
-            get "/cakeday/anniversaries.json",
+            get "/cakeday/anniversaries.json", params: {
               page: 0,
               month: 9,
               timezone_offset: "120"
+            }
 
             body = JSON.parse(response.body)
 
@@ -102,11 +106,12 @@ describe "Cakeyday" do
               [user2.id, user.id, user3.id]
             )
 
-            get "/cakeday/anniversaries.json",
+            get "/cakeday/anniversaries.json", params: {
               page: 0,
               month: 9,
               filter: 'today',
               timezone_offset: "120"
+            }
 
             body = JSON.parse(response.body)
 
@@ -114,11 +119,12 @@ describe "Cakeyday" do
               [user.id, user2.id, user3.id]
             )
 
-            get "/cakeday/anniversaries.json",
+            get "/cakeday/anniversaries.json", params: {
               page: 0,
               month: 10,
               filter: 'tomorrow',
               timezone_offset: "120"
+            }
 
             body = JSON.parse(response.body)
 
@@ -126,11 +132,12 @@ describe "Cakeyday" do
               [user4.id]
             )
 
-            get "/cakeday/anniversaries.json",
+            get "/cakeday/anniversaries.json", params: {
               page: 0,
               month: 10,
               filter: 'upcoming',
               timezone_offset: "120"
+            }
 
             body = JSON.parse(response.body)
 
@@ -153,7 +160,7 @@ describe "Cakeyday" do
           user4 = Fabricate(:user, date_of_birth: "1904-10-1")
           user5 = Fabricate(:user, date_of_birth: "1904-10-2")
 
-          get "/cakeday/birthdays.json", page: 0, month: time.month
+          get "/cakeday/birthdays.json",  params: { page: 0, month: time.month }
 
           body = JSON.parse(response.body)
 
@@ -161,10 +168,11 @@ describe "Cakeyday" do
             [user.id, user2.id, user3.id]
           )
 
-          get "/cakeday/birthdays.json",
+          get "/cakeday/birthdays.json", params: {
             page: 0,
             month: time.month,
             filter: 'today'
+          }
 
           body = JSON.parse(response.body)
 
@@ -172,10 +180,11 @@ describe "Cakeyday" do
             [user3.id]
           )
 
-          get "/cakeday/birthdays.json",
+          get "/cakeday/birthdays.json", params: {
             page: 0,
             month: time.month,
             filter: 'tomorrow'
+          }
 
           body = JSON.parse(response.body)
 
@@ -183,10 +192,11 @@ describe "Cakeyday" do
             [user4.id]
           )
 
-          get "/cakeday/birthdays.json",
+          get "/cakeday/birthdays.json", params: {
             page: 0,
             month: time.month,
             filter: 'upcoming'
+          }
 
           body = JSON.parse(response.body)
 
@@ -206,10 +216,11 @@ describe "Cakeyday" do
             user3 = Fabricate(:user, date_of_birth: "1904-9-30")
             user4 = Fabricate(:user, date_of_birth: "1904-10-1")
 
-            get "/cakeday/birthdays.json",
+            get "/cakeday/birthdays.json", params: {
               page: 0,
               month: time.month,
               timezone_offset: "540"
+            }
 
             body = JSON.parse(response.body)
 
@@ -217,11 +228,12 @@ describe "Cakeyday" do
               [user.id, user2.id, user3.id]
             )
 
-            get "/cakeday/birthdays.json",
+            get "/cakeday/birthdays.json", params: {
               page: 0,
               month: time.month,
               timezone_offset: "540",
               filter: 'today'
+            }
 
             body = JSON.parse(response.body)
 
@@ -229,11 +241,12 @@ describe "Cakeyday" do
               [user2.id]
             )
 
-            get "/cakeday/birthdays.json",
+            get "/cakeday/birthdays.json", params: {
               page: 0,
               month: time.month,
               timezone_offset: "540",
               filter: 'tomorrow'
+            }
 
             body = JSON.parse(response.body)
 
@@ -241,11 +254,12 @@ describe "Cakeyday" do
               [user3.id]
             )
 
-            get "/cakeday/birthdays.json",
+            get "/cakeday/birthdays.json", params: {
               page: 0,
               month: time.month,
               timezone_offset: "540",
               filter: 'upcoming'
+            }
 
             body = JSON.parse(response.body)
 
