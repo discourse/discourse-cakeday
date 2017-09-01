@@ -10,13 +10,13 @@ describe "Cakeyday" do
 
   describe 'when logged in' do
     before do
-      sign_in(Fabricate(:user))
+      sign_in(Fabricate(:user, created_at: time - 10.days))
     end
 
     describe "when viewing users anniversaries" do
-      it "should return the right payload" do
-        time = Time.zone.local(2016, 9, 30)
+      let(:time) { Time.zone.local(2016, 9, 30) }
 
+      it "should return the right payload" do
         freeze_time(time) do
           created_at = time - 1.year
 
@@ -74,9 +74,9 @@ describe "Cakeyday" do
       end
 
       context 'when a timezone offset is given' do
-        it 'should return the right payload' do
-          time = Time.zone.local(2016, 10, 1)
+        let(:time) { Time.zone.local(2016, 10, 1) }
 
+        it 'should return the right payload' do
           freeze_time(time) do
             created_at = time - 1.year
 
@@ -143,9 +143,9 @@ describe "Cakeyday" do
     end
 
     describe "when viewing users birthdays" do
-      it "should return the right payload" do
-        time = Time.zone.local(2016, 9, 30)
+      let(:time) { Time.zone.local(2016, 9, 30) }
 
+      it "should return the right payload" do
         freeze_time(time) do
           user = Fabricate(:user, date_of_birth: "1904-9-28")
           user2 = Fabricate(:user, date_of_birth: "1904-9-29")
@@ -197,9 +197,9 @@ describe "Cakeyday" do
       end
 
       context 'when a timezone offset is given' do
-        it 'should return the right payload' do
-          time = Time.zone.local(2016, 9, 30, 5, 30)
+        let(:time) { Time.zone.local(2016, 9, 30, 5, 30) }
 
+        it 'should return the right payload' do
           freeze_time(time) do
             user = Fabricate(:user, date_of_birth: "1904-9-28")
             user2 = Fabricate(:user, date_of_birth: "1904-9-29")
