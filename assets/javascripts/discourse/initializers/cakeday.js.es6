@@ -84,9 +84,9 @@ function initializeCakeday(api, siteSettings) {
       let route;
 
       if (cakedayEnabled) {
-        route = 'cakeday.anniversaries';
+        route = 'cakeday.anniversaries.today';
       } else if (cakedayBirthdayEnabled) {
-        route = 'cakeday.birthdays';
+        route = 'cakeday.birthdays.today';
       }
 
       return { route: route, label: 'cakeday.title', className: 'cakeday-link' };
