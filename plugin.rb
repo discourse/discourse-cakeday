@@ -41,7 +41,7 @@ after_initialize do
     if OnceoffLog.where(job_name: 'MigrateDateOfBirthToUsersTable').exists?
       UserCustomField.where(name: 'date_of_birth').delete_all
     end
-  rescue PG::ReadOnlySqlTransaction
+  rescue ActiveRecord::StatementInvalid
   end
 
   require_dependency 'user'
