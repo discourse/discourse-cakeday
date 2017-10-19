@@ -37,8 +37,11 @@ after_initialize do
   load File.expand_path("../app/controllers/discourse_cakeday/anniversaries_controller.rb", __FILE__)
   load File.expand_path("../app/controllers/discourse_cakeday/birthdays_controller.rb", __FILE__)
 
-  if OnceoffLog.where(job_name: 'MigrateDateOfBirthToUsersTable').exists?
-    UserCustomField.where(name: 'date_of_birth').delete_all
+  begin
+    if OnceoffLog.where(job_name: 'MigrateDateOfBirthToUsersTable').exists?
+      UserCustomField.where(name: 'date_of_birth').delete_all
+    end
+  rescue PG::ReadOnlySqlTransaction
   end
 
   require_dependency 'user'
