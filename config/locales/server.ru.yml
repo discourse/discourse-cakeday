@@ -1,0 +1,7 @@
+ru:
+  site_settings:
+    emoji_text: &emoji_text "Показать эти эмодзи (смайлы) возле имени пользователя. Можно указать несколько эмодзи сразу, например: smile|cake|smile"
+    cakeday_enabled: "Показать эмодзи напротив имени пользователя в годовщину регистрации на форуме."
+    cakeday_emoji: *emoji_text
+    cakeday_birthday_enabled: "Показать эмодзи возле имени пользователя в его день рождения."
+    cakeday_birthday_emoji: *emoji_text
