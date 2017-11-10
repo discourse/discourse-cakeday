@@ -47,7 +47,11 @@ after_initialize do
   require_dependency 'user'
   class ::User
     scope :valid, ->() {
-      activated.not_blocked.not_suspended.real
+      if ActiveRecord::Base.connection.column_exists?(:users, :silenced)
+        activated.not_silenced.not_suspended.real
+      else
+        activated.not_blocked.not_suspended.real
+      end
     }
 
     scope :order_by_likes_received, ->() {
