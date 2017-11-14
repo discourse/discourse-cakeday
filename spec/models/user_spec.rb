@@ -4,7 +4,9 @@ RSpec.describe User do
   describe '.valid' do
     it 'should return the right users' do
 
-      if ActiveRecord::Base.connection.column_exists?(:users, :silenced)
+      if ActiveRecord::Base.connection.column_exists?(:users, :silenced_till)
+        Fabricate(:user, silenced_till: 1.year.from_now)
+      elsif ActiveRecord::Base.connection.column_exists?(:users, :silenced)
         Fabricate(:user, silenced: true)
       else
         Fabricate(:user, blocked: true)
