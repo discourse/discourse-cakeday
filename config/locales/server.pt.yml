@@ -1,7 +1,6 @@
 pt:
   site_settings:
-    emoji_text: &emoji_text "Os emojis que serão mostrados junto do nome do utilizador. Múltiplos emojis podem ser especificados com: smile!cake|smile"
     cakeday_enabled: "Mostrar emojis de bolo de aniversário junto do nome do utilizador na data de registo no site."
-    cakeday_emoji: *emoji_text
+    cakeday_emoji: "Os emojis que serão mostrados junto do nome do utilizador. Múltiplos emojis podem ser especificados com: smile!cake|smile"
     cakeday_birthday_enabled: "Mostrar emojis de aniversário junto do nome do utilizador no dia de aniversário."
-    cakeday_birthday_emoji: *emoji_text
+    cakeday_birthday_emoji: "Os emojis que serão mostrados junto do nome do utilizador. Múltiplos emojis podem ser especificados com: smile!cake|smile"
