@@ -5,4 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-de: {}
+de:
+  site_settings:
+    cakeday_enabled: "Zeige Jahrestag-Emoji(s) neben Benutzernamen an dem Tag, an dem sie Discourse beigetreten sind."
+    cakeday_emoji: "Die Emoji(s), die neben Benutzernamen angezeigt werden an dem Tag, an dem sie Discourse beigetreten sind. Die Angabe mehrerer Emojis ist möglich: smile|cake|smile"
+    cakeday_birthday_enabled: "Zeige Geburtstag-Emoji(s) neben Benutzernamen am Geburtstag."
+    cakeday_birthday_emoji: "Die Emoji(s), die neben Benutzernamen am Geburtstag angezeigt werden. Die Angabe mehrerer Emojis ist möglich: smile|cake|smile"

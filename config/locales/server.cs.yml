@@ -1,0 +1,13 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+cs:
+  site_settings:
+    cakeday_enabled: "Zobrazit emoji vedle uživatelského jména v den, kdy se připojili k Discourse."
+    cakeday_emoji: "Emoji, které bude zobrazeno vedle uživatelského jména v den, kdy se připojili k Discourse. Více emoji lze specifikovat pomocí: smile|cake|smile"
+    cakeday_birthday_enabled: "Zobrazit narozeninové emoji vedle uživatelského jména v den jejich narozenin."
+    cakeday_birthday_emoji: "Emoji, které bude zobrazeno vedle uživatelského jména v den jejich narozenin. Více emoji může být specifikováno pomocí: smile|cake|smile"

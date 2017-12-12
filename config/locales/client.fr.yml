@@ -1,0 +1,50 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+fr:
+  js:
+    user:
+      date_of_birth:
+        user_title: "C'est ton anniversaire aujourd'hui!"
+        title: "C'est mon anniversaire aujourd'hui!"
+        label: "Date de naissance"
+      anniversary:
+        user_title: "Aujourd'hui est l'anniversaire de votre arrivée dans notre communauté !"
+        title: "Aujourd'hui est l'anniversaire de mon jour d'arrivée dans cette communauté !"
+    cakeday:
+      none: " "
+      title: Célébration
+      today: "Aujourd'hui"
+      tomorrow: "Demain"
+      upcoming: "À venir"
+      all: "Tous"
+    birthdays:
+      title: "Anniversaires"
+      month:
+        title: "Anniversaires du mois de"
+        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire ce mois."
+      upcoming:
+        title: "Anniversaires pour %{start_date} - %{end_date}"
+        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire dans les 7 prochains jours."
+      today:
+        title: "Anniversaires pour %{date}"
+        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire aujourd'hui."
+      tomorrow:
+        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire demain."
+    anniversaries:
+      title: "Années d'ancienneté"
+      month:
+        title: "Années d'ancienneté du mois de"
+        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté ce mois."
+      upcoming:
+        title: "Années d'ancienneté pour %{start_date} - %{end_date}"
+        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté dans les 7 prochains jours."
+      today:
+        title: "Années d'ancienneté pour %{date}"
+        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté aujourd’hui."
+      tomorrow:
+        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté demain."

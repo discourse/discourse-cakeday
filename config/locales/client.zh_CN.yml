@@ -1,0 +1,50 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+zh_CN:
+  js:
+    user:
+      date_of_birth:
+        user_title: "今天是你的生日！"
+        title: "今天是我的生日！"
+        label: "出生日期"
+      anniversary:
+        user_title: "今天是你加入我们社区的纪念日！"
+        title: "今天是我加入我们社区的纪念日！"
+    cakeday:
+      none: " "
+      title: 诞生日
+      today: "今天"
+      tomorrow: "明天"
+      upcoming: "即将到来"
+      all: "所有"
+    birthdays:
+      title: "生日"
+      month:
+        title: "生日在"
+        empty: "本月没有用户生日。"
+      upcoming:
+        title: "%{start_date} 到 %{end_date} 之间的生日"
+        empty: "接下来的7天没有用户生日。"
+      today:
+        title: "%{date}生日"
+        empty: "今天没有用户生日。"
+      tomorrow:
+        empty: "明天没有用户生日。"
+    anniversaries:
+      title: "年度纪念日"
+      month:
+        title: "年度纪念日在"
+        empty: "本月没有用户庆祝年度纪念日。"
+      upcoming:
+        title: "%{start_date} 到 %{end_date} 之间的年度纪念日"
+        empty: "接下来的7天没有用户庆祝年度纪念日。"
+      today:
+        title: "%{date} 年度纪念日"
+        empty: "今天没有用户庆祝年度纪念日。"
+      tomorrow:
+        empty: "明天没有用户庆祝年度纪念日。"

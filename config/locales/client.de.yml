@@ -18,6 +18,10 @@ de:
     cakeday:
       none: " "
       title: Cakeday
+      today: "Heute"
+      tomorrow: "Morgen"
+      upcoming: "Demnächst"
+      all: "Alle"
     birthdays:
       title: "Geburtstage"
       month:
@@ -29,6 +33,8 @@ de:
       today:
         title: "Heutige Geburtstage"
         empty: "Kein Benutzer feiert heute seinen Geburtstag."
+      tomorrow:
+        empty: "Kein Benutzer feiert morgen seinen Geburtstag."
     anniversaries:
       title: "Jahrestage"
       month:
@@ -39,4 +45,6 @@ de:
         empty: "Kein Benutzer feiert in den nächsten 7 Tagen seinen Jahrestag."
       today:
         title: "Heutige Jahrestage"
+        empty: "Kein Benutzer feiert heute seinen Jahrestag."
+      tomorrow:
         empty: "Kein Benutzer feiert heute seinen Jahrestag."

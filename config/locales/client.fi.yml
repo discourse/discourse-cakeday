@@ -18,6 +18,10 @@ fi:
     cakeday:
       none: " "
       title: Merkkipäivät
+      today: "Tänään"
+      tomorrow: "Huomenna"
+      upcoming: "Tulossa"
+      all: "Kaikki"
     birthdays:
       title: "Syntymäpäivät"
       month:
@@ -29,6 +33,8 @@ fi:
       today:
         title: "Syntymäpäivät tänään"
         empty: "Kukaan ei vietä syntymäpäiväänsä tänään."
+      tomorrow:
+        empty: "Kukaan ei vietä syntymäpäiväänsä huomenna."
     anniversaries:
       title: "Vuosipäivät"
       month:
@@ -40,3 +46,5 @@ fi:
       today:
         title: "Vuosipäivät tänään"
         empty: "Kukaan ei vietä vuosipäiväänsä tänään."
+      tomorrow:
+        empty: "Kukaan ei vietä vuosipäiväänsä huomenna"

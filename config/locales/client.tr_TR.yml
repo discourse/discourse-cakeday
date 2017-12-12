@@ -1,0 +1,25 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+tr_TR:
+  js:
+    user:
+      date_of_birth:
+        user_title: "Bugün senin doğum günün!"
+        title: "Bugün benim doğum günüm!"
+    cakeday:
+      today: "Bugün"
+      tomorrow: "Yarın"
+      all: "Hepsi"
+    birthdays:
+      title: "Doğum Günleri"
+      month:
+        title: "Ayın doğum günleri"
+      upcoming:
+        empty: "Gelecek 7 gün içinde doğum günlerini kutlayan kullanıcılar yok."
+    anniversaries:
+      title: "Yıldönümü"

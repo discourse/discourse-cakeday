@@ -1,0 +1,13 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+zh_CN:
+  site_settings:
+    cakeday_enabled: "在用户加入 Discourse 的日期于用户名旁显示[多个]蛋糕日颜文字。"
+    cakeday_emoji: "将在用户加入 Discourse 的日期于用户名旁显示的[多个]蛋糕日颜文字。多个颜文字可指定如下：smile|cake|smile"
+    cakeday_birthday_enabled: "在用户生日当天于用户名旁显示[多个]生日颜文字。"
+    cakeday_birthday_emoji: "将在用户生日当天于用户名旁显示的[多个]生日颜文字。多个颜文字可指定如下：smile|cake|smile"
