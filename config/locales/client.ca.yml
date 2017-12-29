@@ -1,0 +1,28 @@
+# encoding: utf-8
+#
+# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+#
+# To work with us on translations, join this project:
+# https://www.transifex.com/projects/p/discourse-org/
+
+ca:
+  js:
+    user:
+      date_of_birth:
+        user_title: "Avui és el teu aniversari!"
+        title: "Avui és el meu aniversari!"
+        label: "Data de naixement"
+      anniversary:
+        user_title: "Avui és l'aniversari del dia en què et vas sumar a la nostra comunitat!"
+        title: "Avui és l'aniversari del dia en què em vaig sumar a aquesta comunitat!"
+    cakeday:
+      none: " "
+      title: Dia de pastís
+      today: "Avui"
+      tomorrow: "Demà"
+      upcoming: "Proper"
+      all: "Tots"
+    birthdays:
+      title: "Aniversaris"
+      month:
+        title: "Aniversaris en el mes de"
