@@ -3,8 +3,8 @@ require 'rails_helper'
 describe "Cakeyday" do
   describe 'when not logged in' do
     it 'should return the right response' do
-      expect { get "/cakeday/anniversaries.json", params: { page: 0, month: 5 } }
-        .to raise_error(Discourse::NotLoggedIn)
+      get "/cakeday/anniversaries.json", params: { page: 0, month: 5 }
+      expect(response.status).to eq(403)
     end
   end
 
