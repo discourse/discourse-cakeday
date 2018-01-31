@@ -26,15 +26,15 @@ nb_NO:
       title: "Geburtsdager"
       month:
         title: "Geburtsdager som skjer i måneden"
-        empty: "Ingen brukere feirer geburtsdag denne måneden."
+        empty: "Ingen brukere har bursdag denne måneden."
       upcoming:
         title: "Geburtsdager for %{start_date} - %{end_date}"
-        empty: "Ingen brukere feirer geburtsdag de neste syv dagene."
+        empty: "Ingen brukere har bursdag de neste 7 dagene."
       today:
         title: "Geburtsdager for %{date}"
-        empty: "Ingen brukere feirer geburtsdag denne i dag."
+        empty: "Ingen brukere har bursdag i dag."
       tomorrow:
-        empty: "Ingen brukere feirer geburtsdag i morgen."
+        empty: "Ingen brukere har bursdag i morgen."
     anniversaries:
       title: "Jubileum"
       month:
@@ -42,7 +42,7 @@ nb_NO:
         empty: "Ingen brukere feirer jubileum denne måneden."
       upcoming:
         title: "Jubileum for %{start_date} - %{end_date}"
-        empty: "Ingen brukere har jubileum de neste syv dagene."
+        empty: "Ingen brukere har jubileum de neste 7 dagene."
       today:
         title: "Jubileum for %{date}"
         empty: "Ingen brukere feirer jubileum i dag."

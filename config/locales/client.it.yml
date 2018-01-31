@@ -10,14 +10,14 @@ it:
     user:
       date_of_birth:
         user_title: "Oggi è il tuo compleanno!"
-        title: "Oggi è il compleanno dell'utente!"
+        title: "Oggi è il mio compleanno!"
         label: "Data di nascita"
       anniversary:
         user_title: "Oggi è l'anniversario della tua iscrizione!"
-        title: "Oggi è l'anniversario dell'iscrizione dell'utente!"
+        title: "Oggi è l'anniversario della mia unione a questa comunità!"
     cakeday:
       none: " "
-      title: Celebrazioni
+      title: Cakeday
       today: "Oggi"
       tomorrow: "Domani"
       upcoming: "Prossimi"
@@ -28,23 +28,23 @@ it:
         title: "Compleanni nel mese di"
         empty: "Non ci sono utenti che compiono gli anni questo mese."
       upcoming:
-        title: "Prossimi compleanni"
+        title: "Compleanni dal %{start_date} al %{end_date}"
         empty: "Non ci sono utenti che compiono gli anni nei prossimi 7 giorni."
       today:
-        title: "Compleanni di oggi"
+        title: "Compleanni del %{date}"
         empty: "Non ci sono utenti che compiono gli anni oggi."
       tomorrow:
-        empty: "Non ci sono utenti che celebrano i loro compleanni domani."
+        empty: "Non ci sono utenti che compiranno gli anni domani."
     anniversaries:
       title: "Anniversari"
       month:
-        title: "Anniversari nel mese di"
-        empty: "Non ci sono utenti che celebrano i loro anniversari questo mese."
+        title: "Anniversari del mese di"
+        empty: "Non ci sono utenti che festeggiano anniversari questo mese."
       upcoming:
-        title: "Prossimi Anniversari"
-        empty: "Non ci sono utenti che celebrano i loro anniversari nei prossimi 7 giorni."
+        title: "Anniversari dal%{start_date} al %{end_date}"
+        empty: "Non ci sono utenti che festeggiano anniversari nei prossimi 7 giorni."
       today:
-        title: "Anniversari di oggi"
-        empty: "Non ci sono utenti che celebrano i loro anniversari oggi."
+        title: "Anniversari del %{date}"
+        empty: "Non ci sono utenti che festeggiano anniversari oggi."
       tomorrow:
-        empty: "Non ci sono utenti che celebrano i loro anniversari domani."
+        empty: "Non ci sono utenti che festeggiano anniversari domani."
