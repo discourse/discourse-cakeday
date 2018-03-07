@@ -5,4 +5,16 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-sk: {}
+sk:
+  js:
+    user:
+      date_of_birth:
+        user_title: "Dnes máte narodeniny!"
+        title: "Dnes mám narodeniny!"
+        label: "Dátum narodenia"
+    cakeday:
+      today: "Dnes"
+      tomorrow: "Zajtra"
+      all: "Všetky"
+    birthdays:
+      title: "Narodeniny"

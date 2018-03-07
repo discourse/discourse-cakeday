@@ -7,7 +7,7 @@
 
 fr:
   site_settings:
-    cakeday_enabled: "Afficher un emoji à côté du nom de l'utilisateur à la date à laquelle il a rejoint Discourse."
-    cakeday_emoji: "Le(s) emoji(s) qui seront affichés à côté du nom de l'utilisateur à la date à laquelle il a rejoint Discourse. Plusieurs emojis peuvent être définis par : smile|cake|smile"
-    cakeday_birthday_enabled: "Afficher un emoji à côté du nom de l'utilisateur pour son anniversaire."
-    cakeday_birthday_emoji: "Le(s) emoji(s) qui seront affichés à côté du nom de l'utilisateur pour son anniversaire. Plusieurs emojis peuvent être définis par : smile|cake|smile"
+    cakeday_enabled: "Afficher des emojis à côté du nom de l'utilisateur à la date à laquelle il a rejoint Discourse."
+    cakeday_emoji: "Le(s) emoji(s) qui seront affichés à côté du nom de l'utilisateur à la date à laquelle il a rejoint Discourse. Plusieurs emojis peuvent être définis ainsi : smile|cake|smile"
+    cakeday_birthday_enabled: "Afficher des emojis à côté du nom de l'utilisateur pour son anniversaire."
+    cakeday_birthday_emoji: "Le(s) emoji(s) qui seront affichés à côté du nom de l'utilisateur pour son anniversaire. Plusieurs emojis peuvent être définis ainsi : smile|cake|smile"
