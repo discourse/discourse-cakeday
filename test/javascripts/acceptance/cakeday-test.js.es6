@@ -1,5 +1,4 @@
 import { acceptance, logIn } from "helpers/qunit-helpers";
-import { resetPluginApi } from 'discourse/lib/plugin-api';
 
 acceptance('Cakeday', {
   settings: {
