@@ -1,14 +1,14 @@
-import { acceptance } from "helpers/qunit-helpers";
+import { acceptance, logIn } from "helpers/qunit-helpers";
 import { resetPluginApi } from 'discourse/lib/plugin-api';
 
 acceptance('Cakeday', {
-  loggedIn: true,
   settings: {
     cakeday_enabled: true,
     cakeday_emoji: 'cake',
     cakeday_birthday_enabled: true,
     cakeday_birthday_emoji: 'birthday'
   },
+
   beforeEach() {
     const response = object => {
       return [
@@ -34,11 +34,6 @@ acceptance('Cakeday', {
 });
 
 test("User is not logged in", assert => {
-  Discourse.User.resetCurrent();
-  Discourse.Session.resetCurrent();
-  resetPluginApi();
-  Discourse.reset();
-
   visit("/");
   click('#toggle-hamburger-menu');
 
@@ -48,6 +43,9 @@ test("User is not logged in", assert => {
 });
 
 test('Anniversary emoji', assert => {
+  logIn();
+  Discourse.reset();
+
   visit("/t/some-really-interesting-topic/11");
 
   andThen(() => {
