@@ -5,9 +5,6 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-vi:
-  js:
-    user:
-      date_of_birth:
-        user_title: "Hôm nay là sinh nhật của bạn! "
-        title: "Hôm nay là sinh nhật của tôi!"
+sl:
+  site_settings:
+    cakeday_enabled: "Pokaži emoji torto ob imenu uporabnice/ka na dan, ko so se pridružili Discoursu."
