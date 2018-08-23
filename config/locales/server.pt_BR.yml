@@ -5,4 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-pt_BR: {}
+pt_BR:
+  site_settings:
+    cakeday_enabled: "Mostre emoticons cakeday [s] ao lado do nome do usuário na data em que eles se uniram ao Discourse."
+    cakeday_emoji: "Os emojis que serão mostrados ao lado do nome do usuário na data em que eles se juntaram ao Discourse. Vários emojis podem ser especificados por: smile  cake  smile"
+    cakeday_birthday_enabled: "Mostrar emoji de aniversário [s] ao lado do nome do usuário em sua data de aniversário."
+    cakeday_birthday_emoji: "Os emojis que serão mostrados ao lado do nome do usuário no aniversário deles. Vários emojis podem ser especificados por: smile | cake | smile"

@@ -26,3 +26,5 @@ ca:
       title: "Aniversaris"
       month:
         title: "Aniversaris en el mes de"
+    anniversaries:
+      title: "Aniversaris"
