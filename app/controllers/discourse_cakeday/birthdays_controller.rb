@@ -8,12 +8,10 @@ module DiscourseCakeday
       users =
         case params[:filter]
         when 'today', 'tomorrow'
-          date = params[:filter] == 'today' ? @today : @tomorrow
-
           users
             .where(
               "to_char(users.date_of_birth::date, 'MM-DD') = :date",
-              date: date.strftime('%m-%d')
+              date: (params[:filter] == 'today' ? @today : @tomorrow).strftime('%m-%d')
             )
             .order_by_likes_received
         when 'upcoming'
