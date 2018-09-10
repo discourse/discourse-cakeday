@@ -5,4 +5,19 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-he: {}
+he:
+  js:
+    user:
+      date_of_birth:
+        user_title: "היום הוא יום הולדתך!"
+        title: "היום הוא יום ההולדת שלי!"
+        label: "תאריך יום הולדת"
+    cakeday:
+      today: "היום"
+      tomorrow: "מחר"
+      upcoming: "בקרוב"
+      all: "הכל"
+    birthdays:
+      title: "ימי הולדת"
+      month:
+        title: "ימי הולדת בחודש מתוך"
