@@ -1,11 +1,15 @@
-import { observes } from 'ember-addons/ember-computed-decorators';
-import computed from 'ember-addons/ember-computed-decorators';
-import PreferencesController from 'discourse/controllers/preferences';
-import UserCardController from 'discourse/controllers/user-card';
-import UserController from 'discourse/controllers/user';
-import { withPluginApi } from 'discourse/lib/plugin-api';
-import { isSameDay, cakeday, cakedayBirthday} from 'discourse/plugins/discourse-cakeday/discourse/lib/cakeday';
-import { registerUnbound } from 'discourse-common/lib/helpers';
+import { observes } from "ember-addons/ember-computed-decorators";
+import computed from "ember-addons/ember-computed-decorators";
+import PreferencesController from "discourse/controllers/preferences";
+import UserCardController from "discourse/controllers/user-card";
+import UserController from "discourse/controllers/user";
+import { withPluginApi } from "discourse/lib/plugin-api";
+import {
+  isSameDay,
+  cakeday,
+  cakedayBirthday
+} from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
+import { registerUnbound } from "discourse-common/lib/helpers";
 
 function initializeCakeday(api, siteSettings) {
   const emojiEnabled = siteSettings.enable_emoji;
@@ -13,23 +17,26 @@ function initializeCakeday(api, siteSettings) {
   const cakedayBirthdayEnabled = siteSettings.cakeday_birthday_enabled;
 
   if (cakedayEnabled) {
-    api.includePostAttributes('user_created_at');
-    api.includePostAttributes('user_date_of_birth');
+    api.includePostAttributes("user_created_at");
+    api.includePostAttributes("user_date_of_birth");
 
     api.addPosterIcon((cfs, attrs) => {
       const createdAt = attrs.user_created_at;
-      if (!Ember.isEmpty(createdAt) && isSameDay(createdAt, { anniversary: true })) {
+      if (
+        !Ember.isEmpty(createdAt) &&
+        isSameDay(createdAt, { anniversary: true })
+      ) {
         let result = {};
 
         if (emojiEnabled) {
           result.emoji = siteSettings.cakeday_emoji;
         } else {
-          result.icon = 'birthday-cake';
+          result.icon = "birthday-cake";
         }
 
         const currentUser = api.getCurrentUser();
 
-        if (currentUser && attrs.user_id === currentUser.get('id')) {
+        if (currentUser && attrs.user_id === currentUser.get("id")) {
           result.title = I18n.t("user.anniversary.user_title");
         } else {
           result.title = I18n.t("user.anniversary.title");
@@ -51,12 +58,12 @@ function initializeCakeday(api, siteSettings) {
         if (emojiEnabled) {
           result.emoji = siteSettings.cakeday_birthday_emoji;
         } else {
-          result.icon = 'birthday-cake';
+          result.icon = "birthday-cake";
         }
 
         const currentUser = api.getCurrentUser();
 
-        if (currentUser && attrs.user_id === currentUser.get('id')) {
+        if (currentUser && attrs.user_id === currentUser.get("id")) {
           result.title = I18n.t("user.date_of_birth.user_title");
         } else {
           result.title = I18n.t("user.date_of_birth.title");
@@ -70,7 +77,7 @@ function initializeCakeday(api, siteSettings) {
   }
 
   if (cakedayEnabled || cakedayBirthdayEnabled) {
-    registerUnbound('cakeday-date', function(val, params) {
+    registerUnbound("cakeday-date", function(val, params) {
       const date = moment(val);
 
       if (params.isBirthday) {
@@ -84,27 +91,31 @@ function initializeCakeday(api, siteSettings) {
       let route;
 
       if (cakedayEnabled) {
-        route = 'cakeday.anniversaries.today';
+        route = "cakeday.anniversaries.today";
       } else if (cakedayBirthdayEnabled) {
-        route = 'cakeday.birthdays.today';
+        route = "cakeday.birthdays.today";
       }
 
-      return { route: route, label: 'cakeday.title', className: 'cakeday-link' };
+      return {
+        route: route,
+        label: "cakeday.title",
+        className: "cakeday-link"
+      };
     });
   }
 }
 
 export default {
-  name: 'cakeday',
+  name: "cakeday",
 
   initialize(container) {
-    const currentUser = container.lookup('current-user:main');
+    const currentUser = container.lookup("current-user:main");
     if (!currentUser) return;
 
-    const siteSettings = container.lookup('site-settings:main');
-    const store = container.lookup('store:main');
+    const siteSettings = container.lookup("site-settings:main");
+    const store = container.lookup("store:main");
 
-    store.addPluralization('anniversary', 'anniversaries');
+    store.addPluralization("anniversary", "anniversaries");
 
     PreferencesController.reopen({
       days: _.range(1, 32),
@@ -121,10 +132,12 @@ export default {
         const userBirthdayMonth = this.get("userBirthdayMonth");
         const userBirthdayDay = this.get("userBirthdayDay");
         const user = this.get("model");
-        var date = '';
+        var date = "";
 
-        if (userBirthdayMonth !== '' && userBirthdayDay !== '') {
-          date = `1904-${this.get('userBirthdayMonth')}-${this.get('userBirthdayDay')}`;
+        if (userBirthdayMonth !== "" && userBirthdayDay !== "") {
+          date = `1904-${this.get("userBirthdayMonth")}-${this.get(
+            "userBirthdayDay"
+          )}`;
         }
 
         user.set("date_of_birth", date);
@@ -132,39 +145,39 @@ export default {
 
       @computed("model.date_of_birth")
       userBirthdayMonth(dateOfBirth) {
-        return moment(dateOfBirth, 'YYYY-MM-DD').month() + 1;
+        return moment(dateOfBirth, "YYYY-MM-DD").month() + 1;
       },
 
       @computed("model.date_of_birth")
       userBirthdayDay(dateOfBirth) {
-        return moment(dateOfBirth, 'YYYY-MM-DD').date();
+        return moment(dateOfBirth, "YYYY-MM-DD").date();
       }
     });
 
     UserCardController.reopen({
-      @computed('model.created_at')
+      @computed("model.created_at")
       isCakeday(createdAt) {
         return cakeday(createdAt);
       },
 
-      @computed('model.date_of_birth')
+      @computed("model.date_of_birth")
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
-      },
+      }
     });
 
     UserController.reopen({
-      @computed('model.created_at')
+      @computed("model.created_at")
       isCakeday(createdAt) {
         return cakeday(createdAt);
       },
 
-      @computed('model.date_of_birth')
+      @computed("model.date_of_birth")
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
-      },
+      }
     });
 
-    withPluginApi('0.1', api => initializeCakeday(api, siteSettings));
+    withPluginApi("0.1", api => initializeCakeday(api, siteSettings));
   }
 };

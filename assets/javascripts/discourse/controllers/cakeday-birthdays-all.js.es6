@@ -1,7 +1,7 @@
-import computed from 'ember-addons/ember-computed-decorators';
+import computed from "ember-addons/ember-computed-decorators";
 
 export default Ember.Controller.extend({
-  queryParams: ['month'],
+  queryParams: ["month"],
   month: moment().month() + 1,
 
   @computed

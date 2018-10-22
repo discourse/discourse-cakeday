@@ -1,7 +1,7 @@
 export default Discourse.Route.extend({
   beforeModel() {
     if (!this.siteSettings.cakeday_birthday_enabled) {
-      this.transitionTo("unknown", window.location.pathname.replace(/^\//, ''));
+      this.transitionTo("unknown", window.location.pathname.replace(/^\//, ""));
     }
   },
 
