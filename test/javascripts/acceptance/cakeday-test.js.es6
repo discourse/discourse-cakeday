@@ -8,13 +8,12 @@ acceptance("Cakeday", {
     cakeday_birthday_emoji: "birthday"
   },
 
-  beforeEach() {
+  pretend(server) {
     const response = object => {
       return [200, { "Content-Type": "application/json" }, object];
     };
 
     server.get("/t/11.json", () => {
-      // eslint-disable-line no-undef
       return response({
         post_stream: {
           posts: [
@@ -201,7 +200,6 @@ acceptance("Cakeday", {
     });
 
     server.get("/u/tgx.json", () => {
-      // eslint-disable-line no-undef
       return response({
         user: {
           date_of_birth: moment().format("YYYY-MM-DD"),
