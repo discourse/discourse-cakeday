@@ -12,3 +12,6 @@ sl:
         user_title: "Danes je vaš rojstni dan!"
         title: "Danes je moj rojstni dan!"
         label: "Datum rojstva"
+      anniversary:
+        user_title: "Danes je obletnica dneva, ko ste se pridružili naši skupnosti!"
+        title: "Danes je obletnica dneva, ko sem se pridružil/a tej skupnosti!"
