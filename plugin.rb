@@ -10,6 +10,8 @@ register_asset 'stylesheets/cakeday.scss'
 register_asset 'stylesheets/emoji-images.scss'
 register_asset 'stylesheets/mobile/user-date-of-birth-input.scss'
 
+register_svg_icon "birthday-cake" if respond_to?(:register_svg_icon)
+
 after_initialize do
   module ::DiscourseCakeday
     class Engine < ::Rails::Engine
