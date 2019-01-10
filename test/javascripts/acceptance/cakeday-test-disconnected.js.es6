@@ -1,7 +1,6 @@
 import { acceptance, logIn } from "helpers/qunit-helpers";
 
-acceptance("Cakeday", {
-  loggedIn: true,
+acceptance("Cakeday - disconnected", {
   settings: {
     cakeday_enabled: true,
     cakeday_emoji: "cake",
@@ -211,26 +210,15 @@ acceptance("Cakeday", {
   }
 });
 
-test("Anniversary emoji", assert => {
-  visit("/t/some-really-interesting-topic/11");
+test("User is not logged in", assert => {
+  visit("/");
+  click("#toggle-hamburger-menu");
 
   andThen(() => {
-    const $posterIcons = find(".poster-icon");
-
-    assert.equal($posterIcons[0].title, I18n.t("user.anniversary.title"));
-    assert.equal($posterIcons[1].title, I18n.t("user.date_of_birth.title"));
-    assert.equal(find("img.emoji", $posterIcons[0]).length, 1);
-    assert.equal(find("img.emoji", $posterIcons[1]).length, 1);
-  });
-
-  click(".trigger-user-card");
-
-  andThen(() => {
-    const $emojiImages = find(".emoji-images div");
-
-    assert.equal($emojiImages[1].title, I18n.t("user.anniversary.title"));
-    assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
-    assert.equal(1, $emojiImages[0].children.length);
-    assert.equal(1, $emojiImages[1].children.length);
+    assert.equal(
+      find(".cakeday-link").length,
+      0,
+      "Cakeday is not shown to anonymous users"
+    );
   });
 });
