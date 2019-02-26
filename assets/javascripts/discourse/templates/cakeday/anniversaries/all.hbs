@@ -1,4 +1,4 @@
-{{#load-more selector=".user-info" action="loadMore"}}
+{{#load-more selector=".user-info" action=(action "loadMore")}}
   <div class="cakeday-months">
     <h2 class="cakeday-header">{{i18n "anniversaries.month.title"}}</h2>
     {{combo-box content=months
