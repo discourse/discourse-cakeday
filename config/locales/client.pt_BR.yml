@@ -13,19 +13,19 @@ pt_BR:
         title: "Hoje é o meu aniversário!"
         label: "Data de Nascimento"
       anniversary:
-        user_title: "Hoje é o aniversário do dia em que você se juntou a nossa comunidade!"
-        title: "Hoje é o aniversário do dia em que eu me juntei a essa comunidade!"
+        user_title: "Hoje é o aniversário do dia em que você se juntou à nossa comunidade!"
+        title: "Hoje é o aniversário do dia em que eu me juntei à esta comunidade!"
     cakeday:
       none: " "
-      title: Dia do Bolo
+      title: Dia de Bolo
       today: "Hoje"
       tomorrow: "Amanhã"
-      upcoming: "próximos"
+      upcoming: "Próximos"
       all: "Todos"
     birthdays:
       title: "Aniversários"
       month:
-        title: "Aniversários no mês de "
+        title: "Aniversários no Mês de"
         empty: "Não há nenhum usuário comemorando seu aniversário neste mês."
       upcoming:
         title: "Aniversários para %{start_date} - %{end_date}"
@@ -38,13 +38,13 @@ pt_BR:
     anniversaries:
       title: "Aniversários"
       month:
-        title: "Aniversários no mês de"
-        empty: "Não há usuários celebrando aniversários esse mês."
+        title: "Aniversários no Mês de"
+        empty: "Não há nenhum usuário comemorando seu aniversário este mês."
       upcoming:
-        title: "Aniversários para%{start_date} - %{end_date}"
-        empty: "Não há usuários celebrando aniversários nos próximos 7 dias."
+        title: "Aniversários para %{start_date} - %{end_date}"
+        empty: "Não há nenhum usuário comemorando seu aniversário nos próximos 7 dias."
       today:
         title: "Aniversários para %{date}"
-        empty: "Não há usuários celebrando aniversário hoje."
+        empty: "Não há nenhum usuário comemorando seu aniversário hoje."
       tomorrow:
-        empty: "Não há usuários celebrando aniversários amanhã."
+        empty: "Não há nenhum usuário comemorando seu aniversário amanhã."
