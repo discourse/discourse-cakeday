@@ -81,9 +81,9 @@ function initializeCakeday(api, siteSettings) {
       const date = moment(val);
 
       if (params.isBirthday) {
-        return date.format("MM/DD");
+        return date.format(I18n.t("dates.full_no_year_no_time"));
       } else {
-        return date.format("YYYY/MM/DD");
+        return date.format(I18n.t("dates.full_with_year_no_time"));
       }
     });
 

@@ -4,10 +4,11 @@ export default Ember.Controller.extend({
   @computed
   title() {
     const date = moment();
+    const dateFormat = I18n.t("dates.full_no_year_no_time");
 
     return I18n.t("birthdays.upcoming.title", {
-      start_date: date.add(2, "days").format("MMMM Do"),
-      end_date: date.add(7, "days").format("MMMM Do")
+      start_date: date.add(2, "days").format(dateFormat),
+      end_date: date.add(7, "days").format(dateFormat)
     });
   },
 

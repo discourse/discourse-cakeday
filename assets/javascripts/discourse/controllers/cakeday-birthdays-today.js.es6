@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   @computed
   title() {
     return I18n.t("birthdays.today.title", {
-      date: moment().format("MMMM Do")
+      date: moment().format(I18n.t("dates.full_no_year_no_time"))
     });
   },
 

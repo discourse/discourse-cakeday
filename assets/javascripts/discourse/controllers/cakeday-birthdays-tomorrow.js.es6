@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
     return I18n.t("birthdays.today.title", {
       date: moment()
         .add(1, "day")
-        .format("MMMM Do")
+        .format(I18n.t("dates.full_no_year_no_time"))
     });
   },
 
