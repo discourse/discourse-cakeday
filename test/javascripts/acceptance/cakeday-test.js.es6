@@ -226,11 +226,15 @@ test("Anniversary emoji", assert => {
   click(".trigger-user-card");
 
   andThen(() => {
-    const $emojiImages = find(".emoji-images div");
+    const done = assert.async();
+    setTimeout(function() {
+      done();
+      const $emojiImages = find(".emoji-images div");
 
-    assert.equal($emojiImages[1].title, I18n.t("user.anniversary.title"));
-    assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
-    assert.equal(1, $emojiImages[0].children.length);
-    assert.equal(1, $emojiImages[1].children.length);
+      assert.equal($emojiImages[1].title, I18n.t("user.anniversary.title"));
+      assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
+      assert.equal(1, $emojiImages[0].children.length);
+      assert.equal(1, $emojiImages[1].children.length);
+    }, 75);
   });
 });
