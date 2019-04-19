@@ -5,17 +5,19 @@ import {
   cakedayBirthdayTitle
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 
+function applyUser(user, currentUser, component) {
+  if (user) {
+    component.setProperties({
+      isCakeday: cakeday(user.get("created_at")),
+      isUserBirthday: cakedayBirthday(user.get("date_of_birth")),
+      cakedayTitle: cakedayTitle(user, currentUser),
+      cakedayBirthdayTitle: cakedayBirthdayTitle(user, currentUser)
+    });
+  }
+}
+
 export default {
-  setupComponent(args, component) {
-    component.set("isCakeday", cakeday(args.user.get("created_at")));
-    component.set(
-      "isUserBirthday",
-      cakedayBirthday(args.user.get("date_of_birth"))
-    );
-    component.set("cakedayTitle", cakedayTitle(args.user, this.currentUser));
-    component.set(
-      "cakedayBirthdayTitle",
-      cakedayBirthdayTitle(args.user, this.currentUser)
-    );
+  updateComponent(args, component) {
+    applyUser(args.user, this.currentUser, component);
   }
 };
