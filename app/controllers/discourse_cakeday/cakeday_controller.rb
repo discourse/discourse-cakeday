@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiscourseCakeday
   class CakedayController < ::ApplicationController
     before_action :ensure_logged_in

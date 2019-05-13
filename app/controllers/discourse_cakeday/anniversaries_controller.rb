@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiscourseCakeday
   class AnniversariesController < CakedayController
     PAGE_SIZE = 48

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DiscourseCakeday
   class BirthdayUserSerializer < ::UserNameSerializer
     attributes :cakeday_date
