@@ -12,3 +12,7 @@ lt:
         user_title: "Šiandien tavo gimtadienis!"
         title: "Šiandien mano gimtadienis!"
         label: "Gimtadienis"
+    cakeday:
+      today: "Šandien"
+      tomorrow: "Rytoj"
+      all: "Visi"

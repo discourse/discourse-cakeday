@@ -10,3 +10,5 @@ id:
     user:
       date_of_birth:
         user_title: "Hari ini adalah ulang tahunmu!"
+    cakeday:
+      all: "Semua"

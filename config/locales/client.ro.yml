@@ -10,3 +10,7 @@ ro:
     user:
       date_of_birth:
         user_title: "Astăzi este ziua ta!"
+    cakeday:
+      today: "Astăzi"
+      tomorrow: "Mâine"
+      all: "Toate"

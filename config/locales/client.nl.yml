@@ -5,4 +5,45 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-nl: {}
+nl:
+  js:
+    user:
+      date_of_birth:
+        user_title: "Vandaag is jouw verjaardag!"
+        title: "Vandaag is mijn verjaardag!"
+        label: "Geboortedatum"
+      anniversary:
+        user_title: "Vandaag is het jubileum van de dag dat jij bij onze gemeenschap bent gekomen!"
+        title: "Vandaag is het jubileum van de dag dat ik bij deze gemeenschap ben gekomen!"
+    cakeday:
+      title: Taartdag
+      today: "Vandaag"
+      tomorrow: "Morgen"
+      upcoming: "Volgende"
+      all: "Alle"
+    birthdays:
+      title: "Verjaardagen"
+      month:
+        title: "Verjaardagen in maand "
+        empty: "Er zijn geen gebruikers die hun verjaardag vieren deze maand."
+      upcoming:
+        title: "Verjaardagen voor %{start_date} - %{end_date}"
+        empty: "Er zijn geen gebruikers die hun verjaardagen vieren in de volgende 7 dagen."
+      today:
+        title: "Verjaardagen voor %{date}"
+        empty: "Er zijn geen gebruikers die vandaag hun verjaardag vieren."
+      tomorrow:
+        empty: "Er zijn geen gebruikers die morgen hun verjaardag vieren."
+    anniversaries:
+      title: "Jubilea"
+      month:
+        title: "Jubilea in de maand van "
+        empty: "Er zijn geen gebruikers die hun jubileum vieren in deze maand."
+      upcoming:
+        title: "Jubilea voor %{start_date} - %{end_date}"
+        empty: "Er zijn geen gebruikers die hun jubilea vieren in de volgende 7 dagen."
+      today:
+        title: "Jubilea voor %{date}"
+        empty: "Er zijn geen gebruikers die hun jubilea vandaag vieren."
+      tomorrow:
+        empty: "Er zijn een gebruikers die hun jubilea morgen vieren."

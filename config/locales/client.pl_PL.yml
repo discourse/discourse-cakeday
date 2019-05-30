@@ -5,4 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-pl_PL: {}
+pl_PL:
+  js:
+    cakeday:
+      today: "Dzisiaj"
+      tomorrow: "Jutro"
+      all: "Wszystkie"

@@ -10,3 +10,7 @@ pt:
     user:
       date_of_birth:
         title: "Hoje é o meu aniversário!"
+    cakeday:
+      today: "Hoje"
+      tomorrow: "Amanhã"
+      all: "Todos"

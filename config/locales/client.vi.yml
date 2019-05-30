@@ -11,3 +11,7 @@ vi:
       date_of_birth:
         user_title: "Hôm nay là sinh nhật của bạn! "
         title: "Hôm nay là sinh nhật của tôi!"
+    cakeday:
+      today: "Ngày"
+      tomorrow: "Ngày mai"
+      all: "Tất cả"
