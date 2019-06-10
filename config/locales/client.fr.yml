@@ -9,12 +9,12 @@ fr:
   js:
     user:
       date_of_birth:
-        user_title: "C'est ton anniversaire aujourd'hui!"
-        title: "C'est mon anniversaire aujourd'hui!"
+        user_title: "C'est ton anniversaire aujourd'hui !"
+        title: "C'est mon anniversaire aujourd'hui !"
         label: "Date de naissance"
       anniversary:
-        user_title: "Aujourd'hui est l'anniversaire de votre arrivée dans notre communauté !"
-        title: "Aujourd'hui est l'anniversaire de mon jour d'arrivée dans cette communauté !"
+        user_title: "Aujourd'hui est l'anniversaire de votre arrivée dans notre communauté !"
+        title: "Aujourd'hui est l'anniversaire de mon jour d'arrivée dans cette communauté !"
     cakeday:
       none: " "
       title: Célébration
