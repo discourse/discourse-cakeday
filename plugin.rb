@@ -41,7 +41,7 @@ after_initialize do
   load File.expand_path("../app/controllers/discourse_cakeday/anniversaries_controller.rb", __FILE__)
   load File.expand_path("../app/controllers/discourse_cakeday/birthdays_controller.rb", __FILE__)
 
-  skip_db = defined?(GlobalSettings.skip_db?) && GlobalSettings.skip_db?
+  skip_db = defined?(GlobalSetting.skip_db?) && GlobalSetting.skip_db?
 
   if !skip_db
     begin
