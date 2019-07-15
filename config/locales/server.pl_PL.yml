@@ -5,4 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-pl_PL: {}
+pl_PL:
+  site_settings:
+    cakeday_enabled: "Pokazuj emoji tortu przy nazwie użytkownika w dniu rocznicy dołączenia do społeczności."
+    cakeday_emoji: "Emoji będą pokazane przy nazwie użytkownika w dniu rocznicy dołączenia do społeczności. Definiuj nowe emoji wg wzoru: smile|cake|smile"
+    cakeday_birthday_enabled: "Pokazuj urodzinowe emoji przy nazwie użytkownika w dniu ich urodzin."
+    cakeday_birthday_emoji: "Emoji będą pokazane przy nazwie użytkownika w dniu ich urodzin. Definiuj nowe emoji wg wzoru: smile|cake|smile "
