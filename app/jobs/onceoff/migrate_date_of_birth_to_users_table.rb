@@ -16,7 +16,7 @@ module Jobs
             # Just drop migration of custom field
           end
 
-          custom_field.user.update_attributes!(date_of_birth: date)
+          custom_field.user.update!(date_of_birth: date)
         else
           custom_field.destroy!
         end
