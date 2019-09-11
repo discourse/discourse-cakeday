@@ -11,7 +11,7 @@ module Jobs
         begin
           Date.parse(custom_field.value)
         rescue ArgumentError
-          custom_field.update_attributes!(value: '')
+          custom_field.update!(value: '')
         end
       end
     end
