@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class MigrateDateOfBirthToUsersTable < Jobs::Onceoff
+  class MigrateDateOfBirthToUsersTable < ::Jobs::Onceoff
     def execute_onceoff(args)
       UserCustomField
         .where(name: 'date_of_birth')

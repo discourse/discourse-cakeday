@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Jobs
-  class FixInvalidDateOfBirth < Jobs::Onceoff
+  class FixInvalidDateOfBirth < ::Jobs::Onceoff
     def execute_onceoff(args)
       UserCustomField
         .where(name: 'date_of_birth')
