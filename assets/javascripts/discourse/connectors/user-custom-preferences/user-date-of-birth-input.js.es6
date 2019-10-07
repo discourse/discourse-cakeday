@@ -27,9 +27,7 @@ export default {
       let date = "";
 
       if (component.userBirthdayMonth && component.userBirthdayDay) {
-        date = `1904-${component.userBirthdayMonth}-${
-          component.userBirthdayDay
-        }`;
+        date = `1904-${component.userBirthdayMonth}-${component.userBirthdayDay}`;
       }
 
       args.model.set("date_of_birth", date);
