@@ -5,4 +5,9 @@
 # To work with us on translations, join this project:
 # https://www.transifex.com/projects/p/discourse-org/
 
-da: {}
+da:
+  site_settings:
+    cakeday_enabled: "Vis cakeday emoji [r] ved siden af brugerens navn på den dato, hvor de sluttede sig til Discourse."
+    cakeday_emoji: "De emoji [er], der vises ved siden af brugerens navn på den dato, hvor de blev medlem af Discourse. Flere emojier kan specificeres ved: smile|cake|smile"
+    cakeday_birthday_enabled: "Vis fødselsdagsemoji [r] ved siden af brugerens navn på deres fødselsdag."
+    cakeday_birthday_emoji: "De emoji[er], der vises ved siden af brugerens navn på deres fødselsdag. Flere emojier kan specificeres ved: smile|cake|smile"

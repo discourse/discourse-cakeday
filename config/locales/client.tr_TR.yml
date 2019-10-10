@@ -11,9 +11,14 @@ tr_TR:
       date_of_birth:
         user_title: "Bugün senin doğum günün!"
         title: "Bugün benim doğum günüm!"
+        label: "Doğum tarihi"
+      anniversary:
+        user_title: "Bugün, topluluğumuza katıldığınız günün yıldönümü!"
+        title: "Bugün bu topluluğa katıldığım günün yıldönümü!"
     cakeday:
       today: "Bugün"
       tomorrow: "Yarın"
+      upcoming: "Yaklaşan"
       all: "Hepsi"
     birthdays:
       title: "Doğum Günleri"
