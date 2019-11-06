@@ -7,7 +7,7 @@
 
 da:
   site_settings:
-    cakeday_enabled: "Vis cakeday emoji [r] ved siden af brugerens navn på den dato, hvor de sluttede sig til Discourse."
-    cakeday_emoji: "De emoji [er], der vises ved siden af brugerens navn på den dato, hvor de blev medlem af Discourse. Flere emojier kan specificeres ved: smile|cake|smile"
-    cakeday_birthday_enabled: "Vis fødselsdagsemoji [r] ved siden af brugerens navn på deres fødselsdag."
-    cakeday_birthday_emoji: "De emoji[er], der vises ved siden af brugerens navn på deres fødselsdag. Flere emojier kan specificeres ved: smile|cake|smile"
+    cakeday_enabled: "Vis cakeday humørikon[er] ved siden af navnet på brugeren, på den dato, hvor de blev medlem af Discourse."
+    cakeday_emoji: "De humørikon[er], der vises ved siden af navnet på brugeren, på den dato, hvor de blev medlem af Discourse. Flere humørikoner kan specificeres ved: smile|cake|smile"
+    cakeday_birthday_enabled: "Vis fødselsdags humørikon[er] ved siden af navnet på brugeren, på deres fødselsdag."
+    cakeday_birthday_emoji: "De humørikon[er], der vises ved siden af navnet på brugeren, på deres fødselsdag. Flere humørikoner kan specificeres ved: smile|cake|smile"
