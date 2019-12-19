@@ -9,26 +9,26 @@ nl:
   js:
     user:
       date_of_birth:
-        user_title: "Vandaag is jouw verjaardag!"
+        user_title: "Vandaag is uw verjaardag!"
         title: "Vandaag is mijn verjaardag!"
         label: "Geboortedatum"
       anniversary:
-        user_title: "Vandaag is het jubileum van de dag dat jij bij onze gemeenschap bent gekomen!"
+        user_title: "Vandaag is het jubileum van de dag dat u bij onze gemeenschap bent gekomen!"
         title: "Vandaag is het jubileum van de dag dat ik bij deze gemeenschap ben gekomen!"
     cakeday:
       title: Taartdag
       today: "Vandaag"
       tomorrow: "Morgen"
-      upcoming: "Volgende"
+      upcoming: "Aanstaand"
       all: "Alle"
     birthdays:
       title: "Verjaardagen"
       month:
-        title: "Verjaardagen in maand "
-        empty: "Er zijn geen gebruikers die hun verjaardag vieren deze maand."
+        title: "Verjaardagen in de maand"
+        empty: "Er zijn geen gebruikers die deze maand hun verjaardag vieren."
       upcoming:
         title: "Verjaardagen voor %{start_date} - %{end_date}"
-        empty: "Er zijn geen gebruikers die hun verjaardagen vieren in de volgende 7 dagen."
+        empty: "Er zijn geen gebruikers die binnen 7 dagen hun verjaardag vieren."
       today:
         title: "Verjaardagen voor %{date}"
         empty: "Er zijn geen gebruikers die vandaag hun verjaardag vieren."
@@ -37,13 +37,13 @@ nl:
     anniversaries:
       title: "Jubilea"
       month:
-        title: "Jubilea in de maand van "
-        empty: "Er zijn geen gebruikers die hun jubileum vieren in deze maand."
+        title: "Jubilea in de maand"
+        empty: "Er zijn geen gebruikers die deze maand hun jubileum vieren."
       upcoming:
         title: "Jubilea voor %{start_date} - %{end_date}"
-        empty: "Er zijn geen gebruikers die hun jubilea vieren in de volgende 7 dagen."
+        empty: "Er zijn geen gebruikers die binnen 7 dagen hun jubileum vieren."
       today:
         title: "Jubilea voor %{date}"
-        empty: "Er zijn geen gebruikers die hun jubilea vandaag vieren."
+        empty: "Er zijn geen gebruikers die vandaag hun jubileum vieren."
       tomorrow:
-        empty: "Er zijn een gebruikers die hun jubilea morgen vieren."
+        empty: "Er zijn geen gebruikers die morgen hun jubileum vieren."

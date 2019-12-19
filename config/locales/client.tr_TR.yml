@@ -24,7 +24,10 @@ tr_TR:
       title: "Doğum Günleri"
       month:
         title: "Ayın doğum günleri"
+        empty: "Bu ay doğum günü kutlayan hiçbir kullanıcı yok."
       upcoming:
         empty: "Gelecek 7 gün içinde doğum günlerini kutlayan kullanıcılar yok."
+      today:
+        empty: "Bugün doğum günlerini kutlayan hiçbir kullanıcı yok."
     anniversaries:
       title: "Yıldönümü"
