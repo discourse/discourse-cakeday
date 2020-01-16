@@ -149,6 +149,42 @@ describe "Cakeyday" do
           end
         end
       end
+
+      it 'should respect 30 minutes offset' do
+        freeze_time(time) do
+          created_at = time - 1.year
+
+          user = Fabricate(:user, created_at: created_at + 6.hours)
+          user2 = Fabricate(:user, created_at: created_at + 18.hours + 10.minutes)
+          user3 = Fabricate(:user, created_at: created_at + 18.hours + 40.minutes)
+          user4 = Fabricate(:user, created_at: created_at + 1.day + 20.minutes)
+
+          get "/cakeday/anniversaries.json", params: {
+            page: 0,
+            month: 9,
+            filter: 'today',
+            timezone_offset: "-330" #UTC+05:30
+          }
+
+          body = JSON.parse(response.body)
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
+            [user.id, user2.id]
+          )
+
+          get "/cakeday/anniversaries.json", params: {
+            page: 0,
+            month: 10,
+            filter: 'tomorrow',
+            timezone_offset: "-330"
+          }
+
+          body = JSON.parse(response.body)
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
+            [user3.id, user4.id]
+          )
+        end
+      end
+
     end
 
     describe "when viewing users birthdays" do
