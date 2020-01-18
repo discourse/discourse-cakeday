@@ -167,9 +167,7 @@ describe "Cakeyday" do
           }
 
           body = JSON.parse(response.body)
-          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-            [user.id, user2.id]
-          )
+          expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly(user.id, user2.id)
 
           get "/cakeday/anniversaries.json", params: {
             page: 0,
@@ -179,9 +177,7 @@ describe "Cakeyday" do
           }
 
           body = JSON.parse(response.body)
-          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-            [user3.id, user4.id]
-          )
+          expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly(user3.id, user4.id)
         end
       end
 
