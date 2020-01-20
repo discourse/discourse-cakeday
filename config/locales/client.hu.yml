@@ -7,6 +7,11 @@
 
 hu:
   js:
+    user:
+      date_of_birth:
+        user_title: "Ma van a születésnapod!"
+        title: "Ma van a születésnapom!"
+        label: "Születési dátum"
     cakeday:
       today: "Ma"
       tomorrow: "Holnap"

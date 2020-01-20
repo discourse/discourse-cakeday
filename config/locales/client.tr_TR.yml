@@ -16,6 +16,8 @@ tr_TR:
         user_title: "Bugün, topluluğumuza katıldığınız günün yıldönümü!"
         title: "Bugün bu topluluğa katıldığım günün yıldönümü!"
     cakeday:
+      none: " "
+      title: Kek günü
       today: "Bugün"
       tomorrow: "Yarın"
       upcoming: "Yaklaşan"
@@ -26,8 +28,23 @@ tr_TR:
         title: "Ayın doğum günleri"
         empty: "Bu ay doğum günü kutlayan hiçbir kullanıcı yok."
       upcoming:
+        title: "%{start_date} için doğum günleri - %{end_date}"
         empty: "Gelecek 7 gün içinde doğum günlerini kutlayan kullanıcılar yok."
       today:
+        title: "%{date} için doğum günleri"
         empty: "Bugün doğum günlerini kutlayan hiçbir kullanıcı yok."
+      tomorrow:
+        empty: "Yarın doğum günü olan kullanıcı yok."
     anniversaries:
       title: "Yıldönümü"
+      month:
+        title: "Yılındaki Yıldönümleri"
+        empty: "Bu ay yıl dönümü olankullanıcı yok."
+      upcoming:
+        title: "%{start_date} için yıldönümleri - %{end_date}"
+        empty: "Önümüzdeki 7 gün içinde yıldönümü olan kullanıcı yok."
+      today:
+        title: "Yıldönümleri için %{date}"
+        empty: "Bugün yıldönümü olan kullanıcı yok."
+      tomorrow:
+        empty: "Yarın yıl dönümü olan kullanıcı yok."
