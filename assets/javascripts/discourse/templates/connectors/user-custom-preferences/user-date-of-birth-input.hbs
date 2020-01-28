@@ -2,15 +2,31 @@
   <div class="control-group">
     <label class="control-label">{{i18n 'user.date_of_birth.label'}}</label>
     <div class="controls">
-      {{combo-box content=months
-                  value=userBirthdayMonth
-                  valueAttribute="value"
-                  none="cakeday.none"}}
+      {{combo-box
+        content=months
+        value=userBirthdayMonth
+        valueAttribute="value"
+        valueProperty="value"
+        none="cakeday.none"
+        options=(hash
+          clearable=true
+          autoInsertNoneItem=false
+        )
+        onChange=(action (mut userBirthdayMonth))
+      }}
 
-      {{combo-box content=days
-                  value=userBirthdayDay
-                  valueAttribute="value"
-                  none="cakeday.none"}}
+      {{combo-box
+        content=days
+        value=userBirthdayDay
+        valueProperty=null
+        nameProperty=null
+        none="cakeday.none"
+        options=(hash
+          clearable=true
+          autoInsertNoneItem=false
+        )
+        onChange=(action (mut userBirthdayDay))
+      }}
     </div>
   </div>
 {{/if}}
