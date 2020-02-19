@@ -1,5 +1,5 @@
-import { observes } from "ember-addons/ember-computed-decorators";
-import computed from "ember-addons/ember-computed-decorators";
+import { observes } from "discourse-common/utils/decorators";
+import computed from "discourse-common/utils/decorators";
 import PreferencesController from "discourse/controllers/preferences";
 import UserCardController from "discourse/controllers/user-card";
 import UserController from "discourse/controllers/user";
