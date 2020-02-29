@@ -1,8 +1,18 @@
 import { acceptance } from "helpers/qunit-helpers";
 
 const DATE = moment("2016-11-21");
+let clock;
 
 acceptance("Cakeday", {
+  beforeEach: function() {
+    clock = sinon.useFakeTimers({
+      now: DATE.toDate().getTime(),
+      shouldAdvanceTime: true
+    });
+  },
+  afterEach: function() {
+    clock.restore();
+  },
   loggedIn: true,
   settings: {
     cakeday_enabled: true,
