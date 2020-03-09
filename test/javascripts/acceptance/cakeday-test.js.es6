@@ -1,7 +1,5 @@
 import { acceptance } from "helpers/qunit-helpers";
 
-const DATE = moment("2016-11-21");
-
 acceptance("Cakeday", {
   loggedIn: true,
   settings: {
@@ -72,8 +70,8 @@ acceptance("Cakeday", {
               edit_reason: null,
               can_view_edit_history: true,
               wiki: false,
-              user_created_at: DATE.subtract(1, "year"),
-              user_date_of_birth: DATE.format("YYYY-MM-DD")
+              user_created_at: moment().subtract(1, "year"),
+              user_date_of_birth: moment().format("YYYY-MM-DD")
             }
           ],
           stream: [14]
@@ -205,8 +203,8 @@ acceptance("Cakeday", {
     server.get("/u/tgx.json", () => {
       return response({
         user: {
-          date_of_birth: DATE.format("YYYY-MM-DD"),
-          created_at: DATE.subtract(1, "year")
+          date_of_birth: moment().format("YYYY-MM-DD"),
+          created_at: moment().subtract(1, "year")
         }
       });
     });
@@ -230,8 +228,8 @@ test("Anniversary emoji", assert => {
   andThen(() => {
     const $emojiImages = find(".emoji-images div");
 
-    assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
     assert.equal($emojiImages[1].title, I18n.t("user.anniversary.title"));
+    assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
     assert.equal(1, $emojiImages[0].children.length);
     assert.equal(1, $emojiImages[1].children.length);
   });
