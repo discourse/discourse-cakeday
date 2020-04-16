@@ -70,9 +70,9 @@ after_initialize do
   end
 
   require_dependency 'post_serializer'
-  require_dependency 'user_card_serializer'
+  require_dependency 'user_serializer'
 
-  class ::UserCardSerializer
+  class ::UserSerializer
     attributes :date_of_birth
 
     def include_date_of_birth?
