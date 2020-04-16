@@ -69,16 +69,15 @@ after_initialize do
     }
   end
 
-  require_dependency 'post_serializer'
-  require_dependency 'user_serializer'
-
-  class ::UserSerializer
-    attributes :date_of_birth
-
-    def include_date_of_birth?
-      scope.user.present?
-    end
+  add_to_serializer(:user_card, :date_of_birth, false) do
+    object.date_of_birth
   end
+
+  add_to_serializer(:user_card, :include_date_of_birth?) do
+    scope.user.present?
+  end
+
+  require_dependency 'post_serializer'
 
   class ::PostSerializer
     attributes :user_created_at, :user_date_of_birth
