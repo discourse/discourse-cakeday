@@ -14,7 +14,7 @@ it:
         label: "Data di nascita"
       anniversary:
         user_title: "Oggi è l'anniversario della tua iscrizione!"
-        title: "Oggi è l'anniversario della mia unione a questa comunità!"
+        title: "Oggi è l'anniversario del giorno in cui mi sono unito a questa comunità!"
     cakeday:
       none: " "
       title: Cakeday
@@ -41,7 +41,7 @@ it:
         title: "Anniversari del mese di"
         empty: "Non ci sono utenti che festeggiano anniversari questo mese."
       upcoming:
-        title: "Anniversari dal%{start_date} al %{end_date}"
+        title: "Anniversari dal %{start_date} al %{end_date}"
         empty: "Non ci sono utenti che festeggiano anniversari nei prossimi 7 giorni."
       today:
         title: "Anniversari del %{date}"

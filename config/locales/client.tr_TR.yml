@@ -21,7 +21,7 @@ tr_TR:
       today: "Bugün"
       tomorrow: "Yarın"
       upcoming: "Yaklaşan"
-      all: "Hepsi"
+      all: "Tümü"
     birthdays:
       title: "Doğum Günleri"
       month:
