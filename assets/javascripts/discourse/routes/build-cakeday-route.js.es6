@@ -1,5 +1,7 @@
+import DiscourseRoute from "discourse/routes/discourse";
+
 export default (storeName, filter) => {
-  return Discourse.Route.extend({
+  return DiscourseRoute.extend({
     model(params) {
       params.timezone_offset = new Date().getTimezoneOffset();
       if (filter) params.filter = filter;
