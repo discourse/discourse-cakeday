@@ -41,17 +41,6 @@ after_initialize do
   load File.expand_path("../app/controllers/discourse_cakeday/anniversaries_controller.rb", __FILE__)
   load File.expand_path("../app/controllers/discourse_cakeday/birthdays_controller.rb", __FILE__)
 
-  skip_db = defined?(GlobalSetting.skip_db?) && GlobalSetting.skip_db?
-
-  if !skip_db
-    begin
-      if OnceoffLog.where(job_name: 'MigrateDateOfBirthToUsersTable').exists?
-        UserCustomField.where(name: 'date_of_birth').delete_all
-      end
-    rescue ActiveRecord::StatementInvalid
-    end
-  end
-
   require_dependency 'user'
   class ::User
     scope :valid, ->() {
