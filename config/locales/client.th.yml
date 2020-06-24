@@ -9,4 +9,5 @@ th:
   js:
     cakeday:
       today: "วันนี้"
+      tomorrow: "พรุ่งนี้"
       all: "ทั้งหมด"

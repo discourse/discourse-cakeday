@@ -17,7 +17,7 @@ fr:
         title: "Aujourd'hui est l'anniversaire de mon jour d'arrivée dans cette communauté !"
     cakeday:
       none: " "
-      title: Célébration
+      title: Célébrations
       today: "Aujourd'hui"
       tomorrow: "Demain"
       upcoming: "À venir"
@@ -26,15 +26,15 @@ fr:
       title: "Anniversaires"
       month:
         title: "Anniversaires du mois de"
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire ce mois."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire ce mois."
       upcoming:
         title: "Anniversaires pour %{start_date} - %{end_date}"
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire dans les 7 prochains jours."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire dans les 7 prochains jours."
       today:
         title: "Anniversaires pour %{date}"
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire aujourd'hui."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire aujourd'hui."
       tomorrow:
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire demain."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire demain."
     anniversaries:
       title: "Années d'ancienneté"
       month:

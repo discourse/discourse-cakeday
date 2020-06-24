@@ -9,4 +9,5 @@ gl:
   js:
     cakeday:
       today: "Hoxe"
+      tomorrow: "Mañá"
       all: "Todo"

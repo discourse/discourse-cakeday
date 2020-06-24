@@ -7,6 +7,10 @@
 
 fa_IR:
   js:
+    user:
+      date_of_birth:
+        user_title: "امروز روز تولد شماست!"
+        title: "امروز روز تولد من است!"
     cakeday:
       today: "امروز"
       tomorrow: "فردا"
