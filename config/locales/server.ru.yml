@@ -1,13 +1,12 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 ru:
   site_settings:
     cakeday_enabled: "Показать эмодзи напротив имени пользователя в годовщину регистрации на форуме."
     cakeday_emoji: "Показать эти эмодзи (смайлы) возле имени пользователя. Можно указать несколько эмодзи сразу, например: smile|cake|smile"
     cakeday_birthday_enabled: "Показать эмодзи возле имени пользователя в его день рождения."
-    cakeday_birthday_emoji: "Показать эти эмодзи (смайлы) возле имени пользователя. Можно указать несколько эмодзи сразу, например: smile|cake|smile"
+    cakeday_birthday_emoji: "Показать эти эмодзи возле имени пользователя. Можно указать несколько эмодзи сразу, например: smile|cake|smile"

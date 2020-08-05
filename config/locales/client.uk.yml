@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 uk:
   js:
@@ -16,7 +15,6 @@ uk:
         user_title: "Сьогодні річниця з моменту вашого приєднання до нашої спільноти!"
         title: "Сьогодні річниця з моменту мого приєднання до цієї спільноти! "
     cakeday:
-      none: " "
       title: День торта
       today: "Сьогодні"
       tomorrow: "Завтра"

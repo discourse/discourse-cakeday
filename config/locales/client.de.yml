@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 de:
   js:
@@ -16,7 +15,6 @@ de:
         user_title: "Heute ist der Jahrestag deiner Anmeldung!"
         title: "Der Benutzer feiert heute den Jahrestag seiner Anmeldung!"
     cakeday:
-      none: " "
       title: Cakeday
       today: "Heute"
       tomorrow: "Morgen"
