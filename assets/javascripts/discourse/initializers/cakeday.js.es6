@@ -118,7 +118,7 @@ export default {
     store.addPluralization("anniversary", "anniversaries");
 
     PreferencesController.reopen({
-      days: _.range(1, 32),
+      days: [...Array(32).keys()].splice(1),
 
       @computed
       months() {
