@@ -2,8 +2,8 @@ import buildCakedayRoute from "discourse/plugins/discourse-cakeday/discourse/rou
 
 export default buildCakedayRoute("anniversary").extend({
   queryParams: {
-    month: { refreshModel: true }
+    month: { refreshModel: true },
   },
 
-  refreshQueryWithoutTransition: true
+  refreshQueryWithoutTransition: true,
 });

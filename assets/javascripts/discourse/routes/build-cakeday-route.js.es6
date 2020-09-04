@@ -6,6 +6,6 @@ export default (storeName, filter) => {
       params.timezone_offset = new Date().getTimezoneOffset();
       if (filter) params.filter = filter;
       return this.store.find(storeName, params);
-    }
+    },
   });
 };

@@ -1,3 +1,4 @@
+import I18n from "I18n";
 import computed from "discourse-common/utils/decorators";
 
 export default Ember.Controller.extend({
@@ -8,13 +9,13 @@ export default Ember.Controller.extend({
 
     return I18n.t("anniversaries.upcoming.title", {
       start_date: date.add(2, "days").format(dateFormat),
-      end_date: date.add(7, "days").format(dateFormat)
+      end_date: date.add(7, "days").format(dateFormat),
     });
   },
 
   actions: {
     loadMore() {
       this.get("model").loadMore();
-    }
-  }
+    },
+  },
 });
