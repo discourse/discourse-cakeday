@@ -1,3 +1,4 @@
+import I18n from "I18n";
 import { observes } from "discourse-common/utils/decorators";
 import computed from "discourse-common/utils/decorators";
 import PreferencesController from "discourse/controllers/preferences";
@@ -7,7 +8,7 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 import {
   isSameDay,
   cakeday,
-  cakedayBirthday
+  cakedayBirthday,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 import { registerUnbound } from "discourse-common/lib/helpers";
 
@@ -77,7 +78,7 @@ function initializeCakeday(api, siteSettings) {
   }
 
   if (cakedayEnabled || cakedayBirthdayEnabled) {
-    registerUnbound("cakeday-date", function(val, params) {
+    registerUnbound("cakeday-date", function (val, params) {
       const date = moment(val);
 
       if (params.isBirthday) {
@@ -99,7 +100,7 @@ function initializeCakeday(api, siteSettings) {
       return {
         route: route,
         label: "cakeday.title",
-        className: "cakeday-link"
+        className: "cakeday-link",
       };
     });
   }
@@ -151,7 +152,7 @@ export default {
       @computed("model.date_of_birth")
       userBirthdayDay(dateOfBirth) {
         return moment(dateOfBirth, "YYYY-MM-DD").date();
-      }
+      },
     });
 
     UserCardController.reopen({
@@ -163,7 +164,7 @@ export default {
       @computed("model.date_of_birth")
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
-      }
+      },
     });
 
     UserController.reopen({
@@ -175,9 +176,9 @@ export default {
       @computed("model.date_of_birth")
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
-      }
+      },
     });
 
-    withPluginApi("0.1", api => initializeCakeday(api, siteSettings));
-  }
+    withPluginApi("0.1", (api) => initializeCakeday(api, siteSettings));
+  },
 };

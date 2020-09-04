@@ -4,26 +4,24 @@ export default {
       return { name: month, value: index + 1 };
     });
 
-    const days = Array.from(Array(31).keys()).map(x => (x + 1).toString());
+    const days = Array.from(Array(31).keys()).map((x) => (x + 1).toString());
 
     const dateOfBirth = args.model.get("date_of_birth");
     const userBirthdayMonth = dateOfBirth
       ? moment(dateOfBirth, "YYYY-MM-DD").month() + 1
       : null;
     const userBirthdayDay = dateOfBirth
-      ? moment(dateOfBirth, "YYYY-MM-DD")
-          .date()
-          .toString()
+      ? moment(dateOfBirth, "YYYY-MM-DD").date().toString()
       : null;
 
     component.setProperties({
       months,
       days,
       userBirthdayMonth,
-      userBirthdayDay
+      userBirthdayDay,
     });
 
-    const updateBirthday = function() {
+    const updateBirthday = function () {
       let date = "";
 
       if (component.userBirthdayMonth && component.userBirthdayDay) {
@@ -35,5 +33,5 @@ export default {
 
     component.addObserver("userBirthdayMonth", updateBirthday);
     component.addObserver("userBirthdayDay", updateBirthday);
-  }
+  },
 };
