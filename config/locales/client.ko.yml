@@ -8,41 +8,41 @@ ko:
   js:
     user:
       date_of_birth:
-        user_title: "오늘은 당신의 생일입니다!"
-        title: "오늘은 내 생일입니다!"
-        label: "출생일"
+        user_title: "오늘은 너의 생일이야!"
+        title: "오늘은 내 생일!"
+        label: "생년월일"
       anniversary:
-        user_title: "오늘은 당신이 우리 커뮤니티에 가입한 기념일입니다."
-        title: "오늘은 당신이 이 커뮤니티에 가입한 기념일입니다."
+        user_title: "오늘은 커뮤니티에 가입 한 기념일입니다."
+        title: "오늘은이 커뮤니티에 가입 한 기념일입니다."
     cakeday:
-      title: 가입일
+      title: 케이크 데이
       today: "오늘"
       tomorrow: "내일"
       upcoming: "다가오는"
-      all: "모든"
+      all: "모두"
     birthdays:
       title: "생일"
       month:
-        title: "이달의 생일"
-        empty: "이달에는 생일 당한 유저들이 없습니다."
+        title: "달의 생일"
+        empty: "이번 달에 생일을 축하하는 사용자는 없습니다."
       upcoming:
-        title: "%{start_date}부터 %{end_date}까지 생일"
-        empty: "오늘부터 7일동안 생일 당할 유저가 없습니다."
+        title: "%{start_date}의 생일-%{end_date}"
+        empty: "다음 7 일 동안 생일을 축하하는 사용자는 없습니다."
       today:
-        title: "%{date}일자의 생일"
-        empty: "오늘 생일을 맞은 유저가 없습니다."
+        title: "%{date}의 생일"
+        empty: "오늘 생일을 축하하는 사용자가 없습니다."
       tomorrow:
-        empty: "내일 생일을 맞은 유저는 없습니다."
+        empty: "내일 생일을 축하하는 사용자는 없습니다."
     anniversaries:
       title: "기념일"
       month:
-        title: "월 기념일"
-        empty: "이 달의 기념일에 축하할 유저는 없습니다."
+        title: "이달의 기념일"
+        empty: "이번 달에는 기념일을 축하하는 사용자가 없습니다."
       upcoming:
-        title: "%{start_date}부터 %{end_date}까지의 기념일"
-        empty: "오늘부터 7일간은 기념일인 유저가 없습니다."
+        title: "%{start_date}-%{end_date}의 기념일"
+        empty: "다음 7 일 동안 기념일을 축하하는 사용자는 없습니다."
       today:
-        title: "%{date}일자 기념일"
-        empty: "오늘 기념일인 유저는 없습니다."
+        title: "%{date}의 기념일"
+        empty: "오늘 기념일을 축하하는 사용자가 없습니다."
       tomorrow:
-        empty: "내일 기념일인 유저는 없습니다."
+        empty: "내일 기념일을 축하하는 사용자는 없습니다."
