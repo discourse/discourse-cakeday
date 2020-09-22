@@ -111,7 +111,9 @@ export default {
 
   initialize(container) {
     const currentUser = container.lookup("current-user:main");
-    if (!currentUser) return;
+    if (!currentUser) {
+      return;
+    }
 
     const siteSettings = container.lookup("site-settings:main");
     const store = container.lookup("store:main");
