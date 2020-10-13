@@ -135,7 +135,7 @@ export default {
         const userBirthdayMonth = this.get("userBirthdayMonth");
         const userBirthdayDay = this.get("userBirthdayDay");
         const user = this.get("model");
-        var date = "";
+        let date = "";
 
         if (userBirthdayMonth !== "" && userBirthdayDay !== "") {
           date = `1904-${this.get("userBirthdayMonth")}-${this.get(
