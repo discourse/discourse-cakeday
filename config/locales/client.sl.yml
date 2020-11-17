@@ -37,10 +37,10 @@ sl:
       title: "Obletnice"
       month:
         title: "Obletnice v mesecu"
-        empty: "V tem mesecu ni uporabnikov, ki bi praznovali obletnice."
+        empty: "V tem mesecu ni uporabnikov, ki bi praznovali obletnico."
       upcoming:
         title: "Obletnice za %{start_date} - %{end_date}"
-        empty: "V naslednjih 7 dneh ni uporabnikov, ki bi praznovali obletnice."
+        empty: "V naslednjih 7 dneh ni uporabnikov, ki bi praznovali obletnico."
       today:
         title: "Obletnice za %{date}"
         empty: "Danes ni nobenega uporabnika, ki bi praznoval obletnico."
