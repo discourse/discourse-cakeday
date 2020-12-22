@@ -43,6 +43,6 @@ fr:
         empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté dans les 7 prochains jours."
       today:
         title: "Années d'ancienneté pour %{date}"
-        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté aujourd’hui."
+        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté aujourd'hui."
       tomorrow:
         empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté demain."
