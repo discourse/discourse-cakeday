@@ -1,14 +1,14 @@
-import { acceptance } from "helpers/qunit-helpers";
+import { acceptance } from "discourse/tests/helpers/qunit-helpers";
 
-acceptance("Cakeday - disconnected", {
-  settings: {
+acceptance("Cakeday - disconnected", function (needs) {
+  needs.settings({
     cakeday_enabled: true,
     cakeday_emoji: "cake",
     cakeday_birthday_enabled: true,
     cakeday_birthday_emoji: "birthday",
-  },
+  });
 
-  pretend(server) {
+  needs.pretender((server) => {
     const response = (object) => {
       return [200, { "Content-Type": "application/json" }, object];
     };
@@ -207,18 +207,18 @@ acceptance("Cakeday - disconnected", {
         },
       });
     });
-  },
-});
+  });
 
-test("User is not logged in", (assert) => {
-  visit("/");
-  click("#toggle-hamburger-menu");
+  test("User is not logged in", (assert) => {
+    visit("/");
+    click("#toggle-hamburger-menu");
 
-  andThen(() => {
-    assert.equal(
-      find(".cakeday-link").length,
-      0,
-      "Cakeday is not shown to anonymous users"
-    );
+    andThen(() => {
+      assert.equal(
+        find(".cakeday-link").length,
+        0,
+        "Cakeday is not shown to anonymous users"
+      );
+    });
   });
 });

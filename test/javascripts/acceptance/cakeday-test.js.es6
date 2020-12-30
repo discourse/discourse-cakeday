@@ -1,16 +1,16 @@
 import I18n from "I18n";
-import { acceptance } from "helpers/qunit-helpers";
+import { acceptance } from "discourse/tests/helpers/qunit-helpers";
 
-acceptance("Cakeday", {
-  loggedIn: true,
-  settings: {
+acceptance("Cakeday", function (needs) {
+  needs.user();
+  needs.settings({
     cakeday_enabled: true,
     cakeday_emoji: "cake",
     cakeday_birthday_enabled: true,
     cakeday_birthday_emoji: "birthday",
-  },
+  });
 
-  pretend(server) {
+  needs.pretender((server) => {
     const response = (object) => {
       return [200, { "Content-Type": "application/json" }, object];
     };
@@ -218,29 +218,29 @@ acceptance("Cakeday", {
         },
       });
     });
-  },
-});
-
-test("Anniversary emoji", (assert) => {
-  visit("/t/some-really-interesting-topic/11");
-
-  andThen(() => {
-    const $posterIcons = find(".poster-icon");
-
-    assert.equal($posterIcons[0].title, I18n.t("user.anniversary.title"));
-    assert.equal($posterIcons[1].title, I18n.t("user.date_of_birth.title"));
-    assert.equal(find("img.emoji", $posterIcons[0]).length, 1);
-    assert.equal(find("img.emoji", $posterIcons[1]).length, 1);
   });
 
-  click(".trigger-user-card");
+  test("Anniversary emoji", (assert) => {
+    visit("/t/some-really-interesting-topic/11");
 
-  andThen(() => {
-    const $emojiImages = find(".emoji-images div");
+    andThen(() => {
+      const $posterIcons = find(".poster-icon");
 
-    assert.equal($emojiImages[1].title, I18n.t("user.anniversary.title"));
-    assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
-    assert.equal(1, $emojiImages[0].children.length);
-    assert.equal(1, $emojiImages[1].children.length);
+      assert.equal($posterIcons[0].title, I18n.t("user.anniversary.title"));
+      assert.equal($posterIcons[1].title, I18n.t("user.date_of_birth.title"));
+      assert.equal(find("img.emoji", $posterIcons[0]).length, 1);
+      assert.equal(find("img.emoji", $posterIcons[1]).length, 1);
+    });
+
+    click(".trigger-user-card");
+
+    andThen(() => {
+      const $emojiImages = find(".emoji-images div");
+
+      assert.equal($emojiImages[1].title, I18n.t("user.anniversary.title"));
+      assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
+      assert.equal(1, $emojiImages[0].children.length);
+      assert.equal(1, $emojiImages[1].children.length);
+    });
   });
 });
