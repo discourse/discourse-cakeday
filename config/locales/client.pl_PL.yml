@@ -15,6 +15,7 @@ pl_PL:
         user_title: "Dzisiaj jest rocznica Twojego dołączenia do społeczności!"
         title: "Dzisiaj jest rocznica mojego dołączenia do społeczności!"
     cakeday:
+      none: " "
       title: Święto
       today: "Dzisiaj"
       tomorrow: "Jutro"

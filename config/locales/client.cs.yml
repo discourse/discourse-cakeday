@@ -15,6 +15,8 @@ cs:
         user_title: "Dnes je výročí dne, kdy jste se připojili k naší komunitě!"
         title: "Dnes je výročí dne, kdy jsem se připojil(a) k této komunitě!"
     cakeday:
+      none: " "
+      title: Cakeday
       today: "Dnes"
       tomorrow: "Zítra"
       upcoming: "Nadcházející"
@@ -42,3 +44,6 @@ cs:
         empty: "Nejsou žádní uživatelé oslavující svá výročí během následujících 7 dní."
       today:
         title: "Výročí pro %{date}"
+        empty: "There are no users celebrating their anniversaries today."
+      tomorrow:
+        empty: "There are no users celebrating their anniversaries tomorrow."

@@ -15,6 +15,7 @@ nb_NO:
         user_title: "I dag er det jubileum for når du tok del i gemenskapen!"
         title: "I dag er det jubileum for når du tok del i denne gemenskapen!"
     cakeday:
+      none: " "
       title: Kakedag
       today: "I dag"
       tomorrow: "I morgen"

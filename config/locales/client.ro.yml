@@ -15,6 +15,7 @@ ro:
         user_title: "Astăzi este aniversarea zilei în care te-ai alăturat comunității noastre!"
         title: "Astăzi este aniversarea zilei în care m-am alăturat acestei comunități!"
     cakeday:
+      none: " "
       title: Cakeday - zi de naștere
       today: "Astăzi"
       tomorrow: "Mâine"

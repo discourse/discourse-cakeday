@@ -15,6 +15,7 @@ zh_TW:
         user_title: "今天是您加入社群的週年紀念日！"
         title: "今天是我加入社群的週年紀念日！"
     cakeday:
+      none: " "
       title: Cakeday
       today: "今天"
       tomorrow: "明天"

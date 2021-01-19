@@ -15,6 +15,7 @@ sl:
         user_title: "Danes je obletnica dneva, ko ste se pridružili naši skupnosti!"
         title: "Danes je obletnica dneva, ko sem se pridružil/a tej skupnosti!"
     cakeday:
+      none: " "
       title: Praznik
       today: "Danes"
       tomorrow: "Jutri"

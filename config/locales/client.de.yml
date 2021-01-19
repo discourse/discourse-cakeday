@@ -15,6 +15,7 @@ de:
         user_title: "Heute ist der Jahrestag deiner Anmeldung!"
         title: "Der Benutzer feiert heute den Jahrestag seiner Anmeldung!"
     cakeday:
+      none: " "
       title: Cakeday
       today: "Heute"
       tomorrow: "Morgen"

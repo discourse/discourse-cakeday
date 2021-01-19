@@ -15,6 +15,7 @@ fr:
         user_title: "Aujourd'hui est l'anniversaire de votre arrivée dans notre communauté !"
         title: "Aujourd'hui est l'anniversaire de mon jour d'arrivée dans cette communauté !"
     cakeday:
+      none: " "
       title: Célébrations
       today: "Aujourd'hui"
       tomorrow: "Demain"

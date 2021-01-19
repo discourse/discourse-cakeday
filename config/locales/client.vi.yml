@@ -15,6 +15,8 @@ vi:
         user_title: "Hôm nay là ngày kỷ niệm bạn gia nhập cộng đồng của chúng tôi!"
         title: "Hôm nay là ngày kỷ niệm tôi gia nhập cộng đồng này!"
     cakeday:
+      none: " "
+      title: Cakeday
       today: "Hôm nay"
       tomorrow: "Ngày mai"
       upcoming: "Sắp tới"
@@ -24,3 +26,24 @@ vi:
       month:
         title: "Sinh nhật trong tháng của"
         empty: "Không có thành viên nào có sinh nhật tháng này."
+      upcoming:
+        title: "Birthdays for %{start_date} - %{end_date}"
+        empty: "There are no users celebrating their birthdays in the next 7 days."
+      today:
+        title: "Birthdays for %{date}"
+        empty: "There are no users celebrating their birthdays today."
+      tomorrow:
+        empty: "There are no users celebrating their birthdays tomorrow."
+    anniversaries:
+      title: "Anniversaries"
+      month:
+        title: "Anniversaries in the Month of"
+        empty: "There are no users celebrating their anniversaries this month."
+      upcoming:
+        title: "Anniversaries for %{start_date} - %{end_date}"
+        empty: "There are no users celebrating their anniversaries in the next 7 days."
+      today:
+        title: "Anniversaries for %{date}"
+        empty: "There are no users celebrating their anniversaries today."
+      tomorrow:
+        empty: "There are no users celebrating their anniversaries tomorrow."

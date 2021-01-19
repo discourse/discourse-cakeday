@@ -15,6 +15,7 @@ fi:
         user_title: "Tänään on liittymisesi vuosipäivä!"
         title: "Tänään on hänen liittymisensä vuosipäivä!"
     cakeday:
+      none: " "
       title: Merkkipäivät
       today: "Tänään"
       tomorrow: "Huomenna"

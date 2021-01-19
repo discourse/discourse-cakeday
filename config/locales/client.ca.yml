@@ -15,6 +15,7 @@ ca:
         user_title: "Avui és l'aniversari del dia en què us vau sumar a la comunitat!"
         title: "Avui és l'aniversari del dia en què em vaig sumar a aquesta comunitat!"
     cakeday:
+      none: " "
       title: Dia de pastís
       today: "Avui"
       tomorrow: "Demà"

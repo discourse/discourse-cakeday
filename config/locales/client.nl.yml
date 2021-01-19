@@ -15,6 +15,7 @@ nl:
         user_title: "Vandaag is het jubileum van de dag dat u bij onze gemeenschap bent gekomen!"
         title: "Vandaag is het jubileum van de dag dat ik bij deze gemeenschap ben gekomen!"
     cakeday:
+      none: " "
       title: Taartdag
       today: "Vandaag"
       tomorrow: "Morgen"

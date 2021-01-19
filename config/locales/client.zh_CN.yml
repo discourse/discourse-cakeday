@@ -15,6 +15,7 @@ zh_CN:
         user_title: "今天是你加入我们社区的纪念日！"
         title: "今天是我加入我们社区的纪念日！"
     cakeday:
+      none: " "
       title: 诞生日
       today: "今天"
       tomorrow: "明天"

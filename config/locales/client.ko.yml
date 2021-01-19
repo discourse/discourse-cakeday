@@ -15,6 +15,7 @@ ko:
         user_title: "오늘은 커뮤니티에 가입 한 기념일입니다."
         title: "오늘은이 커뮤니티에 가입 한 기념일입니다."
     cakeday:
+      none: " "
       title: 케이크 데이
       today: "오늘"
       tomorrow: "내일"

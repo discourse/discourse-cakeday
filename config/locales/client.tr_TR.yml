@@ -10,23 +10,24 @@ tr_TR:
       date_of_birth:
         user_title: "Bugün senin doğum günün!"
         title: "Bugün benim doğum günüm!"
-        label: "Doğum tarihi"
+        label: "Doğum Tarihi"
       anniversary:
-        user_title: "Bugün, topluluğumuza katıldığınız günün yıldönümü!"
-        title: "Bugün bu topluluğa katıldığım günün yıldönümü!"
+        user_title: "Bugün, topluluğumuza katıldığınız günün yıl dönümü!"
+        title: "Bugün bu topluluğa katıldığım günün yıl dönümü!"
     cakeday:
+      none: " "
       title: Kek günü
       today: "Bugün"
       tomorrow: "Yarın"
       upcoming: "Yaklaşan"
       all: "Tümü"
     birthdays:
-      title: "Doğum Günleri"
+      title: "Doğum günleri"
       month:
         title: "Ayın doğum günleri"
-        empty: "Bu ay doğum günü kutlayan hiçbir kullanıcı yok."
+        empty: "Bu ay doğum günlerini kutlayan hiçbir kullanıcı yok."
       upcoming:
-        title: "%{start_date} için doğum günleri - %{end_date}"
+        title: "%{start_date} - %{end_date} için doğum günleri"
         empty: "Gelecek 7 gün içinde doğum günlerini kutlayan kullanıcılar yok."
       today:
         title: "%{date} için doğum günleri"
@@ -34,13 +35,13 @@ tr_TR:
       tomorrow:
         empty: "Yarın doğum günü olan kullanıcı yok."
     anniversaries:
-      title: "Yıldönümü"
+      title: "Yıldönümleri"
       month:
-        title: "Yılındaki Yıldönümleri"
-        empty: "Bu ay yıl dönümü olankullanıcı yok."
+        title: "Ayındaki Yıldönümleri"
+        empty: "Bu ay yıl dönümlerini kutlayan kullanıcı yok."
       upcoming:
-        title: "%{start_date} için yıldönümleri - %{end_date}"
-        empty: "Önümüzdeki 7 gün içinde yıldönümü olan kullanıcı yok."
+        title: "%{start_date} - %{end_date} için yıldönümleri"
+        empty: "Önümüzdeki 7 gün içinde yıl dönümlerini kutlayan kullanıcı yok."
       today:
         title: "Yıldönümleri için %{date}"
         empty: "Bugün yıldönümü olan kullanıcı yok."

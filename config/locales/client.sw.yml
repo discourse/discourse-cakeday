@@ -15,6 +15,7 @@ sw:
         user_title: "Leo ni siku uliyojiunga na jamii yetu!"
         title: "Leo ni kumbukumbu ya siku niliyojiunga na hii jumuia!"
     cakeday:
+      none: " "
       title: Siku ya keki
       today: "Leo"
       tomorrow: "Kesho"

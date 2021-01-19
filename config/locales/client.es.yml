@@ -15,6 +15,7 @@ es:
         user_title: "¡Hoy es el aniversario del día en que te uniste a nuestra comunidad!"
         title: "¡Hoy es el aniversario del día en que me uní a esta comunidad!"
     cakeday:
+      none: " "
       title: Cakeday
       today: "Hoy"
       tomorrow: "Mañana"
