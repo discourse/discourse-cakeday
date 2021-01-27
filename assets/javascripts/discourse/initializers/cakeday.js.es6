@@ -1,14 +1,13 @@
 import I18n from "I18n";
-import { observes } from "discourse-common/utils/decorators";
-import computed from "discourse-common/utils/decorators";
+import computed, { observes } from "discourse-common/utils/decorators";
 import PreferencesController from "discourse/controllers/preferences";
 import UserCardController from "discourse/controllers/user-card";
 import UserController from "discourse/controllers/user";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import {
-  isSameDay,
   cakeday,
   cakedayBirthday,
+  isSameDay,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 import { registerUnbound } from "discourse-common/lib/helpers";
 
