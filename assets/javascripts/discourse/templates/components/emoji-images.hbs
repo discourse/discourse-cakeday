@@ -1,7 +1,7 @@
 {{#if siteSettings.enable_emoji}}
   <div title={{titleText}}>
     {{#each emojiHTML as |html|}}
-      {{{html}}}
+      {{html-safe html}}
     {{/each}}
   </div>
 {{else}}
