@@ -1,15 +1,15 @@
-import { acceptance } from "helpers/qunit-helpers";
+import { acceptance } from "discourse/tests/helpers/qunit-helpers";
 
-acceptance("Cakeday - disconnected", {
-  settings: {
+acceptance("Cakeday - disconnected", function (needs) {
+  needs.settings({
     cakeday_enabled: true,
     cakeday_emoji: "cake",
     cakeday_birthday_enabled: true,
-    cakeday_birthday_emoji: "birthday"
-  },
+    cakeday_birthday_emoji: "birthday",
+  });
 
-  pretend(server) {
-    const response = object => {
+  needs.pretender((server) => {
+    const response = (object) => {
       return [200, { "Content-Type": "application/json" }, object];
     };
 
@@ -55,7 +55,7 @@ acceptance("Cakeday - disconnected", {
                 { id: 4, can_act: true },
                 { id: 5, hidden: true, can_act: true },
                 { id: 7, can_act: true },
-                { id: 8, can_act: true }
+                { id: 8, can_act: true },
               ],
               moderator: false,
               admin: true,
@@ -70,10 +70,10 @@ acceptance("Cakeday - disconnected", {
               can_view_edit_history: true,
               wiki: false,
               user_created_at: moment().subtract(1, "year"),
-              user_date_of_birth: moment().format("YYYY-MM-DD")
-            }
+              user_date_of_birth: moment().format("YYYY-MM-DD"),
+            },
           ],
-          stream: [14]
+          stream: [14],
         },
         timeline_lookup: [[1, 0]],
         id: 11,
@@ -113,13 +113,13 @@ acceptance("Cakeday - disconnected", {
             id: 1,
             username: "tgx",
             avatar_template:
-              "/letter_avatar_proxy/v2/letter/t/ecae2f/{size}.png"
+              "/letter_avatar_proxy/v2/letter/t/ecae2f/{size}.png",
           },
           last_poster: {
             id: 1,
             username: "tgx",
             avatar_template:
-              "/letter_avatar_proxy/v2/letter/t/ecae2f/{size}.png"
+              "/letter_avatar_proxy/v2/letter/t/ecae2f/{size}.png",
           },
           participants: [
             {
@@ -127,8 +127,8 @@ acceptance("Cakeday - disconnected", {
               username: "tgx",
               avatar_template:
                 "/letter_avatar_proxy/v2/letter/t/ecae2f/{size}.png",
-              post_count: 1
-            }
+              post_count: 1,
+            },
           ],
           suggested_topics: [
             {
@@ -166,11 +166,11 @@ acceptance("Cakeday - disconnected", {
                     id: -1,
                     username: "system",
                     avatar_template:
-                      "/letter_avatar_proxy/v2/letter/s/bcef8e/{size}.png"
-                  }
-                }
-              ]
-            }
+                      "/letter_avatar_proxy/v2/letter/s/bcef8e/{size}.png",
+                  },
+                },
+              ],
+            },
           ],
           notification_level: 3,
           notifications_reason_id: 1,
@@ -182,7 +182,7 @@ acceptance("Cakeday - disconnected", {
           can_invite_to: true,
           can_create_post: true,
           can_reply_as_new_topic: true,
-          can_flag_topic: true
+          can_flag_topic: true,
         },
         highest_post_number: 1,
         last_read_post_number: 1,
@@ -192,10 +192,10 @@ acceptance("Cakeday - disconnected", {
         actions_summary: [
           { id: 4, count: 0, hidden: false, can_act: true },
           { id: 7, count: 0, hidden: false, can_act: true },
-          { id: 8, count: 0, hidden: false, can_act: true }
+          { id: 8, count: 0, hidden: false, can_act: true },
         ],
         chunk_size: 20,
-        bookmarked: false
+        bookmarked: false,
       });
     });
 
@@ -203,22 +203,22 @@ acceptance("Cakeday - disconnected", {
       return response({
         user: {
           date_of_birth: moment().format("YYYY-MM-DD"),
-          created_at: moment().subtract(1, "year")
-        }
+          created_at: moment().subtract(1, "year"),
+        },
       });
     });
-  }
-});
+  });
 
-test("User is not logged in", assert => {
-  visit("/");
-  click("#toggle-hamburger-menu");
+  test("User is not logged in", (assert) => {
+    visit("/");
+    click("#toggle-hamburger-menu");
 
-  andThen(() => {
-    assert.equal(
-      find(".cakeday-link").length,
-      0,
-      "Cakeday is not shown to anonymous users"
-    );
+    andThen(() => {
+      assert.equal(
+        find(".cakeday-link").length,
+        0,
+        "Cakeday is not shown to anonymous users"
+      );
+    });
   });
 });

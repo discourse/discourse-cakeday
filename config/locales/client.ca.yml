@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 ca:
   js:
@@ -16,7 +15,6 @@ ca:
         user_title: "Avui és l'aniversari del dia en què us vau sumar a la comunitat!"
         title: "Avui és l'aniversari del dia en què em vaig sumar a aquesta comunitat!"
     cakeday:
-      none: " "
       title: Dia de pastís
       today: "Avui"
       tomorrow: "Demà"

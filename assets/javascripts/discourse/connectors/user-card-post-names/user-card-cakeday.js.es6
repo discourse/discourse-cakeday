@@ -1,8 +1,8 @@
 import {
   cakeday,
-  cakedayTitle,
   cakedayBirthday,
-  cakedayBirthdayTitle
+  cakedayBirthdayTitle,
+  cakedayTitle,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 
 export default {
@@ -17,5 +17,5 @@ export default {
       "cakedayBirthdayTitle",
       cakedayBirthdayTitle(args.user, this.currentUser)
     );
-  }
+  },
 };

@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 zh_CN:
   js:
@@ -16,7 +15,6 @@ zh_CN:
         user_title: "今天是你加入我们社区的纪念日！"
         title: "今天是我加入我们社区的纪念日！"
     cakeday:
-      none: " "
       title: 诞生日
       today: "今天"
       tomorrow: "明天"

@@ -30,7 +30,7 @@
     }
 
     .user-info-empty-message {
-      color: scale-color($primary, $lightness: 30%);
+      color: var(--primary-high, $primary-high);
       padding-bottom: 30px;
     }
   }

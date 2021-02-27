@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 sv:
   js:
@@ -16,7 +15,6 @@ sv:
         user_title: "Idag är det årsdagen för när du gick med i vårt forum!"
         title: "Idag är det årsdagen för när jag gick med i det här forumet!"
     cakeday:
-      none: " "
       title: Tårtdag
       today: "Idag"
       tomorrow: "Imorgon"

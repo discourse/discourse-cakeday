@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 fr:
   js:
@@ -16,8 +15,7 @@ fr:
         user_title: "Aujourd'hui est l'anniversaire de votre arrivée dans notre communauté !"
         title: "Aujourd'hui est l'anniversaire de mon jour d'arrivée dans cette communauté !"
     cakeday:
-      none: " "
-      title: Célébration
+      title: Célébrations
       today: "Aujourd'hui"
       tomorrow: "Demain"
       upcoming: "À venir"
@@ -26,15 +24,15 @@ fr:
       title: "Anniversaires"
       month:
         title: "Anniversaires du mois de"
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire ce mois."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire ce mois."
       upcoming:
         title: "Anniversaires pour %{start_date} - %{end_date}"
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire dans les 7 prochains jours."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire dans les 7 prochains jours."
       today:
         title: "Anniversaires pour %{date}"
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire aujourd'hui."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire aujourd'hui."
       tomorrow:
-        empty: "Il n'y a aucun utilisateur célébrant leur anniversaire demain."
+        empty: "Il n'y a aucun utilisateur célébrant son anniversaire demain."
     anniversaries:
       title: "Années d'ancienneté"
       month:
@@ -45,6 +43,6 @@ fr:
         empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté dans les 7 prochains jours."
       today:
         title: "Années d'ancienneté pour %{date}"
-        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté aujourd’hui."
+        empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté aujourd'hui."
       tomorrow:
         empty: "Il n'y a aucun utilisateur célébrant une nouvelle année d'ancienneté demain."

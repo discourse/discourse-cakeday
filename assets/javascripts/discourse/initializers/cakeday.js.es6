@@ -1,13 +1,13 @@
-import { observes } from "discourse-common/utils/decorators";
-import computed from "discourse-common/utils/decorators";
+import I18n from "I18n";
+import computed, { observes } from "discourse-common/utils/decorators";
 import PreferencesController from "discourse/controllers/preferences";
 import UserCardController from "discourse/controllers/user-card";
 import UserController from "discourse/controllers/user";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import {
-  isSameDay,
   cakeday,
-  cakedayBirthday
+  cakedayBirthday,
+  isSameDay,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 import { registerUnbound } from "discourse-common/lib/helpers";
 
@@ -77,7 +77,7 @@ function initializeCakeday(api, siteSettings) {
   }
 
   if (cakedayEnabled || cakedayBirthdayEnabled) {
-    registerUnbound("cakeday-date", function(val, params) {
+    registerUnbound("cakeday-date", function (val, params) {
       const date = moment(val);
 
       if (params.isBirthday) {
@@ -99,7 +99,7 @@ function initializeCakeday(api, siteSettings) {
       return {
         route: route,
         label: "cakeday.title",
-        className: "cakeday-link"
+        className: "cakeday-link",
       };
     });
   }
@@ -110,7 +110,9 @@ export default {
 
   initialize(container) {
     const currentUser = container.lookup("current-user:main");
-    if (!currentUser) return;
+    if (!currentUser) {
+      return;
+    }
 
     const siteSettings = container.lookup("site-settings:main");
     const store = container.lookup("store:main");
@@ -118,7 +120,7 @@ export default {
     store.addPluralization("anniversary", "anniversaries");
 
     PreferencesController.reopen({
-      days: _.range(1, 32),
+      days: [...Array(32).keys()].splice(1),
 
       @computed
       months() {
@@ -132,7 +134,7 @@ export default {
         const userBirthdayMonth = this.get("userBirthdayMonth");
         const userBirthdayDay = this.get("userBirthdayDay");
         const user = this.get("model");
-        var date = "";
+        let date = "";
 
         if (userBirthdayMonth !== "" && userBirthdayDay !== "") {
           date = `1904-${this.get("userBirthdayMonth")}-${this.get(
@@ -151,7 +153,7 @@ export default {
       @computed("model.date_of_birth")
       userBirthdayDay(dateOfBirth) {
         return moment(dateOfBirth, "YYYY-MM-DD").date();
-      }
+      },
     });
 
     UserCardController.reopen({
@@ -163,7 +165,7 @@ export default {
       @computed("model.date_of_birth")
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
-      }
+      },
     });
 
     UserController.reopen({
@@ -175,9 +177,9 @@ export default {
       @computed("model.date_of_birth")
       isUserBirthday(dateOfBirth) {
         return cakedayBirthday(dateOfBirth);
-      }
+      },
     });
 
-    withPluginApi("0.1", api => initializeCakeday(api, siteSettings));
-  }
+    withPluginApi("0.1", (api) => initializeCakeday(api, siteSettings));
+  },
 };

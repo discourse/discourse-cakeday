@@ -1,9 +1,8 @@
-# encoding: utf-8
-#
-# Never edit this file. It will be overwritten when translations are pulled from Transifex.
+# WARNING: Never edit this file.
+# It will be overwritten when translations are pulled from Crowdin.
 #
 # To work with us on translations, join this project:
-# https://www.transifex.com/projects/p/discourse-org/
+# https://translate.discourse.org/
 
 es:
   js:
@@ -16,7 +15,6 @@ es:
         user_title: "¡Hoy es el aniversario del día en que te uniste a nuestra comunidad!"
         title: "¡Hoy es el aniversario del día en que me uní a esta comunidad!"
     cakeday:
-      none: " "
       title: Cakeday
       today: "Hoy"
       tomorrow: "Mañana"

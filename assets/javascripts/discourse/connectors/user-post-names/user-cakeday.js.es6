@@ -1,6 +1,6 @@
 import {
   cakeday,
-  cakedayBirthday
+  cakedayBirthday,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 
 export default {
@@ -10,5 +10,5 @@ export default {
       "isUserBirthday",
       cakedayBirthday(args.model.get("date_of_birth"))
     );
-  }
+  },
 };
