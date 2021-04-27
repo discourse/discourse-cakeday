@@ -12,8 +12,8 @@ da:
         title: "I dag er det min fødselsdag!"
         label: "Fødselsdato"
       anniversary:
-        user_title: "I dag er årsdag for at du blev en del af vores fælleskab!"
-        title: "I dag er årsdag for at jeg blev en del af dette fælleskab!"
+        user_title: "I dag er årsdagen hvor du blev en del af vores fælleskab!"
+        title: "I dag er årsdagen for at jeg blev en del af dette fælleskab!"
     cakeday:
       title: Kagedag
       today: "I dag"
@@ -23,11 +23,11 @@ da:
     birthdays:
       title: "Fødselsdage"
       month:
-        title: "Fødselsdage i følgende måned"
+        title: "Fødselsdage i måneden"
         empty: "Der er ingen brugere med fødselsdag i denne måned."
       upcoming:
         title: "Fødselsdage i perioden %{start_date} - %{end_date}"
-        empty: "Der er ingen brugere med fødselsdag de næste 7 dage."
+        empty: "Der er ingen brugere, der fejrer deres fødselsdage i de næste 7 dage."
       today:
         title: "Fødselsdage den %{date}"
         empty: "Der er ingen brugere med fødselsdag i dag."
