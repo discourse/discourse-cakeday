@@ -5,3 +5,5 @@
 # https://translate.discourse.org/
 
 hu:
+  site_settings:
+    cakeday_enabled: "A tortanap emoji[s] megjelenítése a felhasználó neve mellett azon a napon, amikor csatlakoztak a Discourse-hoz."
