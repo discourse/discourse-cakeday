@@ -10,12 +10,12 @@ pl_PL:
       date_of_birth:
         user_title: "Dzisiaj są Twoje urodziny!"
         title: "Dzisiaj są moje urodziny!"
-        label: "Data urodzin"
+        label: "Data urodzenia"
       anniversary:
         user_title: "Dzisiaj jest rocznica Twojego dołączenia do społeczności!"
         title: "Dzisiaj jest rocznica mojego dołączenia do społeczności!"
     cakeday:
-      title: Święto
+      title: Urodziny
       today: "Dzisiaj"
       tomorrow: "Jutro"
       upcoming: "Nadchodzące"
