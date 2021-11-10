@@ -97,7 +97,7 @@ function initializeCakeday(api, siteSettings) {
       }
 
       return {
-        route: route,
+        route,
         label: "cakeday.title",
         className: "cakeday-link",
       };
