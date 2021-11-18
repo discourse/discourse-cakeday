@@ -1,8 +1,5 @@
 import I18n from "I18n";
-import computed, { observes } from "discourse-common/utils/decorators";
-import PreferencesController from "discourse/controllers/preferences";
-import UserCardController from "discourse/controllers/user-card";
-import UserController from "discourse/controllers/user";
+import discourseComputed, { observes } from "discourse-common/utils/decorators";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import {
   cakeday,
@@ -20,10 +17,12 @@ function initializeCakeday(api) {
   const store = api.container.lookup("service:store");
   store.addPluralization("anniversary", "anniversaries");
 
-  PreferencesController.reopen({
+  api.modifyClass("controller:preferences", {
+    pluginId: "discourse-cakeday",
+
     days: [...Array(32).keys()].splice(1),
 
-    @computed
+    @discourseComputed
     months() {
       return moment.months().map((month, index) => {
         return { name: month, value: index + 1 };
@@ -46,36 +45,40 @@ function initializeCakeday(api) {
       user.set("date_of_birth", date);
     },
 
-    @computed("model.date_of_birth")
+    @discourseComputed("model.date_of_birth")
     userBirthdayMonth(dateOfBirth) {
       return moment(dateOfBirth, "YYYY-MM-DD").month() + 1;
     },
 
-    @computed("model.date_of_birth")
+    @discourseComputed("model.date_of_birth")
     userBirthdayDay(dateOfBirth) {
       return moment(dateOfBirth, "YYYY-MM-DD").date();
     },
   });
 
-  UserCardController.reopen({
-    @computed("model.created_at")
+  api.modifyClass("controller:user-card", {
+    pluginId: "discourse-cakeday",
+
+    @discourseComputed("model.created_at")
     isCakeday(createdAt) {
       return cakeday(createdAt);
     },
 
-    @computed("model.date_of_birth")
+    @discourseComputed("model.date_of_birth")
     isUserBirthday(dateOfBirth) {
       return cakedayBirthday(dateOfBirth);
     },
   });
 
-  UserController.reopen({
-    @computed("model.created_at")
+  api.modifyClass("controller:user", {
+    pluginId: "discourse-cakeday",
+
+    @discourseComputed("model.created_at")
     isCakeday(createdAt) {
       return cakeday(createdAt);
     },
 
-    @computed("model.date_of_birth")
+    @discourseComputed("model.date_of_birth")
     isUserBirthday(dateOfBirth) {
       return cakedayBirthday(dateOfBirth);
     },
