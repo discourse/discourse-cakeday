@@ -82,7 +82,7 @@ function initializeCakeday(api) {
   });
 
   const siteSettings = api.container.lookup("site-settings:main");
-  
+
   const emojiEnabled = siteSettings.enable_emoji;
   const cakedayEnabled = siteSettings.cakeday_enabled;
   const cakedayBirthdayEnabled = siteSettings.cakeday_birthday_enabled;
@@ -175,7 +175,7 @@ function initializeCakeday(api) {
 export default {
   name: "cakeday",
 
-  initialize(container) {
+  initialize() {
     withPluginApi("0.1", (api) => initializeCakeday(api));
   },
 };
