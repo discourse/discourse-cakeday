@@ -10,10 +10,10 @@ pt_BR:
       date_of_birth:
         user_title: "Hoje é o seu aniversário!"
         title: "Hoje é o meu aniversário!"
-        label: "Data de Nascimento"
+        label: "Data de nascimento"
       anniversary:
         user_title: "Hoje é o aniversário do dia em que você se juntou à nossa comunidade!"
-        title: "Hoje é o aniversário do dia em que eu me juntei à esta comunidade!"
+        title: "Hoje é o aniversário do dia em que eu me juntei a esta comunidade!"
     cakeday:
       title: Dia de Bolo
       today: "Hoje"
@@ -23,26 +23,26 @@ pt_BR:
     birthdays:
       title: "Aniversários"
       month:
-        title: "Aniversários no Mês de"
-        empty: "Não há nenhum usuário comemorando seu aniversário neste mês."
+        title: "Aniversários no mês de"
+        empty: "Não há usuários(as) comemorando seu aniversário neste mês."
       upcoming:
         title: "Aniversários para %{start_date} - %{end_date}"
-        empty: "Não há nenhum usuário comemorando seu aniversário nos próximos 7 dias."
+        empty: "Não há usuários(as) comemorando seu aniversário nos próximos sete dias."
       today:
         title: "Aniversários para %{date}"
-        empty: "Não há nenhum usuário comemorando seu aniversário hoje."
+        empty: "Não há usuários(as) comemorando seu aniversário hoje."
       tomorrow:
-        empty: "Não há nenhum usuário comemorando seu aniversário amanhã."
+        empty: "Não há usuários(as) comemorando seu aniversário amanhã."
     anniversaries:
       title: "Aniversários"
       month:
-        title: "Aniversários no Mês de"
-        empty: "Não há nenhum usuário comemorando seu aniversário este mês."
+        title: "Aniversários no mês de"
+        empty: "Não há usuários(as) comemorando seu aniversário neste mês."
       upcoming:
         title: "Aniversários para %{start_date} - %{end_date}"
-        empty: "Não há nenhum usuário comemorando seu aniversário nos próximos 7 dias."
+        empty: "Não há usuários(as) comemorando seu aniversário nos próximos sete dias."
       today:
         title: "Aniversários para %{date}"
-        empty: "Não há nenhum usuário comemorando seu aniversário hoje."
+        empty: "Não há usuários(as) comemorando seu aniversário hoje."
       tomorrow:
-        empty: "Não há nenhum usuário comemorando seu aniversário amanhã."
+        empty: "Não há usuários(as) comemorando seu aniversário amanhã."

@@ -15,11 +15,11 @@ es:
         user_title: "¡Hoy es el aniversario del día en que te uniste a nuestra comunidad!"
         title: "¡Hoy es el aniversario del día en que me uní a esta comunidad!"
     cakeday:
-      title: Cakeday
+      title: Día de tarta
       today: "Hoy"
       tomorrow: "Mañana"
-      upcoming: "Próximos"
-      all: "Todos"
+      upcoming: "Próximamente"
+      all: "Todo"
     birthdays:
       title: "Cumpleaños"
       month:

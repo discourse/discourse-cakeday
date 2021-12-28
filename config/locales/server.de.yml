@@ -6,7 +6,7 @@
 
 de:
   site_settings:
-    cakeday_enabled: "Zeige Jahrestag-Emoji(s) neben Benutzernamen an dem Tag, an dem sie Discourse beigetreten sind."
-    cakeday_emoji: "Die Emoji(s), die neben Benutzernamen angezeigt werden an dem Tag, an dem sie Discourse beigetreten sind. Die Angabe mehrerer Emojis ist möglich: smile|cake|smile"
-    cakeday_birthday_enabled: "Zeige Geburtstag-Emoji(s) neben Benutzernamen am Geburtstag."
-    cakeday_birthday_emoji: "Die Emoji(s), die neben Benutzernamen am Geburtstag angezeigt werden. Die Angabe mehrerer Emojis ist möglich: smile|cake|smile"
+    cakeday_enabled: "Zeige Jahrestag-Emojis neben Benutzernamen an dem Tag, an dem die Benutzer Discourse beigetreten sind."
+    cakeday_emoji: "Die Emojis, die neben Benutzernamen an dem Tag angezeigt werden, an dem die Benutzer Discourse beigetreten sind. Die Angabe mehrerer Emojis ist möglich: smile|cake|smile"
+    cakeday_birthday_enabled: "Zeige Geburtstag-Emojis neben Benutzernamen am Geburtstag der Benutzer."
+    cakeday_birthday_emoji: "Die Emojis, die neben Benutzernamen am Geburtstag der Benutzer angezeigt werden. Die Angabe mehrerer Emojis ist möglich: smile|cake|smile"

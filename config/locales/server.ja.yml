@@ -5,3 +5,8 @@
 # https://translate.discourse.org/
 
 ja:
+  site_settings:
+    cakeday_enabled: "Discourse に参加した日に、ケーキデイの絵文字をユーザーの名前の横に表示します。"
+    cakeday_emoji: "Discourse に参加した日に、ユーザーの名前の横に表示される絵文字[s]。複数の絵文字を、smile|cake|smile のように指定できます。"
+    cakeday_birthday_enabled: "誕生日にユーザーの名前の横に誕生日の絵文字[s]を表示します。"
+    cakeday_birthday_emoji: "誕生日にユーザーの名前の横に表示される絵文字[s]。複数の絵文字を、smile|cake|smile のように指定できます。"
