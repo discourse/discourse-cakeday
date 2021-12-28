@@ -12,10 +12,10 @@ it:
         title: "Oggi è il mio compleanno!"
         label: "Data di nascita"
       anniversary:
-        user_title: "Oggi è l'anniversario della tua iscrizione!"
-        title: "Oggi è l'anniversario del giorno in cui mi sono unito a questa comunità!"
+        user_title: "Oggi è l'anniversario della tua iscrizione a questa community!"
+        title: "Oggi è l'anniversario della mia iscrizione a questa community!"
     cakeday:
-      title: Cakeday
+      title: Giorno di festa
       today: "Oggi"
       tomorrow: "Domani"
       upcoming: "Prossimi"
