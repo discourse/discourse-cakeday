@@ -6,7 +6,7 @@
 
 fi:
   site_settings:
-    cakeday_enabled: "Näytä vuosipäiväemoji[t] nimen vieressä liittymisen vuosipäivänä."
-    cakeday_emoji: "Emoji[t] joka näytetään nimen vieressä. Useampia näin: smile|cake|smile"
+    cakeday_enabled: "Näytä vuosipäiväemoji[t] nimen vieressä Discourseen liittymisen vuosipäivänä."
+    cakeday_emoji: "Emojit, jotka näytetään käyttäjän nimen vieressä päivänä, jolloin he liittyivät Discourseen. Useampia emojeita voi määrittää näin: smile|cake|smile"
     cakeday_birthday_enabled: "Näytä syntymäpäiväemoji[t] nimen vieressä syntymäpäivänä."
-    cakeday_birthday_emoji: "Emoji[t] joka näytetään nimen vieressä. Useampia näin: smile|cake|smile"
+    cakeday_birthday_emoji: "Emojit, jotka näytetään käyttäjän nimen vieressä heidän syntymäpäivänään. Useampia emojeita voi määrittää näin: smile|cake|smile"
