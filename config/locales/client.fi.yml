@@ -9,11 +9,11 @@ fi:
     user:
       date_of_birth:
         user_title: "Tänään on syntymäpäiväsi!"
-        title: "Tänään on hänen syntymäpäivänsä!"
+        title: "Tänään on syntymäpäiväni!"
         label: "Syntymäpäivä"
       anniversary:
-        user_title: "Tänään on liittymisesi vuosipäivä!"
-        title: "Tänään on hänen liittymisensä vuosipäivä!"
+        user_title: "Tänään on yhteisöön liittymisesi vuosipäivä!"
+        title: "Tänään on yhteisöön liittymiseni vuosipäivä!"
     cakeday:
       title: Merkkipäivät
       today: "Tänään"
@@ -26,10 +26,10 @@ fi:
         title: "Syntymäpäivät,"
         empty: "Kukaan ei vietä syntymäpäiväänsä tässä kuussa."
       upcoming:
-        title: "Tulevat syntymäpäivät"
+        title: "Syntymäpäivät %{start_date}–%{end_date}"
         empty: "Kukaan ei vietä syntymäpäiväänsä seuraavien 7 päivän aikana."
       today:
-        title: "Syntymäpäivät tänään"
+        title: "Syntymäpäivät %{date}"
         empty: "Kukaan ei vietä syntymäpäiväänsä tänään."
       tomorrow:
         empty: "Kukaan ei vietä syntymäpäiväänsä huomenna."
@@ -39,10 +39,10 @@ fi:
         title: "Vuosipäivät,"
         empty: "Kukaan ei vietä vuosipäiväänsä tässä kuussa."
       upcoming:
-        title: "Tulevat vuosipäivät"
+        title: "Vuosipäivät %{start_date}–%{end_date}"
         empty: "Kukaan ei vietä vuosipäiväänsä seuraavien 7 päivän aikana."
       today:
-        title: "Vuosipäivät tänään"
+        title: "Vuosipäivät %{date}"
         empty: "Kukaan ei vietä vuosipäiväänsä tänään."
       tomorrow:
-        empty: "Kukaan ei vietä vuosipäiväänsä huomenna"
+        empty: "Kukaan ei vietä vuosipäiväänsä huomenna."
