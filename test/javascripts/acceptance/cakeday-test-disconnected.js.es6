@@ -1,4 +1,6 @@
 import { acceptance } from "discourse/tests/helpers/qunit-helpers";
+import { test } from "qunit";
+import { click, visit } from "@ember/test-helpers";
 
 acceptance("Cakeday - disconnected", function (needs) {
   needs.settings({
@@ -209,16 +211,14 @@ acceptance("Cakeday - disconnected", function (needs) {
     });
   });
 
-  test("User is not logged in", (assert) => {
-    visit("/");
-    click("#toggle-hamburger-menu");
+  test("User is not logged in", async (assert) => {
+    await visit("/");
+    await click("#toggle-hamburger-menu");
 
-    andThen(() => {
-      assert.equal(
-        find(".cakeday-link").length,
-        0,
-        "Cakeday is not shown to anonymous users"
-      );
-    });
+    assert.equal(
+      find(".cakeday-link").length,
+      0,
+      "Cakeday is not shown to anonymous users"
+    );
   });
 });
