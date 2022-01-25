@@ -1,5 +1,7 @@
 import I18n from "I18n";
-import { acceptance } from "discourse/tests/helpers/qunit-helpers";
+import { acceptance, queryAll } from "discourse/tests/helpers/qunit-helpers";
+import { test } from "qunit";
+import { visit } from "@ember/test-helpers";
 
 acceptance("Cakeday", function (needs) {
   needs.user();
@@ -220,27 +222,23 @@ acceptance("Cakeday", function (needs) {
     });
   });
 
-  test("Anniversary emoji", (assert) => {
-    visit("/t/some-really-interesting-topic/11");
+  test("Anniversary emoji", async (assert) => {
+    await visit("/t/some-really-interesting-topic/11");
 
-    andThen(() => {
-      const $posterIcons = find(".poster-icon");
+    const posterIcons = queryAll(".poster-icon");
 
-      assert.equal($posterIcons[0].title, I18n.t("user.anniversary.title"));
-      assert.equal($posterIcons[1].title, I18n.t("user.date_of_birth.title"));
-      assert.equal(find("img.emoji", $posterIcons[0]).length, 1);
-      assert.equal(find("img.emoji", $posterIcons[1]).length, 1);
-    });
+    assert.equal(posterIcons[0].title, I18n.t("user.anniversary.title"));
+    assert.equal(posterIcons[1].title, I18n.t("user.date_of_birth.title"));
+    assert.equal(queryAll("img.emoji", posterIcons[0]).length, 1);
+    assert.equal(queryAll("img.emoji", posterIcons[1]).length, 1);
 
-    click(".trigger-user-card");
+    await click(".trigger-user-card");
 
-    andThen(() => {
-      const $emojiImages = find(".emoji-images div");
+    const emojiImages = queryAll(".emoji-images div");
 
-      assert.equal($emojiImages[1].title, I18n.t("user.anniversary.title"));
-      assert.equal($emojiImages[0].title, I18n.t("user.date_of_birth.title"));
-      assert.equal(1, $emojiImages[0].children.length);
-      assert.equal(1, $emojiImages[1].children.length);
-    });
+    assert.equal(emojiImages[1].title, I18n.t("user.anniversary.title"));
+    assert.equal(emojiImages[0].title, I18n.t("user.date_of_birth.title"));
+    assert.equal(1, emojiImages[0].children.length);
+    assert.equal(1, emojiImages[1].children.length);
   });
 });
