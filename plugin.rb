@@ -6,7 +6,7 @@
 # authors: Alan Tan
 # url: https://github.com/discourse/discourse-cakeday
 
-PLUGIN_NAME = "discourse-cakeday"
+enabled_site_setting :cakeday_enabled
 
 register_asset 'stylesheets/cakeday.scss'
 register_asset 'stylesheets/emoji-images.scss'
@@ -16,6 +16,8 @@ register_svg_icon "birthday-cake" if respond_to?(:register_svg_icon)
 
 after_initialize do
   module ::DiscourseCakeday
+    PLUGIN_NAME = "discourse-cakeday"
+
     class Engine < ::Rails::Engine
       engine_name PLUGIN_NAME
       isolate_namespace DiscourseCakeday
@@ -63,7 +65,7 @@ after_initialize do
   end
 
   add_to_serializer(:user_card, :include_date_of_birth?) do
-    scope.user.present?
+    SiteSetting.cakeday_enabled && scope.user.present?
   end
 
   require_dependency 'post_serializer'
@@ -72,7 +74,7 @@ after_initialize do
     attributes :user_created_at, :user_date_of_birth
 
     def include_user_created_at?
-      scope.user.present?
+      SiteSetting.cakeday_enabled && scope.user.present?
     end
 
     def user_created_at
@@ -80,7 +82,7 @@ after_initialize do
     end
 
     def include_user_date_of_birth?
-      scope.user.present?
+      SiteSetting.cakeday_enabled && scope.user.present?
     end
 
     def user_date_of_birth
