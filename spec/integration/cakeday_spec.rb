@@ -15,6 +15,20 @@ describe "Cakeyday" do
       sign_in(Fabricate(:user, created_at: time - 10.days))
     end
 
+    describe "when plugin disabled" do
+      before { SiteSetting.cakeday_enabled = false }
+      let(:time) { Time.zone.local(2016, 9, 30) }
+
+      it "doesn't respond" do
+        get "/cakeday/anniversaries.json"
+        expect(response.status).to eq(404)
+
+        get "/cakeday/birthdays.json"
+        expect(response.status).to eq(404)
+      end
+
+    end
+
     describe "when viewing users anniversaries" do
       let(:time) { Time.zone.local(2016, 9, 30) }
 

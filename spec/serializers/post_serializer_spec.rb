@@ -13,6 +13,15 @@ RSpec.describe PostSerializer do
       expect(serializer.as_json[:user_date_of_birth]).to eq(user.date_of_birth)
       expect(serializer.as_json[:user_created_at]).to eq(user.created_at)
     end
+
+    context 'with plugin disabled' do
+      before { SiteSetting.cakeday_enabled = false }
+
+      it "should not include the user's date of birth" do
+        expect(serializer.as_json.has_key?(:user_date_of_birth)).to eq(false)
+        expect(serializer.as_json.has_key?(:user_created_at)).to eq(false)
+      end
+    end
   end
 
   context 'when user is not logged in' do

@@ -4,6 +4,7 @@ module DiscourseCakeday
   class CakedayController < ::ApplicationController
     before_action :ensure_logged_in
     before_action :setup_params
+    requires_plugin DiscourseCakeday::PLUGIN_NAME
 
     private
 
