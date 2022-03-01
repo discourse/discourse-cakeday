@@ -12,12 +12,10 @@ RSpec.describe UserSerializer do
       expect(serializer.as_json[:date_of_birth]).to eq(user.date_of_birth)
     end
 
-    context 'with plugin disabled' do
-      before { SiteSetting.cakeday_enabled = false }
+    it "should not include the user's date of birth when cakeday_birthday_enabled is false" do
+      SiteSetting.cakeday_birthday_enabled = false
 
-      it "should not include the user's date of birth" do
-        expect(serializer.as_json[:date_of_birth]).to eq(nil)
-      end
+      expect(serializer.as_json[:date_of_birth]).to eq(nil)
     end
   end
 

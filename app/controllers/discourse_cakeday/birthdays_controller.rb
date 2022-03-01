@@ -2,6 +2,8 @@
 
 module DiscourseCakeday
   class BirthdaysController < CakedayController
+    before_action :ensure_cakeday_birthday_enabled
+
     PAGE_SIZE = 48
 
     def index
@@ -48,6 +50,12 @@ module DiscourseCakeday
           filter: params[:filter]
         )
       )
+    end
+
+    private
+
+    def ensure_cakeday_birthday_enabled
+      raise Discourse::NotFound if !SiteSetting.cakeday_birthday_enabled
     end
   end
 end

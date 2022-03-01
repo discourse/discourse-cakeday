@@ -6,8 +6,6 @@
 # authors: Alan Tan
 # url: https://github.com/discourse/discourse-cakeday
 
-enabled_site_setting :cakeday_enabled
-
 register_asset 'stylesheets/cakeday.scss'
 register_asset 'stylesheets/emoji-images.scss'
 register_asset 'stylesheets/mobile/user-date-of-birth-input.scss'
@@ -65,7 +63,7 @@ after_initialize do
   end
 
   add_to_serializer(:user_card, :include_date_of_birth?) do
-    SiteSetting.cakeday_enabled && scope.user.present?
+    SiteSetting.cakeday_birthday_enabled && scope.user.present?
   end
 
   require_dependency 'post_serializer'
@@ -82,7 +80,7 @@ after_initialize do
     end
 
     def include_user_date_of_birth?
-      SiteSetting.cakeday_enabled && scope.user.present?
+      SiteSetting.cakeday_birthday_enabled && scope.user.present?
     end
 
     def user_date_of_birth
