@@ -11,27 +11,27 @@ describe "Cakeyday" do
   end
 
   describe 'when logged in' do
+    let(:time) { Time.zone.local(2016, 9, 30) }
+
     before do
       sign_in(Fabricate(:user, created_at: time - 10.days))
     end
 
-    describe "when plugin disabled" do
-      before { SiteSetting.cakeday_enabled = false }
-      let(:time) { Time.zone.local(2016, 9, 30) }
+    it "should return 404 when viewing users anniversaries if cakeday_enabled is false" do
+      SiteSetting.cakeday_enabled = false
 
-      it "doesn't respond" do
-        get "/cakeday/anniversaries.json"
-        expect(response.status).to eq(404)
+      get "/cakeday/anniversaries.json"
+      expect(response.status).to eq(404)
+    end
 
-        get "/cakeday/birthdays.json"
-        expect(response.status).to eq(404)
-      end
+    it "should return 404 when viewing users birthdays if cakeday_birthday_enabled is false" do
+      SiteSetting.cakeday_birthday_enabled = false
 
+      get "/cakeday/birthdays.json"
+      expect(response.status).to eq(404)
     end
 
     describe "when viewing users anniversaries" do
-      let(:time) { Time.zone.local(2016, 9, 30) }
-
       it "should return the right payload" do
         freeze_time(time) do
           created_at = time - 1.year

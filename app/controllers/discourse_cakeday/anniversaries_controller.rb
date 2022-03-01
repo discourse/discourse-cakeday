@@ -2,6 +2,8 @@
 
 module DiscourseCakeday
   class AnniversariesController < CakedayController
+    before_action :ensure_cakeday_enabled
+
     PAGE_SIZE = 48
 
     def index
@@ -57,6 +59,12 @@ module DiscourseCakeday
           timezone_offset: params[:timezone_offset]
         )
       )
+    end
+
+    private
+
+    def ensure_cakeday_enabled
+      raise Discourse::NotFound if !SiteSetting.cakeday_enabled
     end
   end
 end
