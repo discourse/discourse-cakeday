@@ -5,6 +5,7 @@
 # version: 0.2
 # authors: Alan Tan
 # url: https://github.com/discourse/discourse-cakeday
+# transpile_js: true
 
 register_asset 'stylesheets/cakeday.scss'
 register_asset 'stylesheets/emoji-images.scss'
