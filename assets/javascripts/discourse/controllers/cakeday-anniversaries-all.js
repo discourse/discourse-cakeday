@@ -1,6 +1,7 @@
+import Controller from "@ember/controller";
 import computed from "discourse-common/utils/decorators";
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   queryParams: ["month"],
   month: moment().month() + 1,
 

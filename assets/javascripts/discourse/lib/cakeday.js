@@ -1,3 +1,5 @@
+import { isEmpty } from "@ember/utils";
+
 export function isSameDay(date, opts) {
   let formatString = "YYYY";
   const current = moment();
@@ -15,14 +17,14 @@ export function isSameDay(date, opts) {
 }
 
 export function cakeday(createdAt) {
-  if (Ember.isEmpty(createdAt)) {
+  if (isEmpty(createdAt)) {
     return false;
   }
   return isSameDay(createdAt, { anniversary: true });
 }
 
 export function cakedayBirthday(dateOfBirth) {
-  if (Ember.isEmpty(dateOfBirth)) {
+  if (isEmpty(dateOfBirth)) {
     return false;
   }
   return isSameDay(dateOfBirth);
