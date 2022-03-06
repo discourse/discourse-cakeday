@@ -7,6 +7,7 @@ import {
   isSameDay,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 import { registerUnbound } from "discourse-common/lib/helpers";
+import { isEmpty } from "@ember/utils";
 
 function initializeCakeday(api) {
   const currentUser = api.getCurrentUser();
@@ -96,10 +97,7 @@ function initializeCakeday(api) {
 
     api.addPosterIcon((cfs, attrs) => {
       const createdAt = attrs.user_created_at;
-      if (
-        !Ember.isEmpty(createdAt) &&
-        isSameDay(createdAt, { anniversary: true })
-      ) {
+      if (!isEmpty(createdAt) && isSameDay(createdAt, { anniversary: true })) {
         let result = {};
 
         if (emojiEnabled) {
@@ -124,7 +122,7 @@ function initializeCakeday(api) {
   if (cakedayBirthdayEnabled) {
     api.addPosterIcon((cfs, attrs) => {
       const dob = attrs.user_date_of_birth;
-      if (!Ember.isEmpty(dob) && isSameDay(dob)) {
+      if (!isEmpty(dob) && isSameDay(dob)) {
         let result = {};
 
         if (emojiEnabled) {

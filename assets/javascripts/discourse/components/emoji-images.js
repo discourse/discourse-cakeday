@@ -1,8 +1,9 @@
+import Component from "@ember/component";
 import computed from "discourse-common/utils/decorators";
 import { emojiUnescape } from "discourse/lib/text";
 import I18n from "I18n";
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ["emoji-images"],
 
   @computed("list")
