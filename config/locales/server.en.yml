@@ -1,6 +1,8 @@
 en:
   site_settings:
     cakeday_enabled: "Show cakeday emoji[s] beside the user's name on the date they joined Discourse."
+    cakeday_birthday_show_year: "Show cakeday year selector, to allow users to input their age."
+    cakeday_birthday_formatdmy: "Show cakeday selectors as DD-MM-YYYY, instead of MM-DD-YYYY"
     cakeday_emoji: "The emoji[s] that will be shown beside the user's name on the date that they joined Discourse. Multiple emojis can be specified by: smile|cake|smile"
     cakeday_birthday_enabled: "Show birthday emoji[s] beside the user's name on their birthday."
     cakeday_birthday_emoji: "The emoji[s] that will be shown beside the user's name on their birthday. Multiple emojis can be specified by: smile|cake|smile"

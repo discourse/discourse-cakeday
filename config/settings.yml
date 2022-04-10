@@ -11,3 +11,9 @@ plugins:
   cakeday_birthday_emoji:
     default: 'birthday'
     client: true
+  cakeday_birthday_show_year:
+    default: false
+    client: true
+  cakeday_birthday_formatdmy:
+    default: false
+    client: true

@@ -2,31 +2,76 @@
   <div class="control-group">
     <label class="control-label">{{i18n "user.date_of_birth.label"}}</label>
     <div class="controls">
-      {{combo-box
-        content=months
-        value=userBirthdayMonth
-        valueAttribute="value"
-        valueProperty="value"
-        none="cakeday.none"
-        options=(hash
-          clearable=true
-          autoInsertNoneItem=false
-        )
-        onChange=(action (mut userBirthdayMonth))
-      }}
-
-      {{combo-box
-        content=days
-        value=userBirthdayDay
-        valueProperty=null
-        nameProperty=null
-        none="cakeday.none"
-        options=(hash
-          clearable=true
-          autoInsertNoneItem=false
-        )
-        onChange=(action (mut userBirthdayDay))
-      }}
+      {{#if siteSettings.cakeday_birthday_formatdmy}}
+        {{combo-box
+          content=days
+          value=userBirthdayDay
+          valueProperty=null
+          nameProperty=null
+          none="cakeday.dd"
+          options=(hash
+            clearable=true
+            autoInsertNoneItem=false
+          )
+          onChange=(action (mut userBirthdayDay))
+        }}
+        {{#if siteSettings.cakeday_birthday_show_year}}
+          -
+        {{/if}}
+        {{combo-box
+          content=months
+          value=userBirthdayMonth
+          valueAttribute="value"
+          valueProperty="value"
+          none="cakeday.mm"
+          options=(hash
+            clearable=true
+            autoInsertNoneItem=false
+          )
+          onChange=(action (mut userBirthdayMonth))
+        }}
+      {{else}}
+        {{combo-box
+          content=months
+          value=userBirthdayMonth
+          valueAttribute="value"
+          valueProperty="value"
+          none="cakeday.mm"
+          options=(hash
+            clearable=true
+            autoInsertNoneItem=false
+          )
+          onChange=(action (mut userBirthdayMonth))
+        }}
+        {{#if siteSettings.cakeday_birthday_show_year}}
+          -
+        {{/if}}
+        {{combo-box
+          content=days
+          value=userBirthdayDay
+          valueProperty=null
+          nameProperty=null
+          none="cakeday.dd"
+          options=(hash
+            clearable=true
+            autoInsertNoneItem=false
+          )
+          onChange=(action (mut userBirthdayDay))
+        }}
+      {{/if}}
+      {{#if siteSettings.cakeday_birthday_show_year}}
+        -
+        {{input
+          type="number"
+          class="year"
+          content=year
+          value=userBirthdayYear
+          min=1905
+          max=2904
+          placeholder=(i18n "cakeday.yyyy")
+          onChange=(action (mut userBirthdayYear))
+        }}
+      {{/if}}
     </div>
   </div>
 {{/if}}

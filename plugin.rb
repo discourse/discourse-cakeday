@@ -9,6 +9,7 @@
 
 register_asset 'stylesheets/cakeday.scss'
 register_asset 'stylesheets/emoji-images.scss'
+register_asset 'stylesheets/user-date-of-birth-input.scss'
 register_asset 'stylesheets/mobile/user-date-of-birth-input.scss'
 
 register_svg_icon "birthday-cake" if respond_to?(:register_svg_icon)
@@ -60,7 +61,15 @@ after_initialize do
   end
 
   add_to_serializer(:user_card, :date_of_birth, false) do
-    object.date_of_birth
+    if object.date_of_birth != nil
+      if (scope.is_staff? || scope.is_admin?)
+        object.date_of_birth
+      else
+        Date.new(1904, object.date_of_birth.month, object.date_of_birth.day)
+      end
+    else
+      nil
+    end
   end
 
   add_to_serializer(:user_card, :include_date_of_birth?) do

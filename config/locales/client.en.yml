@@ -10,6 +10,9 @@ en:
         title: "Today is the anniversary of the day I joined this community!"
     cakeday:
       none: " "
+      dd: "DD"
+      mm: "MM"
+      yyyy: "YYYY"
       title: Cakeday
       today: "Today"
       tomorrow: "Tomorrow"

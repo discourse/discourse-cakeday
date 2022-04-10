@@ -11,10 +11,14 @@ da:
         user_title: "I dag er det din fødselsdag!"
         title: "I dag er det min fødselsdag!"
         label: "Fødselsdato"
+        show_age: "Vis alder til brugere"
       anniversary:
         user_title: "I dag er årsdagen hvor du blev en del af vores fælleskab!"
         title: "I dag er årsdagen for at jeg blev en del af dette fælleskab!"
     cakeday:
+      dd: "DD"
+      mm: "MM"
+      yyyy: "ÅÅÅÅ"
       title: Kagedag
       today: "I dag"
       tomorrow: "I morgen"

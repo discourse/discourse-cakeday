@@ -30,20 +30,31 @@ function initializeCakeday(api) {
       });
     },
 
-    @observes("userBirthdayMonth", "userBirthdayDay")
+    @observes("userBirthdayYear", "userBirthdayMonth", "userBirthdayDay")
     _setUserDateOfBirth() {
+      const userBirthdayYear = this.get("userBirthdayYear");
       const userBirthdayMonth = this.get("userBirthdayMonth");
       const userBirthdayDay = this.get("userBirthdayDay");
       const user = this.get("model");
       let date = "";
 
-      if (userBirthdayMonth !== "" && userBirthdayDay !== "") {
+      if (userBirthdayYear !== "" && userBirthdayMonth !== "" && userBirthdayDay !== "") {
+        date = `${this.get("userBirthdayYear")}-${this.get("userBirthdayMonth")}-${this.get(
+          "userBirthdayDay"
+        )}`;
+      }
+      else if (userBirthdayMonth !== "" && userBirthdayDay !== "") {
         date = `1904-${this.get("userBirthdayMonth")}-${this.get(
           "userBirthdayDay"
         )}`;
       }
 
       user.set("date_of_birth", date);
+    },
+
+    @discourseComputed("model.date_of_birth")
+    userBirthdayYear(dateOfBirth) {
+      return moment(dateOfBirth, "YYYY-MM-DD").year() + 1;
     },
 
     @discourseComputed("model.date_of_birth")
