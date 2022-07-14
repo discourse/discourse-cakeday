@@ -1,10 +1,10 @@
 {
-  "name": "discourse",
-  "version": "1.0.0",
-  "repository": "git@github.com:discourse/discourse-cakeday.git",
+  "name": "discourse-cakeday",
+  "version": "0.2.0",
+  "repository": "https://github.com/discourse/discourse-cakeday",
   "author": "Discourse",
   "license": "MIT",
   "devDependencies": {
-    "eslint-config-discourse": "^2.0.0"
+    "eslint-config-discourse": "^3.2.0"
   }
 }
