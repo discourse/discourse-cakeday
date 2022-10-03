@@ -5,7 +5,7 @@ require 'rails_helper'
 describe Jobs::MigrateDateOfBirthToUsersTable do
   let(:user) { Fabricate(:user) }
 
-  context 'YYYY-MM-DD' do
+  context 'with YYYY-MM-DD' do
     it 'should migrate successfully' do
       user.custom_fields['date_of_birth'] = '1904-05-02'
       user.save!
@@ -16,7 +16,7 @@ describe Jobs::MigrateDateOfBirthToUsersTable do
     end
   end
 
-  context 'DD-MM-YYYY' do
+  context 'with DD-MM-YYYY' do
     it 'should migrate successfully' do
       user.custom_fields['date_of_birth'] = '02-05-1904'
       user.save!
@@ -27,7 +27,7 @@ describe Jobs::MigrateDateOfBirthToUsersTable do
     end
   end
 
-  context 'DD/MM/YYYY' do
+  context 'with DD/MM/YYYY' do
     it 'should migrate successfully' do
       user.custom_fields['date_of_birth'] = '02/05/1904'
       user.save!
