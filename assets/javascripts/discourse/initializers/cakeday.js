@@ -157,10 +157,9 @@ function initializeCakeday(api) {
 
     if (cakedayEnabled) {
       api.decorateWidget("hamburger-menu:generalLinks", () => {
-        let route = "cakeday.anniversaries.today";
 
         return {
-          route,
+          "cakeday.anniversaries.today",
           label: "anniversaries.title",
           className: "cakeday-link",
         };
@@ -169,10 +168,9 @@ function initializeCakeday(api) {
 
     if (cakedayBirthdayEnabled) {
       api.decorateWidget("hamburger-menu:generalLinks", () => {
-        let route = "cakeday.birthdays.today";
 
         return {
-          route,
+          "cakeday.birthdays.today",
           label: "birthdays.title",
           className: "cakeday-link",
         };
