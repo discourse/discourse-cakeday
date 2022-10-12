@@ -155,21 +155,29 @@ function initializeCakeday(api) {
       }
     });
 
-    api.decorateWidget("hamburger-menu:generalLinks", () => {
-      let route;
+    if (cakedayEnabled) {
+      api.decorateWidget("hamburger-menu:generalLinks", () => {
+        let route = "cakeday.anniversaries.today";
 
-      if (cakedayEnabled) {
-        route = "cakeday.anniversaries.today";
-      } else if (cakedayBirthdayEnabled) {
-        route = "cakeday.birthdays.today";
-      }
+        return {
+          route,
+          label: "anniversaries.title",
+          className: "cakeday-link",
+        };
+      });
+    }
 
-      return {
-        route,
-        label: "cakeday.title",
-        className: "cakeday-link",
-      };
-    });
+    if (cakedayBirthdayEnabled) {
+      api.decorateWidget("hamburger-menu:generalLinks", () => {
+        let route = "cakeday.birthdays.today";
+
+        return {
+          route,
+          label: "birthdays.title",
+          className: "cakeday-link",
+        };
+      });
+    }
   }
 }
 
