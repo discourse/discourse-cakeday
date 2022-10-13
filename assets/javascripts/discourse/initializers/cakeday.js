@@ -161,7 +161,7 @@ function initializeCakeday(api) {
           name: "anniversaries",
           route: "cakeday.anniversaries.today",
           title: I18n.t("anniversaries.title"),
-          text: I18n.t("anniversaries.title")
+          text: I18n.t("anniversaries.title"),
         });
       }
 
@@ -170,7 +170,7 @@ function initializeCakeday(api) {
           name: "birthdays",
           route: "cakeday.birthdays.today",
           title: I18n.t("birthdays.title"),
-          text: I18n.t("birthdays.title")
+          text: I18n.t("birthdays.title"),
         });
       }
     } else {
