@@ -155,21 +155,39 @@ function initializeCakeday(api) {
       }
     });
 
-    if (cakedayEnabled) {
-      api.addCommunitySectionLink({
-        name: "anniversaries",
-        route: "cakeday.anniversaries.today",
-        title: I18n.t("anniversaries.title"),
-        text: I18n.t("anniversaries.title")
-      });
-    }
+    if (siteSettings.enable_experimental_sidebar_hamburger) {
+      if (cakedayEnabled) {
+        api.addCommunitySectionLink({
+          name: "anniversaries",
+          route: "cakeday.anniversaries.today",
+          title: I18n.t("anniversaries.title"),
+          text: I18n.t("anniversaries.title")
+        });
+      }
 
-    if (cakedayBirthdayEnabled) {
-      api.addCommunitySectionLink({
-        name: "birthdays",
-        route: "cakeday.birthdays.today",
-        title: I18n.t("birthdays.title"),
-        text: I18n.t("birthdays.title")
+      if (cakedayBirthdayEnabled) {
+        api.addCommunitySectionLink({
+          name: "birthdays",
+          route: "cakeday.birthdays.today",
+          title: I18n.t("birthdays.title"),
+          text: I18n.t("birthdays.title")
+        });
+      }
+    } else {
+      api.decorateWidget("hamburger-menu:generalLinks", () => {
+        let route;
+
+        if (cakedayEnabled) {
+          route = "cakeday.anniversaries.today";
+        } else if (cakedayBirthdayEnabled) {
+          route = "cakeday.birthdays.today";
+        }
+
+        return {
+          route,
+          label: "cakeday.title",
+          className: "cakeday-link",
+        };
       });
     }
   }
