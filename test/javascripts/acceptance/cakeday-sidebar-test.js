@@ -15,6 +15,7 @@ acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
 
   needs.settings({
     cakeday_enabled: false,
+    cakeday_birthday_enabled: false,
     enable_experimental_sidebar_hamburger: true,
     enable_sidebar: true,
   });
