@@ -8,17 +8,17 @@ nl:
   js:
     user:
       date_of_birth:
-        user_title: "Vandaag is uw verjaardag!"
+        user_title: "Vandaag is je verjaardag!"
         title: "Vandaag is mijn verjaardag!"
         label: "Geboortedatum"
       anniversary:
-        user_title: "Vandaag is het jubileum van de dag dat u bij onze gemeenschap bent gekomen!"
-        title: "Vandaag is het jubileum van de dag dat ik bij deze gemeenschap ben gekomen!"
+        user_title: "Vandaag is het jubileum van de dag dat je bij onze community bent gekomen!"
+        title: "Vandaag is het jubileum van de dag dat ik bij deze community ben gekomen!"
     cakeday:
       title: Taartdag
       today: "Vandaag"
       tomorrow: "Morgen"
-      upcoming: "Aanstaand"
+      upcoming: "Binnenkort"
       all: "Alle"
     birthdays:
       title: "Verjaardagen"
@@ -26,10 +26,10 @@ nl:
         title: "Verjaardagen in de maand"
         empty: "Er zijn geen gebruikers die deze maand hun verjaardag vieren."
       upcoming:
-        title: "Verjaardagen voor %{start_date} - %{end_date}"
-        empty: "Er zijn geen gebruikers die binnen 7 dagen hun verjaardag vieren."
+        title: "Verjaardagen van %{start_date} tot %{end_date}"
+        empty: "Er zijn geen gebruikers die de komende 7 dagen hun verjaardag vieren."
       today:
-        title: "Verjaardagen voor %{date}"
+        title: "Verjaardagen op %{date}"
         empty: "Er zijn geen gebruikers die vandaag hun verjaardag vieren."
       tomorrow:
         empty: "Er zijn geen gebruikers die morgen hun verjaardag vieren."
@@ -39,10 +39,10 @@ nl:
         title: "Jubilea in de maand"
         empty: "Er zijn geen gebruikers die deze maand hun jubileum vieren."
       upcoming:
-        title: "Jubilea voor %{start_date} - %{end_date}"
-        empty: "Er zijn geen gebruikers die binnen 7 dagen hun jubileum vieren."
+        title: "Jubilea van %{start_date} tot %{end_date}"
+        empty: "Er zijn geen gebruikers die de komende 7 dagen hun jubileum vieren."
       today:
-        title: "Jubilea voor %{date}"
+        title: "Jubilea op %{date}"
         empty: "Er zijn geen gebruikers die vandaag hun jubileum vieren."
       tomorrow:
         empty: "Er zijn geen gebruikers die morgen hun jubileum vieren."
