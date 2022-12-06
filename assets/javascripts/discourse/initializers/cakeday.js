@@ -155,7 +155,7 @@ function initializeCakeday(api) {
       }
     });
 
-    if (siteSettings.enable_experimental_sidebar_hamburger) {
+    if (siteSettings.navigation_menu !== "legacy") {
       if (cakedayEnabled) {
         api.addCommunitySectionLink({
           name: "anniversaries",

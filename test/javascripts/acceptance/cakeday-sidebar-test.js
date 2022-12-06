@@ -16,8 +16,7 @@ acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
   needs.settings({
     cakeday_enabled: false,
     cakeday_birthday_enabled: false,
-    enable_experimental_sidebar_hamburger: true,
-    enable_sidebar: true,
+    navigation_menu: "sidebar",
   });
 
   test("anniversaries sidebar link is hidden", async function (assert) {
@@ -53,8 +52,7 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
   needs.settings({
     cakeday_enabled: true,
     cakeday_birthday_enabled: true,
-    enable_experimental_sidebar_hamburger: true,
-    enable_sidebar: true,
+    navigation_menu: "sidebar",
   });
 
   needs.pretender((server, helper) => {
