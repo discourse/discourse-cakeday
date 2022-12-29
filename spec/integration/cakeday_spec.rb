@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 describe "Cakeyday" do
-  describe 'when not logged in' do
-    it 'should return the right response' do
+  describe "when not logged in" do
+    it "should return the right response" do
       get "/cakeday/anniversaries.json", params: { page: 0, month: 5 }
       expect(response.status).to eq(403)
     end
   end
 
-  describe 'when logged in' do
+  describe "when logged in" do
     let(:time) { Time.zone.local(2016, 9, 30) }
 
-    before do
-      sign_in(Fabricate(:user, created_at: time - 10.days))
-    end
+    before { sign_in(Fabricate(:user, created_at: time - 10.days)) }
 
     it "should return 404 when viewing users anniversaries if cakeday_enabled is false" do
       SiteSetting.cakeday_enabled = false
@@ -50,52 +48,42 @@ describe "Cakeyday" do
 
           body = JSON.parse(response.body)
 
-          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-            [user6.id, user.id, user2.id]
-          )
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq([user6.id, user.id, user2.id])
 
-          get "/cakeday/anniversaries.json", params: {
-            page: 0,
-            month: time.month,
-            filter: 'today'
-          }
+          get "/cakeday/anniversaries.json", params: { page: 0, month: time.month, filter: "today" }
 
           body = JSON.parse(response.body)
 
-          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-            [user2.id, user6.id]
-          )
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq([user2.id, user6.id])
 
-          get "/cakeday/anniversaries.json", params: {
-            page: 0,
-            month: time.month,
-            filter: 'tomorrow'
-          }
-
-          body = JSON.parse(response.body)
-
-          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-            [user3.id]
-          )
-
-          get "/cakeday/anniversaries.json", params: {
-            page: 0,
-            month: time.month,
-            filter: 'upcoming'
-          }
+          get "/cakeday/anniversaries.json",
+              params: {
+                page: 0,
+                month: time.month,
+                filter: "tomorrow",
+              }
 
           body = JSON.parse(response.body)
 
-          expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-            [user4.id]
-          )
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq([user3.id])
+
+          get "/cakeday/anniversaries.json",
+              params: {
+                page: 0,
+                month: time.month,
+                filter: "upcoming",
+              }
+
+          body = JSON.parse(response.body)
+
+          expect(body["anniversaries"].map { |u| u["id"] }).to eq([user4.id])
         end
       end
 
-      context 'when a timezone offset is given' do
+      context "when a timezone offset is given" do
         let(:time) { Time.zone.local(2016, 10, 1) }
 
-        it 'should return the right payload' do
+        it "should return the right payload" do
           freeze_time(time) do
             created_at = time - 1.year
 
@@ -110,61 +98,52 @@ describe "Cakeyday" do
             user5 = Fabricate(:user, created_at: created_at + 2.hours + 8.days)
             _user6 = Fabricate(:user, created_at: created_at + 1.year)
 
-            get "/cakeday/anniversaries.json", params: {
-              page: 0,
-              month: 9,
-              timezone_offset: "120"
-            }
+            get "/cakeday/anniversaries.json", params: { page: 0, month: 9, timezone_offset: "120" }
 
             body = JSON.parse(response.body)
 
-            expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-              [user2.id, user.id, user3.id]
-            )
+            expect(body["anniversaries"].map { |u| u["id"] }).to eq([user2.id, user.id, user3.id])
 
-            get "/cakeday/anniversaries.json", params: {
-              page: 0,
-              month: 9,
-              filter: 'today',
-              timezone_offset: "120"
-            }
-
-            body = JSON.parse(response.body)
-
-            expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-              [user.id, user2.id, user3.id]
-            )
-
-            get "/cakeday/anniversaries.json", params: {
-              page: 0,
-              month: 10,
-              filter: 'tomorrow',
-              timezone_offset: "120"
-            }
+            get "/cakeday/anniversaries.json",
+                params: {
+                  page: 0,
+                  month: 9,
+                  filter: "today",
+                  timezone_offset: "120",
+                }
 
             body = JSON.parse(response.body)
 
-            expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-              [user4.id]
-            )
+            expect(body["anniversaries"].map { |u| u["id"] }).to eq([user.id, user2.id, user3.id])
 
-            get "/cakeday/anniversaries.json", params: {
-              page: 0,
-              month: 10,
-              filter: 'upcoming',
-              timezone_offset: "120"
-            }
+            get "/cakeday/anniversaries.json",
+                params: {
+                  page: 0,
+                  month: 10,
+                  filter: "tomorrow",
+                  timezone_offset: "120",
+                }
 
             body = JSON.parse(response.body)
 
-            expect(body["anniversaries"].map { |u| u["id"] }).to eq(
-              [user5.id]
-            )
+            expect(body["anniversaries"].map { |u| u["id"] }).to eq([user4.id])
+
+            get "/cakeday/anniversaries.json",
+                params: {
+                  page: 0,
+                  month: 10,
+                  filter: "upcoming",
+                  timezone_offset: "120",
+                }
+
+            body = JSON.parse(response.body)
+
+            expect(body["anniversaries"].map { |u| u["id"] }).to eq([user5.id])
           end
         end
       end
 
-      it 'should respect 30 minutes offset' do
+      it "should respect 30 minutes offset" do
         freeze_time(time) do
           created_at = time - 1.year
 
@@ -173,28 +152,29 @@ describe "Cakeyday" do
           user3 = Fabricate(:user, created_at: created_at + 18.hours + 40.minutes)
           user4 = Fabricate(:user, created_at: created_at + 1.day + 20.minutes)
 
-          get "/cakeday/anniversaries.json", params: {
-            page: 0,
-            month: 9,
-            filter: 'today',
-            timezone_offset: "-330" #UTC+05:30
-          }
+          get "/cakeday/anniversaries.json",
+              params: {
+                page: 0,
+                month: 9,
+                filter: "today",
+                timezone_offset: "-330", #UTC+05:30
+              }
 
           body = JSON.parse(response.body)
           expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly(user.id, user2.id)
 
-          get "/cakeday/anniversaries.json", params: {
-            page: 0,
-            month: 10,
-            filter: 'tomorrow',
-            timezone_offset: "-330"
-          }
+          get "/cakeday/anniversaries.json",
+              params: {
+                page: 0,
+                month: 10,
+                filter: "tomorrow",
+                timezone_offset: "-330",
+              }
 
           body = JSON.parse(response.body)
           expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly(user3.id, user4.id)
         end
       end
-
     end
 
     describe "when viewing users birthdays" do
@@ -208,112 +188,88 @@ describe "Cakeyday" do
           user4 = Fabricate(:user, date_of_birth: "1904-10-1")
           user5 = Fabricate(:user, date_of_birth: "1904-10-2")
 
-          get "/cakeday/birthdays.json",  params: { page: 0, month: time.month }
+          get "/cakeday/birthdays.json", params: { page: 0, month: time.month }
 
           body = JSON.parse(response.body)
 
-          expect(body["birthdays"].map { |u| u["id"] }).to eq(
-            [user.id, user2.id, user3.id]
-          )
+          expect(body["birthdays"].map { |u| u["id"] }).to eq([user.id, user2.id, user3.id])
 
-          get "/cakeday/birthdays.json", params: {
-            page: 0,
-            month: time.month,
-            filter: 'today'
-          }
+          get "/cakeday/birthdays.json", params: { page: 0, month: time.month, filter: "today" }
 
           body = JSON.parse(response.body)
 
-          expect(body["birthdays"].map { |u| u["id"] }).to eq(
-            [user3.id]
-          )
+          expect(body["birthdays"].map { |u| u["id"] }).to eq([user3.id])
 
-          get "/cakeday/birthdays.json", params: {
-            page: 0,
-            month: time.month,
-            filter: 'tomorrow'
-          }
+          get "/cakeday/birthdays.json", params: { page: 0, month: time.month, filter: "tomorrow" }
 
           body = JSON.parse(response.body)
 
-          expect(body["birthdays"].map { |u| u["id"] }).to eq(
-            [user4.id]
-          )
+          expect(body["birthdays"].map { |u| u["id"] }).to eq([user4.id])
 
-          get "/cakeday/birthdays.json", params: {
-            page: 0,
-            month: time.month,
-            filter: 'upcoming'
-          }
+          get "/cakeday/birthdays.json", params: { page: 0, month: time.month, filter: "upcoming" }
 
           body = JSON.parse(response.body)
 
-          expect(body["birthdays"].map { |u| u["id"] }).to eq(
-            [user5.id]
-          )
+          expect(body["birthdays"].map { |u| u["id"] }).to eq([user5.id])
         end
       end
 
-      context 'when a timezone offset is given' do
+      context "when a timezone offset is given" do
         let(:time) { Time.zone.local(2016, 9, 30, 5, 30) }
 
-        it 'should return the right payload' do
+        it "should return the right payload" do
           freeze_time(time) do
             user = Fabricate(:user, date_of_birth: "1904-9-28")
             user2 = Fabricate(:user, date_of_birth: "1904-9-29")
             user3 = Fabricate(:user, date_of_birth: "1904-9-30")
             user4 = Fabricate(:user, date_of_birth: "1904-10-1")
 
-            get "/cakeday/birthdays.json", params: {
-              page: 0,
-              month: time.month,
-              timezone_offset: "540"
-            }
+            get "/cakeday/birthdays.json",
+                params: {
+                  page: 0,
+                  month: time.month,
+                  timezone_offset: "540",
+                }
 
             body = JSON.parse(response.body)
 
-            expect(body["birthdays"].map { |u| u["id"] }).to eq(
-              [user.id, user2.id, user3.id]
-            )
+            expect(body["birthdays"].map { |u| u["id"] }).to eq([user.id, user2.id, user3.id])
 
-            get "/cakeday/birthdays.json", params: {
-              page: 0,
-              month: time.month,
-              timezone_offset: "540",
-              filter: 'today'
-            }
-
-            body = JSON.parse(response.body)
-
-            expect(body["birthdays"].map { |u| u["id"] }).to eq(
-              [user2.id]
-            )
-
-            get "/cakeday/birthdays.json", params: {
-              page: 0,
-              month: time.month,
-              timezone_offset: "540",
-              filter: 'tomorrow'
-            }
+            get "/cakeday/birthdays.json",
+                params: {
+                  page: 0,
+                  month: time.month,
+                  timezone_offset: "540",
+                  filter: "today",
+                }
 
             body = JSON.parse(response.body)
 
-            expect(body["birthdays"].map { |u| u["id"] }).to eq(
-              [user3.id]
-            )
+            expect(body["birthdays"].map { |u| u["id"] }).to eq([user2.id])
 
-            get "/cakeday/birthdays.json", params: {
-              page: 0,
-              month: time.month,
-              timezone_offset: "540",
-              filter: 'upcoming'
-            }
+            get "/cakeday/birthdays.json",
+                params: {
+                  page: 0,
+                  month: time.month,
+                  timezone_offset: "540",
+                  filter: "tomorrow",
+                }
 
             body = JSON.parse(response.body)
 
-            expect(body["birthdays"].map { |u| u["id"] }).to eq(
-              [user4.id]
-            )
+            expect(body["birthdays"].map { |u| u["id"] }).to eq([user3.id])
+
+            get "/cakeday/birthdays.json",
+                params: {
+                  page: 0,
+                  month: time.month,
+                  timezone_offset: "540",
+                  filter: "upcoming",
+                }
+
+            body = JSON.parse(response.body)
+
+            expect(body["birthdays"].map { |u| u["id"] }).to eq([user4.id])
           end
         end
       end

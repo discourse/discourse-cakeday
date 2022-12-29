@@ -7,9 +7,9 @@
 # url: https://github.com/discourse/discourse-cakeday
 # transpile_js: true
 
-register_asset 'stylesheets/cakeday.scss'
-register_asset 'stylesheets/emoji-images.scss'
-register_asset 'stylesheets/mobile/user-date-of-birth-input.scss'
+register_asset "stylesheets/cakeday.scss"
+register_asset "stylesheets/emoji-images.scss"
+register_asset "stylesheets/mobile/user-date-of-birth-input.scss"
 
 register_svg_icon "birthday-cake" if respond_to?(:register_svg_icon)
 
@@ -30,44 +30,47 @@ after_initialize do
     get "anniversaries/(:filter)" => "anniversaries#index"
   end
 
-  Discourse::Application.routes.append do
-    mount ::DiscourseCakeday::Engine, at: "/cakeday"
-  end
+  Discourse::Application.routes.append { mount ::DiscourseCakeday::Engine, at: "/cakeday" }
 
   load File.expand_path("../app/jobs/onceoff/fix_invalid_date_of_birth.rb", __FILE__)
   load File.expand_path("../app/jobs/onceoff/migrate_date_of_birth_to_users_table.rb", __FILE__)
-  load File.expand_path("../app/serializers/discourse_cakeday/anniversary_user_serializer.rb", __FILE__)
-  load File.expand_path("../app/serializers/discourse_cakeday/birthday_user_serializer.rb", __FILE__)
+  load File.expand_path(
+         "../app/serializers/discourse_cakeday/anniversary_user_serializer.rb",
+         __FILE__,
+       )
+  load File.expand_path(
+         "../app/serializers/discourse_cakeday/birthday_user_serializer.rb",
+         __FILE__,
+       )
   load File.expand_path("../app/controllers/discourse_cakeday/cakeday_controller.rb", __FILE__)
-  load File.expand_path("../app/controllers/discourse_cakeday/anniversaries_controller.rb", __FILE__)
+  load File.expand_path(
+         "../app/controllers/discourse_cakeday/anniversaries_controller.rb",
+         __FILE__,
+       )
   load File.expand_path("../app/controllers/discourse_cakeday/birthdays_controller.rb", __FILE__)
 
-  require_dependency 'user'
+  require_dependency "user"
   class ::User
-    scope :valid, ->() {
-      if ActiveRecord::Base.connection.column_exists?(:users, :silenced_till) ||
-        ActiveRecord::Base.connection.column_exists?(:users, :silenced)
-        activated.not_silenced.not_suspended.real
-      else
-        activated.not_blocked.not_suspended.real
-      end
-    }
+    scope :valid,
+          -> {
+            if ActiveRecord::Base.connection.column_exists?(:users, :silenced_till) ||
+                 ActiveRecord::Base.connection.column_exists?(:users, :silenced)
+              activated.not_silenced.not_suspended.real
+            else
+              activated.not_blocked.not_suspended.real
+            end
+          }
 
-    scope :order_by_likes_received, ->() {
-      joins(:user_stat)
-        .order("user_stats.likes_received DESC")
-    }
+    scope :order_by_likes_received, -> { joins(:user_stat).order("user_stats.likes_received DESC") }
   end
 
-  add_to_serializer(:user_card, :date_of_birth, false) do
-    object.date_of_birth
-  end
+  add_to_serializer(:user_card, :date_of_birth, false) { object.date_of_birth }
 
   add_to_serializer(:user_card, :include_date_of_birth?) do
     SiteSetting.cakeday_birthday_enabled && scope.user.present?
   end
 
-  require_dependency 'post_serializer'
+  require_dependency "post_serializer"
 
   class ::PostSerializer
     attributes :user_created_at, :user_date_of_birth
