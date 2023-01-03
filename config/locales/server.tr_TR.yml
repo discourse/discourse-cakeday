@@ -6,7 +6,7 @@
 
 tr_TR:
   site_settings:
-    cakeday_enabled: "Discourse'a katıldıkları tarihte kullanıcının adının yanında cakeday emoji [s] göster."
-    cakeday_emoji: "Discourse'a katıldıkları tarihte kullanıcının adının yanında gösterilecek emoji'ler. Birden fazla emoji şu şekilde belirtilebilir: smile|cake|smile"
-    cakeday_birthday_enabled: "Doğum günlerinde kullanıcının adının yanında doğum günü emoji'lerini göster."
-    cakeday_birthday_emoji: "Doğum günlerinde kullanıcının adının yanında gösterilecek emoji'ler. Birden fazla emoji şu şekilde belirtilebilir: smile|cake|smile"
+    cakeday_enabled: "Discourse'a katıldıkları tarihte kullanıcının adının yanında pasta günü emoji'si göster."
+    cakeday_emoji: "Discourse'a katıldıkları tarihte kullanıcının adının yanında gösterilecek emoji'ler. Birden fazla emoji şu şekilde belirtilebilir: gülümseme|pasta|gülümseme"
+    cakeday_birthday_enabled: "Doğum gününde kullanıcının adının yanında doğum günü emoji'lerini göster."
+    cakeday_birthday_emoji: "Doğum gününde kullanıcının adının yanında gösterilecek emoji'ler. Birden fazla emoji şu şekilde belirtilebilir: gülümseme|pasta|gülümseme"
