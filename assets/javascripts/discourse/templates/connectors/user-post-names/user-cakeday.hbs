@@ -1,6 +1,9 @@
 {{#if siteSettings.cakeday_birthday_enabled}}
   {{#if isUserBirthday}}
-    {{emoji-images list=siteSettings.cakeday_birthday_emoji title="birthdays.title"}}
+    {{emoji-images
+      list=siteSettings.cakeday_birthday_emoji
+      title="birthdays.title"
+    }}
   {{/if}}
 {{/if}}
 
