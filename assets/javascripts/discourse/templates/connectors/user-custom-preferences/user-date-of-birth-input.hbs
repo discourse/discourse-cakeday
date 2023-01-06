@@ -4,22 +4,22 @@
     <div class="controls">
       {{combo-box
         content=months
-        value=userBirthdayMonth
+        value=month
         valueAttribute="value"
         valueProperty="value"
         none="cakeday.none"
         options=(hash clearable=true autoInsertNoneItem=false)
-        onChange=(action (mut userBirthdayMonth))
+        onChange=(action (mut month))
       }}
 
       {{combo-box
         content=days
-        value=userBirthdayDay
+        value=day
         valueProperty=null
         nameProperty=null
         none="cakeday.none"
         options=(hash clearable=true autoInsertNoneItem=false)
-        onChange=(action (mut userBirthdayDay))
+        onChange=(action (mut day))
       }}
     </div>
   </div>

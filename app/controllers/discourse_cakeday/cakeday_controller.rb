@@ -7,18 +7,69 @@ module DiscourseCakeday
 
     private
 
-    def setup_params
-      @page = params[:page].to_i
-      @month = params[:month].to_i
+    PAGE_SIZE = 48
 
-      @offset = (params[:timezone_offset].to_i || 0) / 60.0
-      @today = Time.zone.now - @offset.hours
-      @current_month = @today.month
-      @tomorrow = @today + 1.day
+    def setup_params
+      @page = params[:page].to_i.clamp(0..)
+      @month = params[:month].to_i.clamp(1..12)
+      @users = User.real.activated.not_staged.not_silenced.not_suspended
+      @timezone = current_user&.user_option&.timezone
     end
 
-    def select_fields(users)
-      users.select(:id, :username, :name, :title, :uploaded_avatar_id, :date_of_birth, :created_at)
+    def cakedays_by(column_sql, at_least_one_year_old: false)
+      more_params = { page: @page + 1, filter: params[:filter] }
+
+      today =
+        begin
+          Time.zone.now.in_time_zone(@timezone)
+        rescue ArgumentError
+          Time.zone.now
+        end.to_date
+
+      if at_least_one_year_old
+        @users = @users.where("EXTRACT(YEAR FROM #{column_sql}) < ?", today.year)
+      end
+
+      # when the current year is not a leap year, we consider February 29th to be March 1st
+      date_sql = <<~SQL
+        TO_CHAR(#{column_sql}, 'MMDD') = :date OR (
+          NOT :leap AND
+          :date = '0301' AND
+          TO_CHAR(#{column_sql}, 'MMDD') = '0229'
+        )
+      SQL
+
+      @users =
+        case params[:filter]
+        when "today"
+          @users.where(date_sql, leap: today.leap?, date: mmdd(today))
+        when "tomorrow"
+          tomorrow = today + 1.day
+          @users.where(date_sql, leap: tomorrow.leap?, date: mmdd(tomorrow))
+        when "upcoming"
+          from = today + 2.days
+          to = from + 1.week
+          @users.where("TO_CHAR(#{column_sql}, 'MMDD') BETWEEN ? AND ?", mmdd(from), mmdd(to))
+        else # month
+          more_params[:month] = @month
+          @users.where("EXTRACT(MONTH FROM #{column_sql}) = ?", @month)
+        end
+
+      total = @users.count
+
+      @users =
+        @users
+          .select(:id, :username, :name, :title, :uploaded_avatar_id, "#{column_sql} cakedate")
+          .order("TO_CHAR(#{column_sql}, 'MMDDYYYY') ASC")
+          .order(:username_lower)
+          .limit(PAGE_SIZE)
+          .offset(PAGE_SIZE * @page)
+
+      [@users, total, more_params]
+    end
+
+    def mmdd(date)
+      date.strftime("%m%d")
     end
   end
 end

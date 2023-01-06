@@ -73,8 +73,8 @@ acceptance("Cakeday", function (needs) {
               edit_reason: null,
               can_view_edit_history: true,
               wiki: false,
-              user_created_at: moment().subtract(1, "year"),
-              user_date_of_birth: moment().format("YYYY-MM-DD"),
+              user_cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
+              user_birthdate: moment().format("YYYY-MM-DD"),
             },
           ],
           stream: [14],
@@ -206,8 +206,8 @@ acceptance("Cakeday", function (needs) {
     server.get("/u/tgx.json", () => {
       return response({
         user: {
-          date_of_birth: moment().format("YYYY-MM-DD"),
-          created_at: moment().subtract(1, "year"),
+          birthdate: moment().format("YYYY-MM-DD"),
+          cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
         },
       });
     });
@@ -215,8 +215,8 @@ acceptance("Cakeday", function (needs) {
     server.get("/u/tgx/card.json", () => {
       return response({
         user: {
-          date_of_birth: moment().format("YYYY-MM-DD"),
-          created_at: moment().subtract(1, "year"),
+          birthdate: moment().format("YYYY-MM-DD"),
+          cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
         },
       });
     });

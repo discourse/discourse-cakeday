@@ -1,14 +1,15 @@
 import {
   cakeday,
-  cakedayBirthday,
+  birthday,
+  cakedayTitle,
+  birthdayTitle,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 
 export default {
-  setupComponent(args, component) {
-    component.set("isCakeday", cakeday(args.model.get("created_at")));
-    component.set(
-      "isUserBirthday",
-      cakedayBirthday(args.model.get("date_of_birth"))
-    );
+  setupComponent({ model }, component) {
+    component.set("isCakeday", cakeday(model.cakedate));
+    component.set("isBirthday", birthday(model.birthdate));
+    component.set("cakedayTitle", cakedayTitle(model, this.currentUser));
+    component.set("birthdayTitle", birthdayTitle(model, this.currentUser));
   },
 };

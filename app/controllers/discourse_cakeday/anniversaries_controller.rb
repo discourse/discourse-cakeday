@@ -4,61 +4,23 @@ module DiscourseCakeday
   class AnniversariesController < CakedayController
     before_action :ensure_cakeday_enabled
 
-    PAGE_SIZE = 48
-
     def index
-      users =
-        User.valid.where(
-          "EXTRACT(YEAR FROM (users.created_at - interval ':offset hour')) != :year",
-          offset: @offset,
-          year: @today.year,
-        )
+      column_sql = "created_at"
 
-      users =
-        case params[:filter]
-        when "today", "tomorrow"
-          users.where(
-            "to_char(users.created_at - interval ':offset hour', 'MM-DD') = :date",
-            offset: @offset,
-            date: (params[:filter] == "today" ? @today : @tomorrow).strftime("%m-%d"),
-          ).order_by_likes_received
-        when "upcoming"
-          from = @tomorrow + 1.day
-          to = from + 1.week
+      # The users.created_at column is a "timestamp without timezone"
+      # so we need to convert the "point in time" to the current user's timezone
+      # for proper filtering and display (otherwise you might get off by ones
+      # if you live in ~~the future~~ Fiji or in ~~the past~~ Hawaii)
+      if @timezone.present? && @timezone != "UTC"
+        column_sql += " AT TIME ZONE 'UTC' AT TIME ZONE '#{@timezone}'"
+      end
 
-          users
-            .where(
-              "to_char(users.created_at - interval ':offset hour', 'MM-DD') IN (:dates)",
-              offset: @offset,
-              dates: (from.to_date..to.to_date).map { |date| date.strftime("%m-%d") },
-            )
-            .order("EXTRACT(MONTH FROM users.created_at - interval '#{@offset.to_i} hour') ASC")
-            .order("EXTRACT(DAY FROM users.created_at - interval '#{@offset.to_i} hour') ASC")
-            .order_by_likes_received
-        else
-          users
-            .where(
-              "EXTRACT(MONTH FROM (users.created_at - interval ':offset hour')) = :month",
-              offset: @offset,
-              month: @month,
-            )
-            .order("users.created_at ASC")
-            .order_by_likes_received
-        end
-
-      total_rows_count = users.count
-      users = select_fields(users).limit(PAGE_SIZE).offset(PAGE_SIZE * @page)
+      users, total, more_params = cakedays_by(column_sql, at_least_one_year_old: true)
 
       render_json_dump(
-        anniversaries: serialize_data(users, AnniversaryUserSerializer),
-        total_rows_anniversaries: total_rows_count,
-        load_more_anniversaries:
-          anniversaries_path(
-            page: @page + 1,
-            month: params[:month],
-            filter: params[:filter],
-            timezone_offset: params[:timezone_offset],
-          ),
+        anniversaries: serialize_data(users, CakedayUserSerializer),
+        total_rows_anniversaries: total,
+        load_more_anniversaries: anniversaries_path(more_params),
       )
     end
 
