@@ -20,10 +20,9 @@ export default {
 
     const updateBirthdate = () => {
       let date = "";
-      let { month, day } = component;
 
-      if (month && day) {
-        date = `1904-${month}-${day}`;
+      if (component.month && component.day) {
+        date = `1904-${component.month}-${component.day}`;
       }
 
       // The property that is being serialized when sending the update

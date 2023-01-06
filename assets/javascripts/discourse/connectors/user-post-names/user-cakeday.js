@@ -1,8 +1,8 @@
 import {
-  cakeday,
   birthday,
-  cakedayTitle,
   birthdayTitle,
+  cakeday,
+  cakedayTitle,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 
 export default {
