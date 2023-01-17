@@ -57,11 +57,19 @@ module DiscourseCakeday
 
       total = @users.count
 
+      # when the cakedate is the same, we order based on how the data is displayed
+      tie_breaker =
+        if SiteSetting.prioritize_username_in_ux
+          :username_lower
+        else
+          "COALESCE(NULLIF(LOWER(TRIM(name)), ''), username_lower) ASC"
+        end
+
       @users =
         @users
           .select(:id, :username, :name, :title, :uploaded_avatar_id, "#{column_sql} cakedate")
           .order("TO_CHAR(#{column_sql}, 'MMDDYYYY') ASC")
-          .order(:username_lower)
+          .order(tie_breaker)
           .limit(PAGE_SIZE)
           .offset(PAGE_SIZE * @page)
 
