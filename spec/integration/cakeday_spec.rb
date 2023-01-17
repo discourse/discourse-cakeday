@@ -121,6 +121,29 @@ describe "Anniversaries and Birthdays" do
           expect(body["birthdays"].map { |u| u["id"] }).to eq [user5.id]
         end
       end
+
+      it "respects the prioritize_username_in_ux site setting" do
+        freeze_time(time) do
+          dob = "1904-9-30"
+          user1 = Fabricate(:user, username: "alpha_zeta", name: "Zeta Alpha", date_of_birth: dob)
+          user2 = Fabricate(:user, username: "zeta_alpha", name: "Alpha Zeta", date_of_birth: dob)
+          user3 = Fabricate(:user, username: "beta_omega", name: "", date_of_birth: dob)
+
+          SiteSetting.prioritize_username_in_ux = true
+
+          get "/cakeday/birthdays.json", params: { filter: "today" }
+
+          body = JSON.parse(response.body)
+          expect(body["birthdays"].map { |u| u["id"] }).to eq [user1.id, user3.id, user2.id]
+
+          SiteSetting.prioritize_username_in_ux = false
+
+          get "/cakeday/birthdays.json", params: { filter: "today" }
+
+          body = JSON.parse(response.body)
+          expect(body["birthdays"].map { |u| u["id"] }).to eq [user2.id, user3.id, user1.id]
+        end
+      end
     end
   end
 end
