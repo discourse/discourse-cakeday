@@ -1,37 +1,36 @@
 export default {
-  setupComponent(args, component) {
+  setupComponent({ model }, component) {
+    const { birthdate } = model;
+
     const months = moment.months().map((month, index) => {
       return { name: month, value: index + 1 };
     });
 
-    const days = Array.from(Array(31).keys()).map((x) => (x + 1).toString());
+    const days = [...Array(31).keys()].map((d) => (d + 1).toString());
 
-    const dateOfBirth = args.model.get("date_of_birth");
-    const userBirthdayMonth = dateOfBirth
-      ? moment(dateOfBirth, "YYYY-MM-DD").month() + 1
-      : null;
-    const userBirthdayDay = dateOfBirth
-      ? moment(dateOfBirth, "YYYY-MM-DD").date().toString()
+    const month = birthdate
+      ? moment(birthdate, "YYYY-MM-DD").month() + 1
       : null;
 
-    component.setProperties({
-      months,
-      days,
-      userBirthdayMonth,
-      userBirthdayDay,
-    });
+    const day = birthdate
+      ? moment(birthdate, "YYYY-MM-DD").date().toString()
+      : null;
 
-    const updateBirthday = function () {
+    component.setProperties({ months, days, month, day });
+
+    const updateBirthdate = () => {
       let date = "";
 
-      if (component.userBirthdayMonth && component.userBirthdayDay) {
-        date = `1904-${component.userBirthdayMonth}-${component.userBirthdayDay}`;
+      if (component.month && component.day) {
+        date = `1904-${component.month}-${component.day}`;
       }
 
-      args.model.set("date_of_birth", date);
+      // The property that is being serialized when sending the update
+      // request to the server is called `date_of_birth`
+      model.set("date_of_birth", date);
     };
 
-    component.addObserver("userBirthdayMonth", updateBirthday);
-    component.addObserver("userBirthdayDay", updateBirthday);
+    component.addObserver("month", updateBirthdate);
+    component.addObserver("day", updateBirthdate);
   },
 };

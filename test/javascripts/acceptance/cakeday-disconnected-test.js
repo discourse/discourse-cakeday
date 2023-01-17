@@ -8,6 +8,7 @@ acceptance("Cakeday - disconnected", function (needs) {
     cakeday_emoji: "cake",
     cakeday_birthday_enabled: true,
     cakeday_birthday_emoji: "birthday",
+    navigation_menu: "legacy",
   });
 
   needs.pretender((server) => {
@@ -71,8 +72,6 @@ acceptance("Cakeday - disconnected", function (needs) {
               edit_reason: null,
               can_view_edit_history: true,
               wiki: false,
-              user_created_at: moment().subtract(1, "year"),
-              user_date_of_birth: moment().format("YYYY-MM-DD"),
             },
           ],
           stream: [14],
@@ -198,15 +197,6 @@ acceptance("Cakeday - disconnected", function (needs) {
         ],
         chunk_size: 20,
         bookmarked: false,
-      });
-    });
-
-    server.get("/u/tgx.json", () => {
-      return response({
-        user: {
-          date_of_birth: moment().format("YYYY-MM-DD"),
-          created_at: moment().subtract(1, "year"),
-        },
       });
     });
   });

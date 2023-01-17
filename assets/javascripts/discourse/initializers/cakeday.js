@@ -1,13 +1,10 @@
 import I18n from "I18n";
-import discourseComputed, { observes } from "discourse-common/utils/decorators";
 import { withPluginApi } from "discourse/lib/plugin-api";
 import {
+  birthday,
   cakeday,
-  cakedayBirthday,
-  isSameDay,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 import { registerUnbound } from "discourse-common/lib/helpers";
-import { isEmpty } from "@ember/utils";
 
 function initializeCakeday(api) {
   const currentUser = api.getCurrentUser();
@@ -18,86 +15,16 @@ function initializeCakeday(api) {
   const store = api.container.lookup("service:store");
   store.addPluralization("anniversary", "anniversaries");
 
-  api.modifyClass("controller:preferences", {
-    pluginId: "discourse-cakeday",
-
-    days: [...Array(32).keys()].splice(1),
-
-    @discourseComputed
-    months() {
-      return moment.months().map((month, index) => {
-        return { name: month, value: index + 1 };
-      });
-    },
-
-    @observes("userBirthdayMonth", "userBirthdayDay")
-    _setUserDateOfBirth() {
-      const userBirthdayMonth = this.get("userBirthdayMonth");
-      const userBirthdayDay = this.get("userBirthdayDay");
-      const user = this.get("model");
-      let date = "";
-
-      if (userBirthdayMonth !== "" && userBirthdayDay !== "") {
-        date = `1904-${this.get("userBirthdayMonth")}-${this.get(
-          "userBirthdayDay"
-        )}`;
-      }
-
-      user.set("date_of_birth", date);
-    },
-
-    @discourseComputed("model.date_of_birth")
-    userBirthdayMonth(dateOfBirth) {
-      return moment(dateOfBirth, "YYYY-MM-DD").month() + 1;
-    },
-
-    @discourseComputed("model.date_of_birth")
-    userBirthdayDay(dateOfBirth) {
-      return moment(dateOfBirth, "YYYY-MM-DD").date();
-    },
-  });
-
-  api.modifyClass("controller:user-card", {
-    pluginId: "discourse-cakeday",
-
-    @discourseComputed("model.created_at")
-    isCakeday(createdAt) {
-      return cakeday(createdAt);
-    },
-
-    @discourseComputed("model.date_of_birth")
-    isUserBirthday(dateOfBirth) {
-      return cakedayBirthday(dateOfBirth);
-    },
-  });
-
-  api.modifyClass("controller:user", {
-    pluginId: "discourse-cakeday",
-
-    @discourseComputed("model.created_at")
-    isCakeday(createdAt) {
-      return cakeday(createdAt);
-    },
-
-    @discourseComputed("model.date_of_birth")
-    isUserBirthday(dateOfBirth) {
-      return cakedayBirthday(dateOfBirth);
-    },
-  });
-
   const siteSettings = api.container.lookup("site-settings:main");
-
   const emojiEnabled = siteSettings.enable_emoji;
   const cakedayEnabled = siteSettings.cakeday_enabled;
-  const cakedayBirthdayEnabled = siteSettings.cakeday_birthday_enabled;
+  const birthdayEnabled = siteSettings.cakeday_birthday_enabled;
 
   if (cakedayEnabled) {
-    api.includePostAttributes("user_created_at");
-    api.includePostAttributes("user_date_of_birth");
+    api.includePostAttributes("user_cakedate");
 
-    api.addPosterIcon((cfs, attrs) => {
-      const createdAt = attrs.user_created_at;
-      if (!isEmpty(createdAt) && isSameDay(createdAt, { anniversary: true })) {
+    api.addPosterIcon((_, { user_cakedate, user_id }) => {
+      if (cakeday(user_cakedate)) {
         let result = {};
 
         if (emojiEnabled) {
@@ -106,23 +33,22 @@ function initializeCakeday(api) {
           result.icon = "birthday-cake";
         }
 
-        if (currentUser && attrs.user_id === currentUser.get("id")) {
+        if (user_id === currentUser?.id) {
           result.title = I18n.t("user.anniversary.user_title");
         } else {
           result.title = I18n.t("user.anniversary.title");
         }
-
-        result.emojiTitle = false;
 
         return result;
       }
     });
   }
 
-  if (cakedayBirthdayEnabled) {
-    api.addPosterIcon((cfs, attrs) => {
-      const dob = attrs.user_date_of_birth;
-      if (!isEmpty(dob) && isSameDay(dob)) {
+  if (birthdayEnabled) {
+    api.includePostAttributes("user_birthdate");
+
+    api.addPosterIcon((_, { user_birthdate, user_id }) => {
+      if (birthday(user_birthdate)) {
         let result = {};
 
         if (emojiEnabled) {
@@ -131,24 +57,22 @@ function initializeCakeday(api) {
           result.icon = "birthday-cake";
         }
 
-        if (currentUser && attrs.user_id === currentUser.get("id")) {
+        if (user_id === currentUser?.id) {
           result.title = I18n.t("user.date_of_birth.user_title");
         } else {
           result.title = I18n.t("user.date_of_birth.title");
         }
-
-        result.emojiTitle = false;
 
         return result;
       }
     });
   }
 
-  if (cakedayEnabled || cakedayBirthdayEnabled) {
-    registerUnbound("cakeday-date", function (val, params) {
+  if (cakedayEnabled || birthdayEnabled) {
+    registerUnbound("cakeday-date", (val, { isBirthday }) => {
       const date = moment(val);
 
-      if (params.isBirthday) {
+      if (isBirthday) {
         return date.format(I18n.t("dates.full_no_year_no_time"));
       } else {
         return date.format(I18n.t("dates.full_with_year_no_time"));
@@ -168,7 +92,7 @@ function initializeCakeday(api) {
         });
       }
 
-      if (cakedayBirthdayEnabled) {
+      if (birthdayEnabled) {
         api.addCommunitySectionLink({
           name: "birthdays",
           route: "cakeday.birthdays.today",
@@ -182,7 +106,7 @@ function initializeCakeday(api) {
 
         if (cakedayEnabled) {
           route = "cakeday.anniversaries.today";
-        } else if (cakedayBirthdayEnabled) {
+        } else if (birthdayEnabled) {
           route = "cakeday.birthdays.today";
         }
 

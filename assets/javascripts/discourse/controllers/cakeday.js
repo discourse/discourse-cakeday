@@ -3,5 +3,5 @@ import { alias } from "@ember/object/computed";
 
 export default Controller.extend({
   cakedayEnabled: alias("siteSettings.cakeday_enabled"),
-  cakedayBirthdayEnabled: alias("siteSettings.cakeday_birthday_enabled"),
+  birthdayEnabled: alias("siteSettings.cakeday_birthday_enabled"),
 });

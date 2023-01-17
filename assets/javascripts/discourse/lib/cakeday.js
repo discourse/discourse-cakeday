@@ -1,54 +1,38 @@
 import { isEmpty } from "@ember/utils";
 
-export function isSameDay(date, opts) {
-  let formatString = "YYYY";
-  const current = moment();
-  const currentDate = moment(date);
-
-  if (opts && opts.anniversary) {
-    if (current.format(formatString) <= currentDate.format(formatString)) {
-      return false;
-    }
-  }
-
-  formatString = "MMDD";
-
-  return current.format(formatString) === currentDate.format(formatString);
+export function cakeday(date) {
+  return !isEmpty(date) && isSameDay(date, { anniversary: true });
 }
 
-export function cakeday(createdAt) {
-  if (isEmpty(createdAt)) {
-    return false;
-  }
-  return isSameDay(createdAt, { anniversary: true });
-}
-
-export function cakedayBirthday(dateOfBirth) {
-  if (isEmpty(dateOfBirth)) {
-    return false;
-  }
-  return isSameDay(dateOfBirth);
+export function birthday(date) {
+  return !isEmpty(date) && isSameDay(date);
 }
 
 export function cakedayTitle(user, currentUser) {
-  if (isSameUser(user, currentUser)) {
+  if (user.id === currentUser?.id) {
     return "user.anniversary.user_title";
   } else {
     return "user.anniversary.title";
   }
 }
 
-export function cakedayBirthdayTitle(user, currentUser) {
-  if (isSameUser(user, currentUser)) {
+export function birthdayTitle(user, currentUser) {
+  if (user.id === currentUser?.id) {
     return "user.date_of_birth.user_title";
   } else {
     return "user.date_of_birth.title";
   }
 }
 
-function isSameUser(user, currentUser) {
-  if (!currentUser) {
-    return false;
+function isSameDay(dateString, opts) {
+  const now = moment();
+  const date = moment(dateString);
+
+  if (opts?.anniversary) {
+    if (now.format("YYYY") <= date.format("YYYY")) {
+      return false;
+    }
   }
-  return user.get("id") === currentUser.get("id");
+
+  return now.format("MMDD") === date.format("MMDD");
 }
