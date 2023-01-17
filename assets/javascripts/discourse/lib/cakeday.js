@@ -28,7 +28,7 @@ function isSameDay(dateString, opts) {
   const now = moment();
   const date = moment(dateString);
 
-  if (opts && opts.anniversary) {
+  if (opts?.anniversary) {
     if (now.format("YYYY") <= date.format("YYYY")) {
       return false;
     }
