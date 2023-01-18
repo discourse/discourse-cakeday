@@ -62,7 +62,7 @@ module DiscourseCakeday
         if SiteSetting.prioritize_username_in_ux
           :username_lower
         else
-          "COALESCE(NULLIF(LOWER(TRIM(name)), ''), username_lower) ASC"
+          "COALESCE(NULLIF(LOWER(TRIM(users.name)), ''), users.username_lower) ASC"
         end
 
       @users =
