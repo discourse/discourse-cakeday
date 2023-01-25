@@ -70,10 +70,11 @@ after_initialize do
   add_to_serializer(:post, :user_birthdate, false) { object.user.date_of_birth }
 
   add_to_serializer(:post, :include_user_cakedate?) do
-    SiteSetting.cakeday_enabled && scope.user.present?
+    SiteSetting.cakeday_enabled && scope.user.present? && object.user&.created_at.present?
   end
 
   add_to_serializer(:post, :include_user_birthdate?) do
-    SiteSetting.cakeday_birthday_enabled && scope.user.present?
+    SiteSetting.cakeday_birthday_enabled && scope.user.present? &&
+      object.user&.date_of_birth.present?
   end
 end
