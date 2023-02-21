@@ -8,4 +8,5 @@ sr:
   js:
     cakeday:
       today: "Danas"
+      tomorrow: "Sutra"
       all: "Sve"
