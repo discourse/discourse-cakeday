@@ -23,7 +23,7 @@ acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
     await visit("/");
 
     await click(
-      ".sidebar-section-community .sidebar-more-section-links-details-summary"
+      ".sidebar-section[data-section-name='community'] .sidebar-more-section-links-details-summary"
     );
 
     assert.ok(
@@ -36,7 +36,7 @@ acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
     await visit("/");
 
     await click(
-      ".sidebar-section-community .sidebar-more-section-links-details-summary"
+      ".sidebar-section[data-section-name='community'] .sidebar-more-section-links-details-summary"
     );
 
     assert.ok(
@@ -68,7 +68,7 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
     await visit("/");
 
     await click(
-      ".sidebar-section-community .sidebar-more-section-links-details-summary"
+      ".sidebar-section[data-section-name='community'] .sidebar-more-section-links-details-summary"
     );
 
     assert.strictEqual(
@@ -96,7 +96,7 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
     await visit("/");
 
     await click(
-      ".sidebar-section-community .sidebar-more-section-links-details-summary"
+      ".sidebar-section[data-section-name='community'] .sidebar-more-section-links-details-summary"
     );
 
     assert.strictEqual(
