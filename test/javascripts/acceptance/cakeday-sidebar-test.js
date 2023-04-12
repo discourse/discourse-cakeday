@@ -27,7 +27,7 @@ acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
     );
 
     assert.ok(
-      !exists(".sidebar-section-link-anniversaries"),
+      !exists(".sidebar-section-link[data-link-name='anniversaries']"),
       "it does not display the anniversaries link in sidebar"
     );
   });
@@ -40,7 +40,7 @@ acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
     );
 
     assert.ok(
-      !exists(".sidebar-section-link-birthdays"),
+      !exists(".sidebar-section-link[data-link-name='birthdays']"),
       "it does not display the birthdays link in sidebar"
     );
   });
@@ -72,18 +72,20 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
     );
 
     assert.strictEqual(
-      query(".sidebar-section-link-anniversaries").textContent.trim(),
+      query(
+        ".sidebar-section-link[data-link-name='anniversaries']"
+      ).textContent.trim(),
       I18n.t("anniversaries.title"),
       "displays the right text for the link"
     );
 
     assert.strictEqual(
-      query(".sidebar-section-link-anniversaries").title,
+      query(".sidebar-section-link[data-link-name='anniversaries']").title,
       I18n.t("anniversaries.title"),
       "displays the right title for the link"
     );
 
-    await click(".sidebar-section-link-anniversaries");
+    await click(".sidebar-section-link[data-link-name='anniversaries']");
 
     assert.strictEqual(
       currentURL(),
@@ -100,18 +102,20 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
     );
 
     assert.strictEqual(
-      query(".sidebar-section-link-birthdays").textContent.trim(),
+      query(
+        ".sidebar-section-link[data-link-name='birthdays']"
+      ).textContent.trim(),
       I18n.t("birthdays.title"),
       "displays the right text for the link"
     );
 
     assert.strictEqual(
-      query(".sidebar-section-link-birthdays").title,
+      query(".sidebar-section-link[data-link-name='birthdays']").title,
       I18n.t("birthdays.title"),
       "displays the right title for the link"
     );
 
-    await click(".sidebar-section-link-birthdays");
+    await click(".sidebar-section-link[data-link-name='birthdays']");
 
     assert.strictEqual(
       currentURL(),
