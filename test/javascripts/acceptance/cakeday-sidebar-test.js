@@ -11,7 +11,35 @@ import birthdaysFixtures from "../fixtures/birthdays";
 import { cloneJSON } from "discourse-common/lib/object";
 
 acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
-  needs.user();
+  needs.user({
+    sidebar_sections: [
+      {
+        id: 111,
+        title: "Community",
+        links: [
+          {
+            id: 329,
+            name: "Everything",
+            value: "/latest",
+            icon: "layer-group",
+            external: false,
+            segment: "primary",
+          },
+          {
+            id: 336,
+            name: "Groups",
+            value: "/g",
+            icon: "user-friends",
+            external: false,
+            segment: "secondary",
+          },
+        ],
+        slug: "community",
+        public: true,
+        section_type: "community",
+      },
+    ],
+  });
 
   needs.settings({
     cakeday_enabled: false,
@@ -47,7 +75,35 @@ acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
 });
 
 acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
-  needs.user();
+  needs.user({
+    sidebar_sections: [
+      {
+        id: 111,
+        title: "Community",
+        links: [
+          {
+            id: 329,
+            name: "Everything",
+            value: "/latest",
+            icon: "layer-group",
+            external: false,
+            segment: "primary",
+          },
+          {
+            id: 336,
+            name: "Groups",
+            value: "/g",
+            icon: "user-friends",
+            external: false,
+            segment: "secondary",
+          },
+        ],
+        slug: "community",
+        public: true,
+        section_type: "community",
+      },
+    ],
+  });
 
   needs.settings({
     cakeday_enabled: true,
