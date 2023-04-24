@@ -44,37 +44,35 @@ after_initialize do
   # overwrite the user and user_card serializers to show
   # the cakes on the user card and on the user profile pages
   %i[user user_card].each do |serializer|
-    add_to_serializer(serializer, :cakedate, false) do
+    add_to_serializer(serializer, :cakedate, include_condition: -> { scope.user.present? }) do
       timezone = scope.user.user_option&.timezone.presence || "UTC"
       object.created_at.in_time_zone(timezone).strftime("%Y-%m-%d")
     end
 
-    add_to_serializer(serializer, :birthdate, false) { object.date_of_birth }
-
-    add_to_serializer(serializer, :include_cakedate?) do
-      SiteSetting.cakeday_enabled && scope.user.present?
-    end
-
-    add_to_serializer(serializer, :include_birthdate?) do
-      SiteSetting.cakeday_birthday_enabled && scope.user.present?
-    end
+    add_to_serializer(
+      serializer,
+      :birthdate,
+      include_condition: -> { SiteSetting.cakeday_birthday_enabled && scope.user.present? },
+    ) { object.date_of_birth }
   end
 
   # overwrite the post serializer to show the cakes next to the
   # username in the posts stream
-  add_to_serializer(:post, :user_cakedate, false) do
+  add_to_serializer(
+    :post,
+    :user_cakedate,
+    include_condition: -> { scope.user.present? && object.user&.created_at.present? },
+  ) do
     timezone = scope.user.user_option&.timezone.presence || "UTC"
     object.user.created_at.in_time_zone(timezone).strftime("%Y-%m-%d")
   end
 
-  add_to_serializer(:post, :user_birthdate, false) { object.user.date_of_birth }
-
-  add_to_serializer(:post, :include_user_cakedate?) do
-    SiteSetting.cakeday_enabled && scope.user.present? && object.user&.created_at.present?
-  end
-
-  add_to_serializer(:post, :include_user_birthdate?) do
-    SiteSetting.cakeday_birthday_enabled && scope.user.present? &&
-      object.user&.date_of_birth.present?
-  end
+  add_to_serializer(
+    :post,
+    :user_birthdate,
+    include_condition: -> do
+      SiteSetting.cakeday_birthday_enabled && scope.user.present? &&
+        object.user&.date_of_birth.present?
+    end,
+  ) { object.user.date_of_birth }
 end
