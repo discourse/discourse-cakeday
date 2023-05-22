@@ -1,11 +1,11 @@
 <h2 class="cakeday-header">{{title}}</h2>
 
-{{#load-more selector=".user-info" action=(action "loadMore")}}
-  {{#conditional-loading-spinner condition=model.loading}}
-    {{#user-info-list users=model isBirthday=true}}
+<LoadMore @selector=".user-info" @action={{action "loadMore"}}>
+  <ConditionalLoadingSpinner @condition={{model.loading}}>
+    <UserInfoList @users={{model}} @isBirthday={{true}}>
       {{i18n "birthdays.today.empty"}}
-    {{/user-info-list}}
-  {{/conditional-loading-spinner}}
+    </UserInfoList>
+  </ConditionalLoadingSpinner>
 
-  {{conditional-loading-spinner condition=model.loadingMore}}
-{{/load-more}}
+  <ConditionalLoadingSpinner @condition={{model.loadingMore}} />
+</LoadMore>

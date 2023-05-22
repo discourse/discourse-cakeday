@@ -1,19 +1,19 @@
-{{#load-more selector=".user-info" action=(action "loadMore")}}
+<LoadMore @selector=".user-info" @action={{action "loadMore"}}>
   <div class="cakeday-months">
     <h2 class="cakeday-header">{{i18n "birthdays.month.title"}}</h2>
-    {{combo-box
-      content=months
-      value=month
-      valueAttribute="value"
-      none="cakeday.none"
-    }}
+    <ComboBox
+      @content={{months}}
+      @value={{month}}
+      @valueAttribute="value"
+      @none="cakeday.none"
+    />
   </div>
 
-  {{#conditional-loading-spinner condition=model.loading}}
-    {{#user-info-list users=model isBirthday=true}}
+  <ConditionalLoadingSpinner @condition={{model.loading}}>
+    <UserInfoList @users={{model}} @isBirthday={{true}}>
       {{i18n "birthdays.month.empty"}}
-    {{/user-info-list}}
-  {{/conditional-loading-spinner}}
+    </UserInfoList>
+  </ConditionalLoadingSpinner>
 
-  {{conditional-loading-spinner condition=model.loadingMore}}
-{{/load-more}}
+  <ConditionalLoadingSpinner @condition={{model.loadingMore}} />
+</LoadMore>
