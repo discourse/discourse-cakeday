@@ -79,12 +79,12 @@ describe "Anniversaries and Birthdays" do
           get "/cakeday/anniversaries.json", params: { filter: "today" }
 
           body = JSON.parse(response.body)
-          expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly [user1.id, user2.id]
+          expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly(user1.id, user2.id)
 
           get "/cakeday/anniversaries.json", params: { filter: "tomorrow" }
 
           body = JSON.parse(response.body)
-          expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly [user3.id, user4.id]
+          expect(body["anniversaries"].map { |u| u["id"] }).to contain_exactly(user3.id, user4.id)
         end
       end
     end
