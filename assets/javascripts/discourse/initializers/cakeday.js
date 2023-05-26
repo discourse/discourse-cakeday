@@ -89,6 +89,7 @@ function initializeCakeday(api) {
           route: "cakeday.anniversaries.today",
           title: I18n.t("anniversaries.title"),
           text: I18n.t("anniversaries.title"),
+          icon: "birthday-cake",
         });
       }
 
@@ -98,6 +99,7 @@ function initializeCakeday(api) {
           route: "cakeday.birthdays.today",
           title: I18n.t("birthdays.title"),
           text: I18n.t("birthdays.title"),
+          icon: "birthday-cake",
         });
       }
     } else {
