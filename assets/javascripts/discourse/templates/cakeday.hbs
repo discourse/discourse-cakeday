@@ -2,17 +2,17 @@
   <ul class="nav-pills">
     {{#if cakedayEnabled}}
       <li class="nav-item-anniversaries">
-        {{#link-to "cakeday.anniversaries"}}
+        <LinkTo @route="cakeday.anniversaries">
           {{i18n "anniversaries.title"}}
-        {{/link-to}}
+        </LinkTo>
       </li>
     {{/if}}
 
     {{#if birthdayEnabled}}
       <li class="nav-item-birthdays">
-        {{#link-to "cakeday.birthdays"}}
+        <LinkTo @route="cakeday.birthdays">
           {{i18n "birthdays.title"}}
-        {{/link-to}}
+        </LinkTo>
       </li>
     {{/if}}
   </ul>
