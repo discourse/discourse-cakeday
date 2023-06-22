@@ -85,6 +85,13 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
       "displays the right title for the link"
     );
 
+    assert.ok(
+      exists(
+        ".sidebar-section-link[data-link-name='anniversaries'] .sidebar-section-link-prefix.icon .d-icon-birthday-cake"
+      ),
+      "displays the birthday-cake icon for the link"
+    );
+
     await click(".sidebar-section-link[data-link-name='anniversaries']");
 
     assert.strictEqual(
@@ -113,6 +120,13 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
       query(".sidebar-section-link[data-link-name='birthdays']").title,
       I18n.t("birthdays.title"),
       "displays the right title for the link"
+    );
+
+    assert.ok(
+      exists(
+        ".sidebar-section-link[data-link-name='birthdays'] .sidebar-section-link-prefix.icon .d-icon-birthday-cake"
+      ),
+      "displays the birthday-cake icon for the link"
     );
 
     await click(".sidebar-section-link[data-link-name='birthdays']");
