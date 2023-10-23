@@ -1,7 +1,9 @@
 import DiscourseRoute from "discourse/routes/discourse";
+import { inject as service } from "@ember/service";
 
-export default DiscourseRoute.extend({
+export default class CakedayAnniversariesIndex extends DiscourseRoute {
+  @service router;
   beforeModel() {
-    this.replaceWith("cakeday.anniversaries.today");
-  },
-});
+    this.router.replaceWith("cakeday.anniversaries.today");
+  }
+}

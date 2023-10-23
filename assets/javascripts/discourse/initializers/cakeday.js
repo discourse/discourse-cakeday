@@ -4,7 +4,6 @@ import {
   birthday,
   cakeday,
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
-import { registerUnbound } from "discourse-common/lib/helpers";
 
 function initializeCakeday(api) {
   const currentUser = api.getCurrentUser();
@@ -69,16 +68,6 @@ function initializeCakeday(api) {
   }
 
   if (cakedayEnabled || birthdayEnabled) {
-    registerUnbound("cakeday-date", (val, { isBirthday }) => {
-      const date = moment(val);
-
-      if (isBirthday) {
-        return date.format(I18n.t("dates.full_no_year_no_time"));
-      } else {
-        return date.format(I18n.t("dates.full_with_year_no_time"));
-      }
-    });
-
     if (
       siteSettings.navigation_menu !== "legacy" &&
       api.addCommunitySectionLink
