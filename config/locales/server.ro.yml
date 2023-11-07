@@ -8,5 +8,5 @@ ro:
   site_settings:
     cakeday_enabled: "Arată emoji[s] cakeday lângă numele utilizatorului la data în care s-a înscris în comunitate."
     cakeday_emoji: "Emoji[s] care se vor afișa lângă numele utilizatorului la data la care s-a alăturat comunității. Mai multe emojiuri pot fi specificate prin: smile|cake| smile"
-    cakeday_birthday_enabled: "Afișați emoji[s] despre ziua de naștere alături de numele utilizatorului de ziua acestuia."
+    cakeday_birthday_enabled: "Afișează emoji[s] despre ziua de naștere alături de numele utilizatorului de ziua acestuia."
     cakeday_birthday_emoji: "Emoji[s] , care vor fi afișați lângă numele utilizatorului de ziua lor de naștere. Se pot specifica mai multe emoji folosind: smile|cake|smile"
