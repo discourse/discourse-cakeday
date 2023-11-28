@@ -12,13 +12,9 @@ acceptance("Cakeday", function (needs) {
     cakeday_birthday_emoji: "birthday",
   });
 
-  needs.pretender((server) => {
-    const response = (object) => {
-      return [200, { "Content-Type": "application/json" }, object];
-    };
-
-    server.get("/t/11.json", () => {
-      return response({
+  needs.pretender((server, { response }) => {
+    server.get("/t/11.json", () =>
+      response({
         post_stream: {
           posts: [
             {
@@ -200,45 +196,53 @@ acceptance("Cakeday", function (needs) {
         ],
         chunk_size: 20,
         bookmarked: false,
-      });
-    });
+      })
+    );
 
-    server.get("/u/tgx.json", () => {
-      return response({
+    server.get("/u/tgx.json", () =>
+      response({
         user: {
           birthdate: moment().format("YYYY-MM-DD"),
           cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
         },
-      });
-    });
+      })
+    );
 
-    server.get("/u/tgx/card.json", () => {
-      return response({
+    server.get("/u/tgx/card.json", () =>
+      response({
         user: {
           birthdate: moment().format("YYYY-MM-DD"),
           cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
         },
-      });
-    });
+      })
+    );
   });
 
-  test("Anniversary emoji", async (assert) => {
+  test("Anniversary emoji", async function (assert) {
     await visit("/t/some-really-interesting-topic/11");
 
     const posterIcons = queryAll(".poster-icon");
 
-    assert.equal(posterIcons[0].title, I18n.t("user.anniversary.title"));
-    assert.equal(posterIcons[1].title, I18n.t("user.date_of_birth.title"));
-    assert.equal(queryAll("img.emoji", posterIcons[0]).length, 1);
-    assert.equal(queryAll("img.emoji", posterIcons[1]).length, 1);
+    assert
+      .dom(posterIcons[0])
+      .hasAttribute("title", I18n.t("user.anniversary.title"));
+    assert
+      .dom(posterIcons[1])
+      .hasAttribute("title", I18n.t("user.date_of_birth.title"));
+    assert.dom("img.emoji", posterIcons[0]).exists({ count: 1 });
+    assert.dom("img.emoji", posterIcons[1]).exists({ count: 1 });
 
     await click(".trigger-user-card");
 
     const emojiImages = queryAll(".emoji-images div");
 
-    assert.equal(emojiImages[1].title, I18n.t("user.anniversary.title"));
-    assert.equal(emojiImages[0].title, I18n.t("user.date_of_birth.title"));
-    assert.equal(1, emojiImages[0].children.length);
-    assert.equal(1, emojiImages[1].children.length);
+    assert
+      .dom(emojiImages[1])
+      .hasAttribute("title", I18n.t("user.anniversary.title"));
+    assert
+      .dom(emojiImages[0])
+      .hasAttribute("title", I18n.t("user.date_of_birth.title"));
+    assert.strictEqual(emojiImages[0].children.length, 1);
+    assert.strictEqual(emojiImages[1].children.length, 1);
   });
 });

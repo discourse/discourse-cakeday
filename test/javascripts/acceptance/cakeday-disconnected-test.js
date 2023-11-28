@@ -12,12 +12,8 @@ acceptance("Cakeday - disconnected", function (needs) {
   });
 
   needs.pretender((server) => {
-    const response = (object) => {
-      return [200, { "Content-Type": "application/json" }, object];
-    };
-
-    server.get("/t/11.json", () => {
-      return response({
+    server.get("/t/11.json", (_, response) =>
+      response({
         post_stream: {
           posts: [
             {
@@ -197,18 +193,16 @@ acceptance("Cakeday - disconnected", function (needs) {
         ],
         chunk_size: 20,
         bookmarked: false,
-      });
-    });
+      })
+    );
   });
 
-  test("User is not logged in", async (assert) => {
+  test("User is not logged in", async function (assert) {
     await visit("/");
     await click("#toggle-hamburger-menu");
 
-    assert.equal(
-      find(".cakeday-link").length,
-      0,
-      "Cakeday is not shown to anonymous users"
-    );
+    assert
+      .dom(".cakeday-link")
+      .doesNotExist("Cakeday is not shown to anonymous users");
   });
 });
