@@ -1,7 +1,7 @@
-import I18n from "I18n";
-import { acceptance, queryAll } from "discourse/tests/helpers/qunit-helpers";
-import { test } from "qunit";
 import { click, visit } from "@ember/test-helpers";
+import { test } from "qunit";
+import { acceptance, queryAll } from "discourse/tests/helpers/qunit-helpers";
+import I18n from "I18n";
 
 acceptance("Cakeday", function (needs) {
   needs.user();

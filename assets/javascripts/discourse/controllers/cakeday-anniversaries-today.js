@@ -1,6 +1,6 @@
 import Controller from "@ember/controller";
-import I18n from "I18n";
 import computed from "discourse-common/utils/decorators";
+import I18n from "I18n";
 
 export default Controller.extend({
   @computed

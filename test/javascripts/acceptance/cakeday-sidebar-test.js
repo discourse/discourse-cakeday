@@ -1,10 +1,10 @@
-import { test } from "qunit";
-import I18n from "I18n";
 import { click, currentURL, visit } from "@ember/test-helpers";
+import { test } from "qunit";
 import { acceptance } from "discourse/tests/helpers/qunit-helpers";
+import { cloneJSON } from "discourse-common/lib/object";
+import I18n from "I18n";
 import anniversariesFixtures from "../fixtures/anniversaries";
 import birthdaysFixtures from "../fixtures/birthdays";
-import { cloneJSON } from "discourse-common/lib/object";
 
 acceptance("Cakeday - Sidebar with cakeday disabled", function (needs) {
   needs.user();
