@@ -1,5 +1,5 @@
-import I18n from "I18n";
 import UserInfo from "discourse/components/user-info";
+import I18n from "I18n";
 
 function cakedayDate(val, { isBirthday }) {
   const date = moment(val);
