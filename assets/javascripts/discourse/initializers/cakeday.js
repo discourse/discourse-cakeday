@@ -14,7 +14,7 @@ function initializeCakeday(api) {
   const store = api.container.lookup("service:store");
   store.addPluralization("anniversary", "anniversaries");
 
-  const siteSettings = api.container.lookup("site-settings:main");
+  const siteSettings = api.container.lookup("service:site-settings");
   const emojiEnabled = siteSettings.enable_emoji;
   const cakedayEnabled = siteSettings.cakeday_enabled;
   const birthdayEnabled = siteSettings.cakeday_birthday_enabled;
