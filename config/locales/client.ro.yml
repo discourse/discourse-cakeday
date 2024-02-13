@@ -37,7 +37,7 @@ ro:
       title: "Aniversări"
       month:
         title: "Aniversări în luna"
-        empty: "Nu există utilizatori care să îşi sărbătorească aniversările în această lună."
+        empty: "Nu există utilizatori care să își sărbătorească aniversările în această lună."
       upcoming:
         title: "Aniversări între %{start_date} - %{end_date}"
         empty: "Nu există utilizatori care să-și sărbătorească aniversările în următoarele 7 zile."
