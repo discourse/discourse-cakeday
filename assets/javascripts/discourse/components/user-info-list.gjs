@@ -20,7 +20,7 @@ const UserInfoList = <template>
         </UserInfo>
       </li>
     {{else}}
-      <div class="user-info-empty-message"><h4>{{yield}}</h4></div>
+      <div class="user-info-empty-message"><p>{{yield}}</p></div>
     {{/each}}
   </ul>
 </template>;
