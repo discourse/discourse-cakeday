@@ -32,14 +32,12 @@ after_initialize do
 
   Discourse::Application.routes.append { mount ::DiscourseCakeday::Engine, at: "/cakeday" }
 
-  %w[
-    ../app/jobs/onceoff/fix_invalid_date_of_birth.rb
-    ../app/jobs/onceoff/migrate_date_of_birth_to_users_table.rb
-    ../app/serializers/discourse_cakeday/cakeday_user_serializer.rb
-    ../app/controllers/discourse_cakeday/cakeday_controller.rb
-    ../app/controllers/discourse_cakeday/anniversaries_controller.rb
-    ../app/controllers/discourse_cakeday/birthdays_controller.rb
-  ].each { |path| load File.expand_path(path, __FILE__) }
+  require_relative "app/jobs/onceoff/fix_invalid_date_of_birth"
+  require_relative "app/jobs/onceoff/migrate_date_of_birth_to_users_table"
+  require_relative "app/serializers/discourse_cakeday/cakeday_user_serializer"
+  require_relative "app/controllers/discourse_cakeday/cakeday_controller"
+  require_relative "app/controllers/discourse_cakeday/anniversaries_controller"
+  require_relative "app/controllers/discourse_cakeday/birthdays_controller"
 
   # overwrite the user and user_card serializers to show
   # the cakes on the user card and on the user profile pages
