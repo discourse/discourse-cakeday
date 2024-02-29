@@ -69,7 +69,7 @@ acceptance("Cakeday", function (needs) {
               edit_reason: null,
               can_view_edit_history: true,
               wiki: false,
-              user_cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
+              user_cakedate: moment().subtract(4, "year").format("YYYY-MM-DD"),
               user_birthdate: moment().format("YYYY-MM-DD"),
             },
           ],
@@ -203,7 +203,7 @@ acceptance("Cakeday", function (needs) {
       response({
         user: {
           birthdate: moment().format("YYYY-MM-DD"),
-          cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
+          cakedate: moment().subtract(4, "year").format("YYYY-MM-DD"),
         },
       })
     );
@@ -212,7 +212,7 @@ acceptance("Cakeday", function (needs) {
       response({
         user: {
           birthdate: moment().format("YYYY-MM-DD"),
-          cakedate: moment().subtract(1, "year").format("YYYY-MM-DD"),
+          cakedate: moment().subtract(4, "year").format("YYYY-MM-DD"),
         },
       })
     );
