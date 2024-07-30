@@ -77,7 +77,7 @@ function initializeCakeday(api) {
           text: I18n.t("anniversaries.title"),
           icon: "birthday-cake",
         },
-        "true"
+        true
       );
     }
 
@@ -90,7 +90,7 @@ function initializeCakeday(api) {
           text: I18n.t("birthdays.title"),
           icon: "birthday-cake",
         },
-        "true"
+        true
       );
     }
   }
