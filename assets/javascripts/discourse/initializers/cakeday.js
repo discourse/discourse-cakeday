@@ -69,23 +69,29 @@ function initializeCakeday(api) {
 
   if (cakedayEnabled || birthdayEnabled) {
     if (cakedayEnabled) {
-      api.addCommunitySectionLink({
-        name: "anniversaries",
-        route: "cakeday.anniversaries.today",
-        title: I18n.t("anniversaries.title"),
-        text: I18n.t("anniversaries.title"),
-        icon: "birthday-cake",
-      });
+      api.addCommunitySectionLink(
+        {
+          name: "anniversaries",
+          route: "cakeday.anniversaries.today",
+          title: I18n.t("anniversaries.title"),
+          text: I18n.t("anniversaries.title"),
+          icon: "birthday-cake",
+        },
+        true
+      );
     }
 
     if (birthdayEnabled) {
-      api.addCommunitySectionLink({
-        name: "birthdays",
-        route: "cakeday.birthdays.today",
-        title: I18n.t("birthdays.title"),
-        text: I18n.t("birthdays.title"),
-        icon: "birthday-cake",
-      });
+      api.addCommunitySectionLink(
+        {
+          name: "birthdays",
+          route: "cakeday.birthdays.today",
+          title: I18n.t("birthdays.title"),
+          text: I18n.t("birthdays.title"),
+          icon: "birthday-cake",
+        },
+        true
+      );
     }
   }
 }
