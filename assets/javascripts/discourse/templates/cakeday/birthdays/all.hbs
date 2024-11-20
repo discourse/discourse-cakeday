@@ -2,18 +2,18 @@
   <div class="cakeday-months">
     <h2 class="cakeday-header">{{i18n "birthdays.month.title"}}</h2>
     <ComboBox
-      @content={{months}}
-      @value={{month}}
+      @content={{this.months}}
+      @value={{this.month}}
       @valueAttribute="value"
       @none="cakeday.none"
     />
   </div>
 
-  <ConditionalLoadingSpinner @condition={{model.loading}}>
-    <UserInfoList @users={{model}} @isBirthday={{true}}>
+  <ConditionalLoadingSpinner @condition={{this.model.loading}}>
+    <UserInfoList @users={{this.model}} @isBirthday={{true}}>
       {{i18n "birthdays.month.empty"}}
     </UserInfoList>
   </ConditionalLoadingSpinner>
 
-  <ConditionalLoadingSpinner @condition={{model.loadingMore}} />
+  <ConditionalLoadingSpinner @condition={{this.model.loadingMore}} />
 </LoadMore>

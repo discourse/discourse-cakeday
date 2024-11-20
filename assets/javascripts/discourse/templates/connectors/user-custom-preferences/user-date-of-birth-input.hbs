@@ -1,25 +1,25 @@
-{{#if siteSettings.cakeday_birthday_enabled}}
+{{#if this.siteSettings.cakeday_birthday_enabled}}
   <div class="control-group">
     <label class="control-label">{{i18n "user.date_of_birth.label"}}</label>
     <div class="controls">
       <ComboBox
-        @content={{months}}
-        @value={{month}}
+        @content={{this.months}}
+        @value={{this.month}}
         @valueAttribute="value"
         @valueProperty="value"
         @none="cakeday.none"
         @options={{hash clearable=true autoInsertNoneItem=false}}
-        @onChange={{action (mut month)}}
+        @onChange={{action (mut this.month)}}
       />
 
       <ComboBox
-        @content={{days}}
-        @value={{day}}
+        @content={{this.days}}
+        @value={{this.day}}
         @valueProperty={{null}}
         @nameProperty={{null}}
         @none="cakeday.none"
         @options={{hash clearable=true autoInsertNoneItem=false}}
-        @onChange={{action (mut day)}}
+        @onChange={{action (mut this.day)}}
       />
     </div>
   </div>

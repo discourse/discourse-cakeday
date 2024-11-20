@@ -1,6 +1,6 @@
 <div class="container cakeday">
   <ul class="nav-pills">
-    {{#if cakedayEnabled}}
+    {{#if this.cakedayEnabled}}
       <li class="nav-item-anniversaries">
         <LinkTo @route="cakeday.anniversaries">
           {{i18n "anniversaries.title"}}
@@ -8,7 +8,7 @@
       </li>
     {{/if}}
 
-    {{#if birthdayEnabled}}
+    {{#if this.birthdayEnabled}}
       <li class="nav-item-birthdays">
         <LinkTo @route="cakeday.birthdays">
           {{i18n "birthdays.title"}}
