@@ -1,8 +1,9 @@
 import Controller from "@ember/controller";
+import { action } from "@ember/object";
 import computed from "discourse-common/utils/decorators";
 import I18n from "I18n";
 
-export default Controller.extend({
+export default class CakedayBirthdaysUpcomingController extends Controller {
   @computed
   title() {
     const dateFormat = I18n.t("dates.full_no_year_no_time");
@@ -11,11 +12,10 @@ export default Controller.extend({
       start_date: moment().add(2, "days").format(dateFormat),
       end_date: moment().add(2, "days").add(1, "week").format(dateFormat),
     });
-  },
+  }
 
-  actions: {
-    loadMore() {
-      this.get("model").loadMore();
-    },
-  },
-});
+  @action
+  loadMore() {
+    this.get("model").loadMore();
+  }
+}
