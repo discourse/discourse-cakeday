@@ -9,7 +9,7 @@
 register_asset "stylesheets/cakeday.scss"
 register_asset "stylesheets/emoji-images.scss"
 
-register_svg_icon "birthday-cake" if respond_to?(:register_svg_icon)
+register_svg_icon "cake-candles" if respond_to?(:register_svg_icon)
 
 enabled_site_setting :cakeday_enabled
 
