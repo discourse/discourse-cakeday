@@ -82,7 +82,7 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
 
     assert
       .dom(
-        ".sidebar-section-link[data-link-name='anniversaries'] .sidebar-section-link-prefix.icon .d-icon-birthday-cake"
+        ".sidebar-section-link[data-link-name='anniversaries'] .sidebar-section-link-prefix.icon .d-icon-cake-candles"
       )
       .exists("displays the birthday-cake icon for the link");
 
@@ -119,7 +119,7 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
 
     assert
       .dom(
-        ".sidebar-section-link[data-link-name='birthdays'] .sidebar-section-link-prefix.icon .d-icon-birthday-cake"
+        ".sidebar-section-link[data-link-name='birthdays'] .sidebar-section-link-prefix.icon .d-icon-cake-candles"
       )
       .exists("displays the birthday-cake icon for the link");
 
