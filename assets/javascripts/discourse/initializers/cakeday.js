@@ -29,7 +29,7 @@ function initializeCakeday(api) {
         if (emojiEnabled) {
           result.emoji = siteSettings.cakeday_emoji;
         } else {
-          result.icon = "birthday-cake";
+          result.icon = "cake-candles";
         }
 
         if (user_id === currentUser?.id) {
@@ -53,7 +53,7 @@ function initializeCakeday(api) {
         if (emojiEnabled) {
           result.emoji = siteSettings.cakeday_birthday_emoji;
         } else {
-          result.icon = "birthday-cake";
+          result.icon = "cake-candles";
         }
 
         if (user_id === currentUser?.id) {
@@ -75,7 +75,7 @@ function initializeCakeday(api) {
           route: "cakeday.anniversaries.today",
           title: I18n.t("anniversaries.title"),
           text: I18n.t("anniversaries.title"),
-          icon: "birthday-cake",
+          icon: "cake-candles",
         },
         true
       );
@@ -88,7 +88,7 @@ function initializeCakeday(api) {
           route: "cakeday.birthdays.today",
           title: I18n.t("birthdays.title"),
           text: I18n.t("birthdays.title"),
-          icon: "birthday-cake",
+          icon: "cake-candles",
         },
         true
       );
