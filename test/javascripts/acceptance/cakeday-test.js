@@ -1,7 +1,7 @@
 import { click, visit } from "@ember/test-helpers";
 import { test } from "qunit";
 import { acceptance, queryAll } from "discourse/tests/helpers/qunit-helpers";
-import I18n from "I18n";
+import { i18n } from "discourse-i18n";
 
 acceptance("Cakeday", function (needs) {
   needs.user();
@@ -225,10 +225,10 @@ acceptance("Cakeday", function (needs) {
 
     assert
       .dom(posterIcons[0])
-      .hasAttribute("title", I18n.t("user.anniversary.title"));
+      .hasAttribute("title", i18n("user.anniversary.title"));
     assert
       .dom(posterIcons[1])
-      .hasAttribute("title", I18n.t("user.date_of_birth.title"));
+      .hasAttribute("title", i18n("user.date_of_birth.title"));
     assert.dom("img.emoji", posterIcons[0]).exists({ count: 1 });
     assert.dom("img.emoji", posterIcons[1]).exists({ count: 1 });
 
@@ -238,10 +238,10 @@ acceptance("Cakeday", function (needs) {
 
     assert
       .dom(emojiImages[1])
-      .hasAttribute("title", I18n.t("user.anniversary.title"));
+      .hasAttribute("title", i18n("user.anniversary.title"));
     assert
       .dom(emojiImages[0])
-      .hasAttribute("title", I18n.t("user.date_of_birth.title"));
+      .hasAttribute("title", i18n("user.date_of_birth.title"));
     assert.strictEqual(emojiImages[0].children.length, 1);
     assert.strictEqual(emojiImages[1].children.length, 1);
   });

@@ -1,8 +1,8 @@
 import { click, currentURL, visit } from "@ember/test-helpers";
 import { test } from "qunit";
+import { cloneJSON } from "discourse/lib/object";
 import { acceptance } from "discourse/tests/helpers/qunit-helpers";
-import { cloneJSON } from "discourse-common/lib/object";
-import I18n from "I18n";
+import { i18n } from "discourse-i18n";
 import anniversariesFixtures from "../fixtures/anniversaries";
 import birthdaysFixtures from "../fixtures/birthdays";
 
@@ -68,7 +68,7 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
     assert
       .dom(".sidebar-section-link[data-link-name='anniversaries']")
       .hasText(
-        I18n.t("anniversaries.title"),
+        i18n("anniversaries.title"),
         "displays the right text for the link"
       );
 
@@ -76,7 +76,7 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
       .dom(".sidebar-section-link[data-link-name='anniversaries']")
       .hasAttribute(
         "title",
-        I18n.t("anniversaries.title"),
+        i18n("anniversaries.title"),
         "displays the right title for the link"
       );
 
@@ -104,16 +104,13 @@ acceptance("Cakeday - Sidebar with cakeday enabled", function (needs) {
 
     assert
       .dom(".sidebar-section-link[data-link-name='birthdays']")
-      .hasText(
-        I18n.t("birthdays.title"),
-        "displays the right text for the link"
-      );
+      .hasText(i18n("birthdays.title"), "displays the right text for the link");
 
     assert
       .dom(".sidebar-section-link[data-link-name='birthdays']")
       .hasAttribute(
         "title",
-        I18n.t("birthdays.title"),
+        i18n("birthdays.title"),
         "displays the right title for the link"
       );
 
