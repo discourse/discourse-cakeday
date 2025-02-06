@@ -1,6 +1,6 @@
 import Controller from "@ember/controller";
 import { action } from "@ember/object";
-import computed from "discourse-common/utils/decorators";
+import computed from "discourse/lib/decorators";
 
 export default class CakedayAnniversariesAllController extends Controller {
   queryParams = ["month"];
