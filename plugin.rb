@@ -42,7 +42,11 @@ after_initialize do
   # overwrite the user and user_card serializers to show
   # the cakes on the user card and on the user profile pages
   %i[user user_card].each do |serializer|
-    add_to_serializer(serializer, :cakedate, include_condition: -> { scope.user.present? }) do
+    add_to_serializer(
+      serializer,
+      :cakedate,
+      include_condition: -> { scope.user.present? && object.user_option&.hide_profile != true },
+    ) do
       timezone = scope.user.user_option&.timezone.presence || "UTC"
       object.created_at.in_time_zone(timezone).strftime("%Y-%m-%d")
     end
@@ -50,7 +54,10 @@ after_initialize do
     add_to_serializer(
       serializer,
       :birthdate,
-      include_condition: -> { SiteSetting.cakeday_birthday_enabled && scope.user.present? },
+      include_condition: -> do
+        SiteSetting.cakeday_birthday_enabled && scope.user.present? &&
+          object.user_option&.hide_profile != true
+      end,
     ) { object.date_of_birth }
   end
 
@@ -59,7 +66,10 @@ after_initialize do
   add_to_serializer(
     :post,
     :user_cakedate,
-    include_condition: -> { scope.user.present? && object.user&.created_at.present? },
+    include_condition: -> do
+      scope.user.present? && object.user&.created_at.present? &&
+        object.user.user_option&.hide_profile != true
+    end,
   ) do
     timezone = scope.user.user_option&.timezone.presence || "UTC"
     object.user.created_at.in_time_zone(timezone).strftime("%Y-%m-%d")
@@ -70,7 +80,7 @@ after_initialize do
     :user_birthdate,
     include_condition: -> do
       SiteSetting.cakeday_birthday_enabled && scope.user.present? &&
-        object.user&.date_of_birth.present?
+        object.user&.date_of_birth.present? && object.user.user_option&.hide_profile != true
     end,
   ) { object.user.date_of_birth }
 end

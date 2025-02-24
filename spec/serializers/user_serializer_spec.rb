@@ -22,6 +22,18 @@ RSpec.describe UserSerializer do
       SiteSetting.cakeday_birthday_enabled = false
       expect(serializer.as_json.has_key?(:birthdate)).to eq(false)
     end
+
+    context "when user has hidden their profile" do
+      before { user.user_option.update!(hide_profile: true) }
+
+      it "should not include the user's cakedate" do
+        expect(serializer.as_json.has_key?(:user_cakedate)).to eq(false)
+      end
+
+      it "should not include the user's birthdate" do
+        expect(serializer.as_json.has_key?(:user_birthdate)).to eq(false)
+      end
+    end
   end
 
   context "when user is not logged in" do

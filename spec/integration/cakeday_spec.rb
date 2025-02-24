@@ -42,6 +42,9 @@ describe "Anniversaries and Birthdays" do
           user5 = Fabricate(:user, created_at: created_at + 2.day)
           user6 = Fabricate(:user, created_at: created_at + 1.year)
 
+          hidden_user = Fabricate(:user, created_at: created_at - 1.year)
+          hidden_user.user_option.update!(hide_profile: true)
+
           get "/cakeday/anniversaries.json", params: { month: time.month }
 
           body = JSON.parse(response.body)
@@ -75,6 +78,9 @@ describe "Anniversaries and Birthdays" do
           user2 = Fabricate(:user, created_at: created_at + 18.hours + 20.minutes)
           user3 = Fabricate(:user, created_at: created_at + 18.hours + 40.minutes)
           user4 = Fabricate(:user, created_at: created_at + 1.day + 2.hours)
+
+          hidden_user = Fabricate(:user, created_at: created_at - 1.year)
+          hidden_user.user_option.update!(hide_profile: true)
 
           get "/cakeday/anniversaries.json", params: { filter: "today" }
 
