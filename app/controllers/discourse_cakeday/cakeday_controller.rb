@@ -14,7 +14,15 @@ module DiscourseCakeday
     def setup_params
       @page = params[:page].to_i.clamp(0..)
       @month = params[:month].to_i.clamp(1..12)
-      @users = User.real.activated.not_staged.not_silenced.not_suspended
+      @users =
+        User
+          .real
+          .activated
+          .not_staged
+          .not_silenced
+          .not_suspended
+          .joins(:user_option)
+          .where("user_options.hide_profile = ?", false)
       @timezone = current_user&.user_option&.timezone
     end
 
