@@ -1,9 +1,3 @@
-# WARNING: Never edit this file.
-# It will be overwritten when translations are pulled from Crowdin.
-#
-# To work with us on translations, join this project:
-# https://translate.discourse.org/
-
 ur:
   site_settings:
     cakeday_enabled: "جس تاریخ کو صارف نے ڈسکورس میں شمولیت اختیار کی، اُس دن ان کے نام کے ساتھ کیک ڈے ایموجی دکھائیں۔"

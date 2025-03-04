@@ -1,9 +1,3 @@
-# WARNING: Never edit this file.
-# It will be overwritten when translations are pulled from Crowdin.
-#
-# To work with us on translations, join this project:
-# https://translate.discourse.org/
-
 ko:
   site_settings:
     cakeday_enabled: "사용자가 담론에 참여한 날짜에 사용자 이름 옆에 케이크 데이 이모지를 표시합니다."
