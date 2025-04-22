@@ -20,7 +20,7 @@ function initializeCakeday(api) {
   const birthdayEnabled = siteSettings.cakeday_birthday_enabled;
 
   if (cakedayEnabled) {
-    api.includePostAttributes("user_cakedate");
+    api.addTrackedPostProperties("user_cakedate");
 
     api.addPosterIcon((_, { user_cakedate, user_id }) => {
       if (cakeday(user_cakedate)) {
@@ -44,7 +44,7 @@ function initializeCakeday(api) {
   }
 
   if (birthdayEnabled) {
-    api.includePostAttributes("user_birthdate");
+    api.addTrackedPostProperties("user_birthdate");
 
     api.addPosterIcon((_, { user_birthdate, user_id }) => {
       if (birthday(user_birthdate)) {
