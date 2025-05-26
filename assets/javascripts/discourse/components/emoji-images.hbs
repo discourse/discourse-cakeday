@@ -1,9 +1,0 @@
-{{#if this.siteSettings.enable_emoji}}
-  <div title={{this.titleText}}>
-    {{#each this.emojiHTML as |html|}}
-      {{html-safe html}}
-    {{/each}}
-  </div>
-{{else}}
-  {{d-icon "cake-candles" title=this.titleText}}
-{{/if}}
