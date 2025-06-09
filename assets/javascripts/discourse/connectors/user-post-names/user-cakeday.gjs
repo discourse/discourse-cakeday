@@ -11,13 +11,20 @@ import EmojiImages from "../../components/emoji-images";
 @tagName("div")
 @classNames("user-post-names-outlet", "user-cakeday")
 export default class UserCakeday extends Component {
-  init() {
-    super.init(...arguments);
-    const { model } = this;
-    this.set("isCakeday", cakeday(model.cakedate));
-    this.set("isBirthday", birthday(model.birthdate));
-    this.set("cakedayTitle", cakedayTitle(model, this.currentUser));
-    this.set("birthdayTitle", birthdayTitle(model, this.currentUser));
+  get isCakeday() {
+    return cakeday(this.outletArgs.model.cakedate);
+  }
+
+  get isBirthday() {
+    return birthday(this.outletArgs.model.birthdate);
+  }
+
+  get cakedayTitle() {
+    return cakedayTitle(this.outletArgs.model, this.currentUser);
+  }
+
+  get birthdayTitle() {
+    return birthdayTitle(this.outletArgs.model, this.currentUser);
   }
 
   <template>
