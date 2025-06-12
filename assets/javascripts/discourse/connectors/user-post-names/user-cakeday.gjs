@@ -1,5 +1,5 @@
-import Component from "@ember/component";
-import { classNames, tagName } from "@ember-decorators/component";
+import Component from "@glimmer/component";
+import { service } from "@ember/service";
 import {
   birthday,
   birthdayTitle,
@@ -8,34 +8,44 @@ import {
 } from "discourse/plugins/discourse-cakeday/discourse/lib/cakeday";
 import EmojiImages from "../../components/emoji-images";
 
-@tagName("div")
-@classNames("user-post-names-outlet", "user-cakeday")
 export default class UserCakeday extends Component {
-  init() {
-    super.init(...arguments);
-    const { model } = this;
-    this.set("isCakeday", cakeday(model.cakedate));
-    this.set("isBirthday", birthday(model.birthdate));
-    this.set("cakedayTitle", cakedayTitle(model, this.currentUser));
-    this.set("birthdayTitle", birthdayTitle(model, this.currentUser));
+  @service currentUser;
+  @service siteSettings;
+
+  get isCakeday() {
+    return cakeday(this.args.model.cakedate);
+  }
+
+  get isBirthday() {
+    return birthday(this.args.model.birthdate);
+  }
+
+  get cakedayTitle() {
+    return cakedayTitle(this.args.model, this.currentUser);
+  }
+
+  get birthdayTitle() {
+    return birthdayTitle(this.args.model, this.currentUser);
   }
 
   <template>
-    {{#if this.siteSettings.cakeday_birthday_enabled}}
-      {{#if this.isBirthday}}
-        <EmojiImages
-          @list={{this.siteSettings.cakeday_birthday_emoji}}
-          @title={{this.birthdayTitle}}
-        />
+    <div class="user-post-names-outlet user-cakeday">
+      {{#if this.siteSettings.cakeday_birthday_enabled}}
+        {{#if this.isBirthday}}
+          <EmojiImages
+            @list={{this.siteSettings.cakeday_birthday_emoji}}
+            @title={{this.birthdayTitle}}
+          />
+        {{/if}}
       {{/if}}
-    {{/if}}
-    {{#if this.siteSettings.cakeday_enabled}}
-      {{#if this.isCakeday}}
-        <EmojiImages
-          @list={{this.siteSettings.cakeday_emoji}}
-          @title={{this.cakedayTitle}}
-        />
+      {{#if this.siteSettings.cakeday_enabled}}
+        {{#if this.isCakeday}}
+          <EmojiImages
+            @list={{this.siteSettings.cakeday_emoji}}
+            @title={{this.cakedayTitle}}
+          />
+        {{/if}}
       {{/if}}
-    {{/if}}
+    </div>
   </template>
 }
