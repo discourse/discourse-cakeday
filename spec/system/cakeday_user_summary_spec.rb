@@ -26,6 +26,7 @@ describe "Cakeday/Birthday emojis", type: :system do
       find(".summary").click
 
       expect(page).to have_current_path("/u/#{current_user.username}/summary")
+      expect(user_page).not_to have_css(".user-cakeday div[title=\"#{I18n.t('js.user.anniversary.title')}\"] .emoji[alt='cake']")
       expect(user_page).to have_css(".user-cakeday div[title=\"#{I18n.t('js.user.date_of_birth.user_title')}\"] .emoji[alt='birthday']")
     end
   end
