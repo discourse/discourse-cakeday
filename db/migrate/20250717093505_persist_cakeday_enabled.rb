@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# TODO: Comment this migration out when merging the plugin into core
 class PersistCakedayEnabled < ActiveRecord::Migration[7.2]
   def up
     # 5 is bool data_type
