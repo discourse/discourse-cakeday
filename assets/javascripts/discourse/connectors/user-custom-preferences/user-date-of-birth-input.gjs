@@ -1,5 +1,5 @@
 import Component from "@ember/component";
-import { hash } from "@ember/helper";
+import { fn, hash } from "@ember/helper";
 import { classNames, tagName } from "@ember-decorators/component";
 import { i18n } from "discourse-i18n";
 import ComboBox from "select-kit/components/combo-box";
@@ -56,7 +56,7 @@ export default class UserDateOfBirthInput extends Component {
             @valueProperty="value"
             @none="cakeday.none"
             @options={{hash clearable=true autoInsertNoneItem=false}}
-            @onChange={{action (mut this.month)}}
+            @onChange={{fn (mut this.month)}}
           />
 
           <ComboBox
@@ -66,7 +66,7 @@ export default class UserDateOfBirthInput extends Component {
             @nameProperty={{null}}
             @none="cakeday.none"
             @options={{hash clearable=true autoInsertNoneItem=false}}
-            @onChange={{action (mut this.day)}}
+            @onChange={{fn (mut this.day)}}
           />
         </div>
       </div>
